@@ -1,0 +1,1 @@
+Newtonsoft.Json.dll文件，可以对json对象格式转化，提供最新版本Newtonsoft.Json.dll,用来解析json字符串很方便，有需要的赶快下载吧！
