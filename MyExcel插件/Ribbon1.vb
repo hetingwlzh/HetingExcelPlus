@@ -1091,18 +1091,18 @@ Public Class Ribbon1
     End Sub
 
     Private Sub Gallery2_ButtonClick(sender As Object, e As RibbonControlEventArgs) Handles Gallery2.ButtonClick
+
+        Dim sheet As Excel.Worksheet = app.ActiveSheet
+        Dim range As Excel.Range = app.Selection
+
         If sender.label = "提取数字" Then
-            Dim sheet As Excel.Worksheet = app.ActiveSheet
-            Dim range As Excel.Range = app.Selection
             取数字(range)
         ElseIf sender.Label = "逆序" Then
-            Dim sheet As Excel.Worksheet = app.ActiveSheet
-            Dim range As Excel.Range = app.Selection
             字符串逆序(range)
         ElseIf sender.Label = "文本拆分" Then
-            Dim sheet As Excel.Worksheet = app.ActiveSheet
-            Dim range As Excel.Range = app.Selection
             字符串拆分(range)
+        ElseIf sender.Label = "第n次匹配位置" Then
+            字符串第n次匹配的位置(range)
         End If
     End Sub
 

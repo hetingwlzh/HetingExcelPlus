@@ -112,6 +112,7 @@
         Me.Button36 = Me.Factory.CreateRibbonButton
         Me.Label2 = Me.Factory.CreateRibbonLabel
         Me.Button49 = Me.Factory.CreateRibbonButton
+        Me.Button18 = Me.Factory.CreateRibbonButton
         Me.Tab1.SuspendLayout()
         Me.Group2.SuspendLayout()
         Me.Box1.SuspendLayout()
@@ -467,6 +468,7 @@
         Me.Gallery2.Buttons.Add(Me.Button7)
         Me.Gallery2.Buttons.Add(Me.Button8)
         Me.Gallery2.Buttons.Add(Me.Button9)
+        Me.Gallery2.Buttons.Add(Me.Button18)
         Me.Gallery2.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge
         Me.Gallery2.Image = CType(resources.GetObject("Gallery2.Image"), System.Drawing.Image)
         Me.Gallery2.Label = "文本"
@@ -638,6 +640,13 @@
         Me.Button49.Name = "Button49"
         Me.Button49.ShowImage = True
         '
+        'Button18
+        '
+        Me.Button18.Image = CType(resources.GetObject("Button18.Image"), System.Drawing.Image)
+        Me.Button18.Label = "第n次匹配位置"
+        Me.Button18.Name = "Button18"
+        Me.Button18.ShowImage = True
+        '
         'Ribbon1
         '
         Me.Name = "Ribbon1"
@@ -739,6 +748,7 @@
     Friend WithEvents Button8 As Microsoft.Office.Tools.Ribbon.RibbonButton
     Friend WithEvents Button9 As Microsoft.Office.Tools.Ribbon.RibbonButton
     Friend WithEvents ToggleButton3 As Microsoft.Office.Tools.Ribbon.RibbonToggleButton
+    Friend WithEvents Button18 As Microsoft.Office.Tools.Ribbon.RibbonButton
 End Class
 
 Partial Class ThisRibbonCollection

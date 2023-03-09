@@ -3842,6 +3842,82 @@ Module Module1
 
 
     End Function
+    Public Function 字符串第n次匹配的位置(区域 As Excel.Range)
+        Dim sheet As Excel.Worksheet = 区域.Worksheet
+        区域 = app.Intersect(区域, sheet.UsedRange)
+
+        Dim 要匹配的字符串 As String = InputBox("请输入要匹配的字符串", "输入")
+        Dim 第n次匹配 As Integer = InputBox("请输入要查找第几次匹配", "输入次数")
+        Dim range, 填充区域 As Excel.Range
+        Dim 源字符串地址 As String
+
+
+
+        If 区域 IsNot Nothing Then
+            If 区域.Columns.Count = 1 Then
+                range = 插入列(sheet, 区域.Cells(1, 1).column + 1)
+                填充区域 = range.Cells(1, 1).resize(区域.Rows.Count， 1)
+                源字符串地址 = 获取地址(区域.Cells(1, 1), False, True)
+
+                'For Each cell As Excel.Range In 区域
+                '    If cell.Value <> Nothing Then
+                '        temp = ""
+                '        For Each c As Char In cell.Value.ToString.Reverse
+                '            temp &= c
+                '        Next
+                '        sheet.Cells(cell.Row, cell.Column + 1).value = temp
+                '    End If
+
+                'Next
+
+            ElseIf 区域.Rows.Count = 1 Then
+                range = 插入行(sheet, 区域.Cells(1, 1).row + 1)
+                填充区域 = range.Cells(1, 1).resize(1， 区域.Columns.Count)
+                源字符串地址 = 获取地址(区域.Cells(1, 1), True, False)
+                '设置单元格格式(range, "通用")
+                'For Each cell As Excel.Range In 区域
+                '    If cell.Value <> Nothing Then
+                '        temp = ""
+                '        For Each c As Char In cell.Value.ToString.Reverse
+                '            temp &= c
+                '        Next
+                '        sheet.Cells(cell.Row + 1, cell.Column).value = temp
+                '    End If
+
+                'Next
+
+
+            Else
+                MsgBox("必须选择单行或单列区域" & vbCrLf & "请重新选择！")
+                Return Nothing
+            End If
+            设置单元格格式(range, "通用")
+            ' =FIND(CHAR(160),SUBSTITUTE(A1,"a",CHAR(160),B1))
+
+            插入公式("=FIND(CHAR(160),SUBSTITUTE(" & 源字符串地址 & ",""" & 要匹配的字符串 & """,CHAR(160)," & 第n次匹配 & "))", range.Cells(1, 1), False)
+            拖拽填充(填充区域)
+        End If
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    End Function
+
+
 
     Public Function 字符串拆分(区域 As Excel.Range) As Integer
 
