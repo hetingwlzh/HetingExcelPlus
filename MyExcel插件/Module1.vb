@@ -3859,6 +3859,7 @@ Module Module1
                 填充区域 = range.Cells(1, 1).resize(区域.Rows.Count， 1)
                 源字符串地址 = 获取地址(区域.Cells(1, 1), False, True)
 
+
                 'For Each cell As Excel.Range In 区域
                 '    If cell.Value <> Nothing Then
                 '        temp = ""
