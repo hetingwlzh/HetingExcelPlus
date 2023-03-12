@@ -337,6 +337,12 @@
     <Compile Include="实验控件.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="导入图片控件.Designer.vb">
+      <DependentUpon>导入图片控件.vb</DependentUpon>
+    </Compile>
+    <Compile Include="导入图片控件.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="循环色控件.Designer.vb">
       <DependentUpon>循环色控件.vb</DependentUpon>
     </Compile>
@@ -448,6 +454,9 @@
     <EmbeddedResource Include="实验控件.resx">
       <DependentUpon>实验控件.vb</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="导入图片控件.resx">
+      <DependentUpon>导入图片控件.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="循环色控件.resx">
       <DependentUpon>循环色控件.vb</DependentUpon>

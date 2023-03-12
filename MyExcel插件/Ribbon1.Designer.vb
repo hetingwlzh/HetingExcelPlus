@@ -45,55 +45,14 @@
         Me.Tab1 = Me.Factory.CreateRibbonTab
         Me.Group2 = Me.Factory.CreateRibbonGroup
         Me.Box1 = Me.Factory.CreateRibbonBox
-        Me.Button1 = Me.Factory.CreateRibbonButton
-        Me.Button2 = Me.Factory.CreateRibbonButton
-        Me.Button3 = Me.Factory.CreateRibbonButton
         Me.CheckBox1 = Me.Factory.CreateRibbonCheckBox
         Me.Box2 = Me.Factory.CreateRibbonBox
-        Me.Button41 = Me.Factory.CreateRibbonButton
-        Me.Button42 = Me.Factory.CreateRibbonButton
-        Me.Button40 = Me.Factory.CreateRibbonButton
-        Me.Button39 = Me.Factory.CreateRibbonButton
         Me.Box3 = Me.Factory.CreateRibbonBox
-        Me.Button46 = Me.Factory.CreateRibbonButton
-        Me.Button44 = Me.Factory.CreateRibbonButton
-        Me.Button45 = Me.Factory.CreateRibbonButton
-        Me.Button43 = Me.Factory.CreateRibbonButton
-        Me.Button4 = Me.Factory.CreateRibbonButton
-        Me.Button5 = Me.Factory.CreateRibbonButton
-        Me.Button13 = Me.Factory.CreateRibbonButton
         Me.Group6 = Me.Factory.CreateRibbonGroup
-        Me.Button15 = Me.Factory.CreateRibbonButton
-        Me.Button32 = Me.Factory.CreateRibbonButton
-        Me.Button33 = Me.Factory.CreateRibbonButton
-        Me.Button14 = Me.Factory.CreateRibbonButton
-        Me.Button22 = Me.Factory.CreateRibbonButton
-        Me.Button50 = Me.Factory.CreateRibbonButton
-        Me.Button20 = Me.Factory.CreateRibbonButton
-        Me.Button21 = Me.Factory.CreateRibbonButton
-        Me.Button16 = Me.Factory.CreateRibbonButton
-        Me.Gallery1 = Me.Factory.CreateRibbonGallery
-        Me.我的设置 = Me.Factory.CreateRibbonButton
-        Me.颜色 = Me.Factory.CreateRibbonButton
         Me.Group8 = Me.Factory.CreateRibbonGroup
-        Me.Button25 = Me.Factory.CreateRibbonButton
-        Me.Button35 = Me.Factory.CreateRibbonButton
-        Me.Button11 = Me.Factory.CreateRibbonButton
-        Me.Button17 = Me.Factory.CreateRibbonButton
         Me.Group4 = Me.Factory.CreateRibbonGroup
-        Me.ToggleButton3 = Me.Factory.CreateRibbonToggleButton
-        Me.Button19 = Me.Factory.CreateRibbonButton
-        Me.Button29 = Me.Factory.CreateRibbonButton
-        Me.Button37 = Me.Factory.CreateRibbonButton
-        Me.Gallery2 = Me.Factory.CreateRibbonGallery
-        Me.Button7 = Me.Factory.CreateRibbonButton
-        Me.Button8 = Me.Factory.CreateRibbonButton
-        Me.Button9 = Me.Factory.CreateRibbonButton
-        Me.ToggleButton2 = Me.Factory.CreateRibbonToggleButton
         Me.CheckBox3 = Me.Factory.CreateRibbonCheckBox
         Me.Group5 = Me.Factory.CreateRibbonGroup
-        Me.Button26 = Me.Factory.CreateRibbonButton
-        Me.Button12 = Me.Factory.CreateRibbonButton
         Me.SplitButton2 = Me.Factory.CreateRibbonSplitButton
         Me.CheckBox2 = Me.Factory.CreateRibbonCheckBox
         Me.Tab2 = Me.Factory.CreateRibbonTab
@@ -112,7 +71,49 @@
         Me.Button36 = Me.Factory.CreateRibbonButton
         Me.Label2 = Me.Factory.CreateRibbonLabel
         Me.Button49 = Me.Factory.CreateRibbonButton
+        Me.Button1 = Me.Factory.CreateRibbonButton
+        Me.Button2 = Me.Factory.CreateRibbonButton
+        Me.Button3 = Me.Factory.CreateRibbonButton
+        Me.Button41 = Me.Factory.CreateRibbonButton
+        Me.Button42 = Me.Factory.CreateRibbonButton
+        Me.Button40 = Me.Factory.CreateRibbonButton
+        Me.Button39 = Me.Factory.CreateRibbonButton
+        Me.Button46 = Me.Factory.CreateRibbonButton
+        Me.Button44 = Me.Factory.CreateRibbonButton
+        Me.Button45 = Me.Factory.CreateRibbonButton
+        Me.Button43 = Me.Factory.CreateRibbonButton
+        Me.Button4 = Me.Factory.CreateRibbonButton
+        Me.Button5 = Me.Factory.CreateRibbonButton
+        Me.Button13 = Me.Factory.CreateRibbonButton
+        Me.Button15 = Me.Factory.CreateRibbonButton
+        Me.Button32 = Me.Factory.CreateRibbonButton
+        Me.Button33 = Me.Factory.CreateRibbonButton
+        Me.Button14 = Me.Factory.CreateRibbonButton
+        Me.Button22 = Me.Factory.CreateRibbonButton
+        Me.Button50 = Me.Factory.CreateRibbonButton
+        Me.Button20 = Me.Factory.CreateRibbonButton
+        Me.Button21 = Me.Factory.CreateRibbonButton
+        Me.Button16 = Me.Factory.CreateRibbonButton
+        Me.Gallery1 = Me.Factory.CreateRibbonGallery
+        Me.我的设置 = Me.Factory.CreateRibbonButton
+        Me.颜色 = Me.Factory.CreateRibbonButton
+        Me.Button25 = Me.Factory.CreateRibbonButton
+        Me.Button35 = Me.Factory.CreateRibbonButton
+        Me.Button11 = Me.Factory.CreateRibbonButton
+        Me.Button17 = Me.Factory.CreateRibbonButton
+        Me.ToggleButton3 = Me.Factory.CreateRibbonToggleButton
+        Me.Button19 = Me.Factory.CreateRibbonButton
+        Me.Button29 = Me.Factory.CreateRibbonButton
+        Me.Button37 = Me.Factory.CreateRibbonButton
+        Me.Gallery2 = Me.Factory.CreateRibbonGallery
+        Me.Button7 = Me.Factory.CreateRibbonButton
+        Me.Button8 = Me.Factory.CreateRibbonButton
+        Me.Button9 = Me.Factory.CreateRibbonButton
         Me.Button18 = Me.Factory.CreateRibbonButton
+        Me.ToggleButton2 = Me.Factory.CreateRibbonToggleButton
+        Me.Button26 = Me.Factory.CreateRibbonButton
+        Me.Button12 = Me.Factory.CreateRibbonButton
+        Me.Button23 = Me.Factory.CreateRibbonButton
         Me.Tab1.SuspendLayout()
         Me.Group2.SuspendLayout()
         Me.Box1.SuspendLayout()
@@ -156,27 +157,6 @@
         Me.Box1.Items.Add(Me.CheckBox1)
         Me.Box1.Name = "Box1"
         '
-        'Button1
-        '
-        Me.Button1.Image = CType(resources.GetObject("Button1.Image"), System.Drawing.Image)
-        Me.Button1.Label = "数据"
-        Me.Button1.Name = "Button1"
-        Me.Button1.ShowImage = True
-        '
-        'Button2
-        '
-        Me.Button2.Image = CType(resources.GetObject("Button2.Image"), System.Drawing.Image)
-        Me.Button2.Label = "左上"
-        Me.Button2.Name = "Button2"
-        Me.Button2.ShowImage = True
-        '
-        'Button3
-        '
-        Me.Button3.Image = CType(resources.GetObject("Button3.Image"), System.Drawing.Image)
-        Me.Button3.Label = "右下"
-        Me.Button3.Name = "Button3"
-        Me.Button3.ShowImage = True
-        '
         'CheckBox1
         '
         Me.CheckBox1.Label = "数据边"
@@ -190,35 +170,6 @@
         Me.Box2.Items.Add(Me.Button39)
         Me.Box2.Name = "Box2"
         '
-        'Button41
-        '
-        Me.Button41.Image = CType(resources.GetObject("Button41.Image"), System.Drawing.Image)
-        Me.Button41.Label = "最左"
-        Me.Button41.Name = "Button41"
-        Me.Button41.ShowImage = True
-        '
-        'Button42
-        '
-        Me.Button42.Image = CType(resources.GetObject("Button42.Image"), System.Drawing.Image)
-        Me.Button42.Label = "最右"
-        Me.Button42.Name = "Button42"
-        Me.Button42.ShowImage = True
-        '
-        'Button40
-        '
-        Me.Button40.Image = CType(resources.GetObject("Button40.Image"), System.Drawing.Image)
-        Me.Button40.Label = "最上"
-        Me.Button40.Name = "Button40"
-        Me.Button40.ShowImage = True
-        '
-        'Button39
-        '
-        Me.Button39.Image = CType(resources.GetObject("Button39.Image"), System.Drawing.Image)
-        Me.Button39.Label = "最下"
-        Me.Button39.Name = "Button39"
-        Me.Button39.ShowImage = True
-        Me.Button39.Tag = ""
-        '
         'Box3
         '
         Me.Box3.Items.Add(Me.Button46)
@@ -226,55 +177,6 @@
         Me.Box3.Items.Add(Me.Button45)
         Me.Box3.Items.Add(Me.Button43)
         Me.Box3.Name = "Box3"
-        '
-        'Button46
-        '
-        Me.Button46.Image = CType(resources.GetObject("Button46.Image"), System.Drawing.Image)
-        Me.Button46.Label = "左边"
-        Me.Button46.Name = "Button46"
-        Me.Button46.ShowImage = True
-        '
-        'Button44
-        '
-        Me.Button44.Image = CType(resources.GetObject("Button44.Image"), System.Drawing.Image)
-        Me.Button44.Label = "右边"
-        Me.Button44.Name = "Button44"
-        Me.Button44.ShowImage = True
-        '
-        'Button45
-        '
-        Me.Button45.Image = CType(resources.GetObject("Button45.Image"), System.Drawing.Image)
-        Me.Button45.Label = "上边"
-        Me.Button45.Name = "Button45"
-        Me.Button45.ShowImage = True
-        '
-        'Button43
-        '
-        Me.Button43.Image = CType(resources.GetObject("Button43.Image"), System.Drawing.Image)
-        Me.Button43.Label = "下边"
-        Me.Button43.Name = "Button43"
-        Me.Button43.ShowImage = True
-        '
-        'Button4
-        '
-        Me.Button4.Image = CType(resources.GetObject("Button4.Image"), System.Drawing.Image)
-        Me.Button4.Label = "列宽"
-        Me.Button4.Name = "Button4"
-        Me.Button4.ShowImage = True
-        '
-        'Button5
-        '
-        Me.Button5.Image = CType(resources.GetObject("Button5.Image"), System.Drawing.Image)
-        Me.Button5.Label = "行高"
-        Me.Button5.Name = "Button5"
-        Me.Button5.ShowImage = True
-        '
-        'Button13
-        '
-        Me.Button13.Image = CType(resources.GetObject("Button13.Image"), System.Drawing.Image)
-        Me.Button13.Label = "文本"
-        Me.Button13.Name = "Button13"
-        Me.Button13.ShowImage = True
         '
         'Group6
         '
@@ -291,95 +193,6 @@
         Me.Group6.Label = "综合操作"
         Me.Group6.Name = "Group6"
         '
-        'Button15
-        '
-        Me.Button15.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge
-        Me.Button15.Image = CType(resources.GetObject("Button15.Image"), System.Drawing.Image)
-        Me.Button15.Label = "枚举"
-        Me.Button15.Name = "Button15"
-        Me.Button15.ShowImage = True
-        '
-        'Button32
-        '
-        Me.Button32.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge
-        Me.Button32.Image = CType(resources.GetObject("Button32.Image"), System.Drawing.Image)
-        Me.Button32.Label = "行匹配"
-        Me.Button32.Name = "Button32"
-        Me.Button32.ShowImage = True
-        '
-        'Button33
-        '
-        Me.Button33.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge
-        Me.Button33.Image = CType(resources.GetObject("Button33.Image"), System.Drawing.Image)
-        Me.Button33.Label = "列汇总"
-        Me.Button33.Name = "Button33"
-        Me.Button33.ShowImage = True
-        '
-        'Button14
-        '
-        Me.Button14.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge
-        Me.Button14.Image = CType(resources.GetObject("Button14.Image"), System.Drawing.Image)
-        Me.Button14.Label = "合并表"
-        Me.Button14.Name = "Button14"
-        Me.Button14.ShowImage = True
-        '
-        'Button22
-        '
-        Me.Button22.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge
-        Me.Button22.Image = CType(resources.GetObject("Button22.Image"), System.Drawing.Image)
-        Me.Button22.Label = "条件编号"
-        Me.Button22.Name = "Button22"
-        Me.Button22.ShowImage = True
-        '
-        'Button50
-        '
-        Me.Button50.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge
-        Me.Button50.Image = CType(resources.GetObject("Button50.Image"), System.Drawing.Image)
-        Me.Button50.Label = "翻译"
-        Me.Button50.Name = "Button50"
-        Me.Button50.ShowImage = True
-        '
-        'Button20
-        '
-        Me.Button20.Image = CType(resources.GetObject("Button20.Image"), System.Drawing.Image)
-        Me.Button20.Label = "编考号"
-        Me.Button20.Name = "Button20"
-        Me.Button20.ShowImage = True
-        '
-        'Button21
-        '
-        Me.Button21.Image = CType(resources.GetObject("Button21.Image"), System.Drawing.Image)
-        Me.Button21.Label = "匹配表头"
-        Me.Button21.Name = "Button21"
-        Me.Button21.ShowImage = True
-        '
-        'Button16
-        '
-        Me.Button16.Image = CType(resources.GetObject("Button16.Image"), System.Drawing.Image)
-        Me.Button16.Label = "表间匹配"
-        Me.Button16.Name = "Button16"
-        Me.Button16.ShowImage = True
-        '
-        'Gallery1
-        '
-        Me.Gallery1.Buttons.Add(Me.我的设置)
-        Me.Gallery1.Buttons.Add(Me.颜色)
-        Me.Gallery1.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge
-        Me.Gallery1.Image = CType(resources.GetObject("Gallery1.Image"), System.Drawing.Image)
-        Me.Gallery1.Label = "命令集"
-        Me.Gallery1.Name = "Gallery1"
-        Me.Gallery1.ShowImage = True
-        '
-        '我的设置
-        '
-        Me.我的设置.Label = "设置"
-        Me.我的设置.Name = "我的设置"
-        '
-        '颜色
-        '
-        Me.颜色.Label = "颜色代码"
-        Me.颜色.Name = "颜色"
-        '
         'Group8
         '
         Me.Group8.Items.Add(Me.Button25)
@@ -389,38 +202,9 @@
         Me.Group8.Label = "统计"
         Me.Group8.Name = "Group8"
         '
-        'Button25
-        '
-        Me.Button25.Image = CType(resources.GetObject("Button25.Image"), System.Drawing.Image)
-        Me.Button25.Label = "分类包含统计"
-        Me.Button25.Name = "Button25"
-        Me.Button25.ShowImage = True
-        '
-        'Button35
-        '
-        Me.Button35.Image = CType(resources.GetObject("Button35.Image"), System.Drawing.Image)
-        Me.Button35.Label = "分类统计表"
-        Me.Button35.Name = "Button35"
-        Me.Button35.ShowImage = True
-        '
-        'Button11
-        '
-        Me.Button11.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge
-        Me.Button11.Image = CType(resources.GetObject("Button11.Image"), System.Drawing.Image)
-        Me.Button11.Label = "分类计数"
-        Me.Button11.Name = "Button11"
-        Me.Button11.ShowImage = True
-        '
-        'Button17
-        '
-        Me.Button17.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge
-        Me.Button17.Image = CType(resources.GetObject("Button17.Image"), System.Drawing.Image)
-        Me.Button17.Label = "排名"
-        Me.Button17.Name = "Button17"
-        Me.Button17.ShowImage = True
-        '
         'Group4
         '
+        Me.Group4.Items.Add(Me.Button23)
         Me.Group4.Items.Add(Me.ToggleButton3)
         Me.Group4.Items.Add(Me.Button19)
         Me.Group4.Items.Add(Me.Button29)
@@ -430,78 +214,6 @@
         Me.Group4.Items.Add(Me.CheckBox3)
         Me.Group4.Label = "校验 生成"
         Me.Group4.Name = "Group4"
-        '
-        'ToggleButton3
-        '
-        Me.ToggleButton3.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge
-        Me.ToggleButton3.Image = CType(resources.GetObject("ToggleButton3.Image"), System.Drawing.Image)
-        Me.ToggleButton3.Label = "信息统计"
-        Me.ToggleButton3.Name = "ToggleButton3"
-        Me.ToggleButton3.ShowImage = True
-        '
-        'Button19
-        '
-        Me.Button19.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge
-        Me.Button19.Image = CType(resources.GetObject("Button19.Image"), System.Drawing.Image)
-        Me.Button19.Label = "循环色"
-        Me.Button19.Name = "Button19"
-        Me.Button19.ShowImage = True
-        '
-        'Button29
-        '
-        Me.Button29.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge
-        Me.Button29.Image = CType(resources.GetObject("Button29.Image"), System.Drawing.Image)
-        Me.Button29.Label = "随机数"
-        Me.Button29.Name = "Button29"
-        Me.Button29.ShowImage = True
-        '
-        'Button37
-        '
-        Me.Button37.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge
-        Me.Button37.Image = CType(resources.GetObject("Button37.Image"), System.Drawing.Image)
-        Me.Button37.Label = "校验"
-        Me.Button37.Name = "Button37"
-        Me.Button37.ShowImage = True
-        '
-        'Gallery2
-        '
-        Me.Gallery2.Buttons.Add(Me.Button7)
-        Me.Gallery2.Buttons.Add(Me.Button8)
-        Me.Gallery2.Buttons.Add(Me.Button9)
-        Me.Gallery2.Buttons.Add(Me.Button18)
-        Me.Gallery2.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge
-        Me.Gallery2.Image = CType(resources.GetObject("Gallery2.Image"), System.Drawing.Image)
-        Me.Gallery2.Label = "文本"
-        Me.Gallery2.Name = "Gallery2"
-        Me.Gallery2.ShowImage = True
-        '
-        'Button7
-        '
-        Me.Button7.Image = CType(resources.GetObject("Button7.Image"), System.Drawing.Image)
-        Me.Button7.Label = "提取数字"
-        Me.Button7.Name = "Button7"
-        Me.Button7.ShowImage = True
-        '
-        'Button8
-        '
-        Me.Button8.Image = CType(resources.GetObject("Button8.Image"), System.Drawing.Image)
-        Me.Button8.Label = "逆序"
-        Me.Button8.Name = "Button8"
-        Me.Button8.ShowImage = True
-        '
-        'Button9
-        '
-        Me.Button9.Image = CType(resources.GetObject("Button9.Image"), System.Drawing.Image)
-        Me.Button9.Label = "文本拆分"
-        Me.Button9.Name = "Button9"
-        Me.Button9.ShowImage = True
-        '
-        'ToggleButton2
-        '
-        Me.ToggleButton2.Image = CType(resources.GetObject("ToggleButton2.Image"), System.Drawing.Image)
-        Me.ToggleButton2.Label = "聚光灯"
-        Me.ToggleButton2.Name = "ToggleButton2"
-        Me.ToggleButton2.ShowImage = True
         '
         'CheckBox3
         '
@@ -515,20 +227,6 @@
         Me.Group5.Items.Add(Me.SplitButton2)
         Me.Group5.Label = "设置"
         Me.Group5.Name = "Group5"
-        '
-        'Button26
-        '
-        Me.Button26.Image = CType(resources.GetObject("Button26.Image"), System.Drawing.Image)
-        Me.Button26.Label = "插件设置"
-        Me.Button26.Name = "Button26"
-        Me.Button26.ShowImage = True
-        '
-        'Button12
-        '
-        Me.Button12.Image = CType(resources.GetObject("Button12.Image"), System.Drawing.Image)
-        Me.Button12.Label = "初始化"
-        Me.Button12.Name = "Button12"
-        Me.Button12.ShowImage = True
         '
         'SplitButton2
         '
@@ -640,12 +338,321 @@
         Me.Button49.Name = "Button49"
         Me.Button49.ShowImage = True
         '
+        'Button1
+        '
+        Me.Button1.Image = CType(resources.GetObject("Button1.Image"), System.Drawing.Image)
+        Me.Button1.Label = "数据"
+        Me.Button1.Name = "Button1"
+        Me.Button1.ShowImage = True
+        '
+        'Button2
+        '
+        Me.Button2.Image = CType(resources.GetObject("Button2.Image"), System.Drawing.Image)
+        Me.Button2.Label = "左上"
+        Me.Button2.Name = "Button2"
+        Me.Button2.ShowImage = True
+        '
+        'Button3
+        '
+        Me.Button3.Image = CType(resources.GetObject("Button3.Image"), System.Drawing.Image)
+        Me.Button3.Label = "右下"
+        Me.Button3.Name = "Button3"
+        Me.Button3.ShowImage = True
+        '
+        'Button41
+        '
+        Me.Button41.Image = CType(resources.GetObject("Button41.Image"), System.Drawing.Image)
+        Me.Button41.Label = "最左"
+        Me.Button41.Name = "Button41"
+        Me.Button41.ShowImage = True
+        '
+        'Button42
+        '
+        Me.Button42.Image = CType(resources.GetObject("Button42.Image"), System.Drawing.Image)
+        Me.Button42.Label = "最右"
+        Me.Button42.Name = "Button42"
+        Me.Button42.ShowImage = True
+        '
+        'Button40
+        '
+        Me.Button40.Image = CType(resources.GetObject("Button40.Image"), System.Drawing.Image)
+        Me.Button40.Label = "最上"
+        Me.Button40.Name = "Button40"
+        Me.Button40.ShowImage = True
+        '
+        'Button39
+        '
+        Me.Button39.Image = CType(resources.GetObject("Button39.Image"), System.Drawing.Image)
+        Me.Button39.Label = "最下"
+        Me.Button39.Name = "Button39"
+        Me.Button39.ShowImage = True
+        Me.Button39.Tag = ""
+        '
+        'Button46
+        '
+        Me.Button46.Image = CType(resources.GetObject("Button46.Image"), System.Drawing.Image)
+        Me.Button46.Label = "左边"
+        Me.Button46.Name = "Button46"
+        Me.Button46.ShowImage = True
+        '
+        'Button44
+        '
+        Me.Button44.Image = CType(resources.GetObject("Button44.Image"), System.Drawing.Image)
+        Me.Button44.Label = "右边"
+        Me.Button44.Name = "Button44"
+        Me.Button44.ShowImage = True
+        '
+        'Button45
+        '
+        Me.Button45.Image = CType(resources.GetObject("Button45.Image"), System.Drawing.Image)
+        Me.Button45.Label = "上边"
+        Me.Button45.Name = "Button45"
+        Me.Button45.ShowImage = True
+        '
+        'Button43
+        '
+        Me.Button43.Image = CType(resources.GetObject("Button43.Image"), System.Drawing.Image)
+        Me.Button43.Label = "下边"
+        Me.Button43.Name = "Button43"
+        Me.Button43.ShowImage = True
+        '
+        'Button4
+        '
+        Me.Button4.Image = CType(resources.GetObject("Button4.Image"), System.Drawing.Image)
+        Me.Button4.Label = "列宽"
+        Me.Button4.Name = "Button4"
+        Me.Button4.ShowImage = True
+        '
+        'Button5
+        '
+        Me.Button5.Image = CType(resources.GetObject("Button5.Image"), System.Drawing.Image)
+        Me.Button5.Label = "行高"
+        Me.Button5.Name = "Button5"
+        Me.Button5.ShowImage = True
+        '
+        'Button13
+        '
+        Me.Button13.Image = CType(resources.GetObject("Button13.Image"), System.Drawing.Image)
+        Me.Button13.Label = "文本"
+        Me.Button13.Name = "Button13"
+        Me.Button13.ShowImage = True
+        '
+        'Button15
+        '
+        Me.Button15.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge
+        Me.Button15.Image = CType(resources.GetObject("Button15.Image"), System.Drawing.Image)
+        Me.Button15.Label = "枚举"
+        Me.Button15.Name = "Button15"
+        Me.Button15.ShowImage = True
+        '
+        'Button32
+        '
+        Me.Button32.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge
+        Me.Button32.Image = CType(resources.GetObject("Button32.Image"), System.Drawing.Image)
+        Me.Button32.Label = "行匹配"
+        Me.Button32.Name = "Button32"
+        Me.Button32.ShowImage = True
+        '
+        'Button33
+        '
+        Me.Button33.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge
+        Me.Button33.Image = CType(resources.GetObject("Button33.Image"), System.Drawing.Image)
+        Me.Button33.Label = "列汇总"
+        Me.Button33.Name = "Button33"
+        Me.Button33.ShowImage = True
+        '
+        'Button14
+        '
+        Me.Button14.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge
+        Me.Button14.Image = CType(resources.GetObject("Button14.Image"), System.Drawing.Image)
+        Me.Button14.Label = "合并表"
+        Me.Button14.Name = "Button14"
+        Me.Button14.ShowImage = True
+        '
+        'Button22
+        '
+        Me.Button22.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge
+        Me.Button22.Image = CType(resources.GetObject("Button22.Image"), System.Drawing.Image)
+        Me.Button22.Label = "条件编号"
+        Me.Button22.Name = "Button22"
+        Me.Button22.ShowImage = True
+        '
+        'Button50
+        '
+        Me.Button50.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge
+        Me.Button50.Image = CType(resources.GetObject("Button50.Image"), System.Drawing.Image)
+        Me.Button50.Label = "翻译"
+        Me.Button50.Name = "Button50"
+        Me.Button50.ShowImage = True
+        '
+        'Button20
+        '
+        Me.Button20.Image = CType(resources.GetObject("Button20.Image"), System.Drawing.Image)
+        Me.Button20.Label = "编考号"
+        Me.Button20.Name = "Button20"
+        Me.Button20.ShowImage = True
+        '
+        'Button21
+        '
+        Me.Button21.Image = CType(resources.GetObject("Button21.Image"), System.Drawing.Image)
+        Me.Button21.Label = "匹配表头"
+        Me.Button21.Name = "Button21"
+        Me.Button21.ShowImage = True
+        '
+        'Button16
+        '
+        Me.Button16.Image = CType(resources.GetObject("Button16.Image"), System.Drawing.Image)
+        Me.Button16.Label = "表间匹配"
+        Me.Button16.Name = "Button16"
+        Me.Button16.ShowImage = True
+        '
+        'Gallery1
+        '
+        Me.Gallery1.Buttons.Add(Me.我的设置)
+        Me.Gallery1.Buttons.Add(Me.颜色)
+        Me.Gallery1.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge
+        Me.Gallery1.Image = CType(resources.GetObject("Gallery1.Image"), System.Drawing.Image)
+        Me.Gallery1.Label = "命令集"
+        Me.Gallery1.Name = "Gallery1"
+        Me.Gallery1.ShowImage = True
+        '
+        '我的设置
+        '
+        Me.我的设置.Label = "设置"
+        Me.我的设置.Name = "我的设置"
+        '
+        '颜色
+        '
+        Me.颜色.Label = "颜色代码"
+        Me.颜色.Name = "颜色"
+        '
+        'Button25
+        '
+        Me.Button25.Image = CType(resources.GetObject("Button25.Image"), System.Drawing.Image)
+        Me.Button25.Label = "分类包含统计"
+        Me.Button25.Name = "Button25"
+        Me.Button25.ShowImage = True
+        '
+        'Button35
+        '
+        Me.Button35.Image = CType(resources.GetObject("Button35.Image"), System.Drawing.Image)
+        Me.Button35.Label = "分类统计表"
+        Me.Button35.Name = "Button35"
+        Me.Button35.ShowImage = True
+        '
+        'Button11
+        '
+        Me.Button11.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge
+        Me.Button11.Image = CType(resources.GetObject("Button11.Image"), System.Drawing.Image)
+        Me.Button11.Label = "分类计数"
+        Me.Button11.Name = "Button11"
+        Me.Button11.ShowImage = True
+        '
+        'Button17
+        '
+        Me.Button17.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge
+        Me.Button17.Image = CType(resources.GetObject("Button17.Image"), System.Drawing.Image)
+        Me.Button17.Label = "排名"
+        Me.Button17.Name = "Button17"
+        Me.Button17.ShowImage = True
+        '
+        'ToggleButton3
+        '
+        Me.ToggleButton3.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge
+        Me.ToggleButton3.Image = CType(resources.GetObject("ToggleButton3.Image"), System.Drawing.Image)
+        Me.ToggleButton3.Label = "信息统计"
+        Me.ToggleButton3.Name = "ToggleButton3"
+        Me.ToggleButton3.ShowImage = True
+        '
+        'Button19
+        '
+        Me.Button19.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge
+        Me.Button19.Image = CType(resources.GetObject("Button19.Image"), System.Drawing.Image)
+        Me.Button19.Label = "循环色"
+        Me.Button19.Name = "Button19"
+        Me.Button19.ShowImage = True
+        '
+        'Button29
+        '
+        Me.Button29.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge
+        Me.Button29.Image = CType(resources.GetObject("Button29.Image"), System.Drawing.Image)
+        Me.Button29.Label = "随机数"
+        Me.Button29.Name = "Button29"
+        Me.Button29.ShowImage = True
+        '
+        'Button37
+        '
+        Me.Button37.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge
+        Me.Button37.Image = CType(resources.GetObject("Button37.Image"), System.Drawing.Image)
+        Me.Button37.Label = "校验"
+        Me.Button37.Name = "Button37"
+        Me.Button37.ShowImage = True
+        '
+        'Gallery2
+        '
+        Me.Gallery2.Buttons.Add(Me.Button7)
+        Me.Gallery2.Buttons.Add(Me.Button8)
+        Me.Gallery2.Buttons.Add(Me.Button9)
+        Me.Gallery2.Buttons.Add(Me.Button18)
+        Me.Gallery2.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge
+        Me.Gallery2.Image = CType(resources.GetObject("Gallery2.Image"), System.Drawing.Image)
+        Me.Gallery2.Label = "文本"
+        Me.Gallery2.Name = "Gallery2"
+        Me.Gallery2.ShowImage = True
+        '
+        'Button7
+        '
+        Me.Button7.Image = CType(resources.GetObject("Button7.Image"), System.Drawing.Image)
+        Me.Button7.Label = "提取数字"
+        Me.Button7.Name = "Button7"
+        Me.Button7.ShowImage = True
+        '
+        'Button8
+        '
+        Me.Button8.Image = CType(resources.GetObject("Button8.Image"), System.Drawing.Image)
+        Me.Button8.Label = "逆序"
+        Me.Button8.Name = "Button8"
+        Me.Button8.ShowImage = True
+        '
+        'Button9
+        '
+        Me.Button9.Image = CType(resources.GetObject("Button9.Image"), System.Drawing.Image)
+        Me.Button9.Label = "文本拆分"
+        Me.Button9.Name = "Button9"
+        Me.Button9.ShowImage = True
+        '
         'Button18
         '
         Me.Button18.Image = CType(resources.GetObject("Button18.Image"), System.Drawing.Image)
         Me.Button18.Label = "第n次匹配位置"
         Me.Button18.Name = "Button18"
         Me.Button18.ShowImage = True
+        '
+        'ToggleButton2
+        '
+        Me.ToggleButton2.Image = CType(resources.GetObject("ToggleButton2.Image"), System.Drawing.Image)
+        Me.ToggleButton2.Label = "聚光灯"
+        Me.ToggleButton2.Name = "ToggleButton2"
+        Me.ToggleButton2.ShowImage = True
+        '
+        'Button26
+        '
+        Me.Button26.Image = CType(resources.GetObject("Button26.Image"), System.Drawing.Image)
+        Me.Button26.Label = "插件设置"
+        Me.Button26.Name = "Button26"
+        Me.Button26.ShowImage = True
+        '
+        'Button12
+        '
+        Me.Button12.Image = CType(resources.GetObject("Button12.Image"), System.Drawing.Image)
+        Me.Button12.Label = "初始化"
+        Me.Button12.Name = "Button12"
+        Me.Button12.ShowImage = True
+        '
+        'Button23
+        '
+        Me.Button23.Label = "Button23"
+        Me.Button23.Name = "Button23"
         '
         'Ribbon1
         '
@@ -749,6 +756,7 @@
     Friend WithEvents Button9 As Microsoft.Office.Tools.Ribbon.RibbonButton
     Friend WithEvents ToggleButton3 As Microsoft.Office.Tools.Ribbon.RibbonToggleButton
     Friend WithEvents Button18 As Microsoft.Office.Tools.Ribbon.RibbonButton
+    Friend WithEvents Button23 As Microsoft.Office.Tools.Ribbon.RibbonButton
 End Class
 
 Partial Class ThisRibbonCollection

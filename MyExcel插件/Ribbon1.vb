@@ -1111,4 +1111,10 @@ Public Class Ribbon1
         添加或显示功能控件(信息统计, "信息统计", True)
         信息显示控件 = 信息统计
     End Sub
+
+    Private Sub Button23_Click(sender As Object, e As RibbonControlEventArgs) Handles Button23.Click
+        Dim 导入图片 As New 导入图片控件
+        添加或显示功能控件(导入图片, "导入图片", True)
+
+    End Sub
 End Class
