@@ -79,7 +79,4 @@ Public Class ThisAddIn
     End Sub
 
 
-
-
-
 End Class

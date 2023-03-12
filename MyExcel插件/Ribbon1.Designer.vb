@@ -53,24 +53,9 @@
         Me.Group4 = Me.Factory.CreateRibbonGroup
         Me.CheckBox3 = Me.Factory.CreateRibbonCheckBox
         Me.Group5 = Me.Factory.CreateRibbonGroup
-        Me.SplitButton2 = Me.Factory.CreateRibbonSplitButton
-        Me.CheckBox2 = Me.Factory.CreateRibbonCheckBox
         Me.Tab2 = Me.Factory.CreateRibbonTab
         Me.Group7 = Me.Factory.CreateRibbonGroup
-        Me.Button10 = Me.Factory.CreateRibbonButton
-        Me.Button47 = Me.Factory.CreateRibbonButton
-        Me.Button6 = Me.Factory.CreateRibbonButton
-        Me.Button38 = Me.Factory.CreateRibbonButton
-        Me.Button24 = Me.Factory.CreateRibbonButton
-        Me.Button34 = Me.Factory.CreateRibbonButton
-        Me.SplitButton1 = Me.Factory.CreateRibbonSplitButton
-        Me.Button30 = Me.Factory.CreateRibbonButton
-        Me.Button48 = Me.Factory.CreateRibbonButton
-        Me.Button31 = Me.Factory.CreateRibbonButton
-        Me.ToggleButton1 = Me.Factory.CreateRibbonToggleButton
-        Me.Button36 = Me.Factory.CreateRibbonButton
         Me.Label2 = Me.Factory.CreateRibbonLabel
-        Me.Button49 = Me.Factory.CreateRibbonButton
         Me.Button1 = Me.Factory.CreateRibbonButton
         Me.Button2 = Me.Factory.CreateRibbonButton
         Me.Button3 = Me.Factory.CreateRibbonButton
@@ -101,6 +86,7 @@
         Me.Button35 = Me.Factory.CreateRibbonButton
         Me.Button11 = Me.Factory.CreateRibbonButton
         Me.Button17 = Me.Factory.CreateRibbonButton
+        Me.Button23 = Me.Factory.CreateRibbonButton
         Me.ToggleButton3 = Me.Factory.CreateRibbonToggleButton
         Me.Button19 = Me.Factory.CreateRibbonButton
         Me.Button29 = Me.Factory.CreateRibbonButton
@@ -113,7 +99,21 @@
         Me.ToggleButton2 = Me.Factory.CreateRibbonToggleButton
         Me.Button26 = Me.Factory.CreateRibbonButton
         Me.Button12 = Me.Factory.CreateRibbonButton
-        Me.Button23 = Me.Factory.CreateRibbonButton
+        Me.SplitButton2 = Me.Factory.CreateRibbonSplitButton
+        Me.CheckBox2 = Me.Factory.CreateRibbonCheckBox
+        Me.Button10 = Me.Factory.CreateRibbonButton
+        Me.Button47 = Me.Factory.CreateRibbonButton
+        Me.Button6 = Me.Factory.CreateRibbonButton
+        Me.Button38 = Me.Factory.CreateRibbonButton
+        Me.Button24 = Me.Factory.CreateRibbonButton
+        Me.Button34 = Me.Factory.CreateRibbonButton
+        Me.SplitButton1 = Me.Factory.CreateRibbonSplitButton
+        Me.Button30 = Me.Factory.CreateRibbonButton
+        Me.Button48 = Me.Factory.CreateRibbonButton
+        Me.Button31 = Me.Factory.CreateRibbonButton
+        Me.ToggleButton1 = Me.Factory.CreateRibbonToggleButton
+        Me.Button36 = Me.Factory.CreateRibbonButton
+        Me.Button49 = Me.Factory.CreateRibbonButton
         Me.Tab1.SuspendLayout()
         Me.Group2.SuspendLayout()
         Me.Box1.SuspendLayout()
@@ -228,18 +228,6 @@
         Me.Group5.Label = "设置"
         Me.Group5.Name = "Group5"
         '
-        'SplitButton2
-        '
-        Me.SplitButton2.Items.Add(Me.CheckBox2)
-        Me.SplitButton2.Label = "快速设置"
-        Me.SplitButton2.Name = "SplitButton2"
-        '
-        'CheckBox2
-        '
-        Me.CheckBox2.Checked = True
-        Me.CheckBox2.Label = "启用任务窗格"
-        Me.CheckBox2.Name = "CheckBox2"
-        '
         'Tab2
         '
         Me.Tab2.Groups.Add(Me.Group7)
@@ -264,79 +252,10 @@
         Me.Group7.Label = "Group7"
         Me.Group7.Name = "Group7"
         '
-        'Button10
-        '
-        Me.Button10.Label = "实验控件"
-        Me.Button10.Name = "Button10"
-        Me.Button10.ShowImage = True
-        '
-        'Button47
-        '
-        Me.Button47.Label = "随机抽取"
-        Me.Button47.Name = "Button47"
-        '
-        'Button6
-        '
-        Me.Button6.Label = "显示当前选区"
-        Me.Button6.Name = "Button6"
-        '
-        'Button38
-        '
-        Me.Button38.Label = "Button38"
-        Me.Button38.Name = "Button38"
-        '
-        'Button24
-        '
-        Me.Button24.Label = "Button24"
-        Me.Button24.Name = "Button24"
-        '
-        'Button34
-        '
-        Me.Button34.Label = "Button34"
-        Me.Button34.Name = "Button34"
-        '
-        'SplitButton1
-        '
-        Me.SplitButton1.Items.Add(Me.Button30)
-        Me.SplitButton1.Label = "SplitButton1"
-        Me.SplitButton1.Name = "SplitButton1"
-        '
-        'Button30
-        '
-        Me.Button30.Label = "任务窗格"
-        Me.Button30.Name = "Button30"
-        Me.Button30.ShowImage = True
-        '
-        'Button48
-        '
-        Me.Button48.Label = "Button48"
-        Me.Button48.Name = "Button48"
-        '
-        'Button31
-        '
-        Me.Button31.Label = "Button31"
-        Me.Button31.Name = "Button31"
-        '
-        'ToggleButton1
-        '
-        Me.ToggleButton1.Label = "编辑选区"
-        Me.ToggleButton1.Name = "ToggleButton1"
-        '
-        'Button36
-        '
-        Me.Button36.Label = "拖拽填充实验"
-        Me.Button36.Name = "Button36"
-        '
         'Label2
         '
         Me.Label2.Label = "Label2"
         Me.Label2.Name = "Label2"
-        '
-        'Button49
-        '
-        Me.Button49.Label = "获取版本号"
-        Me.Button49.Name = "Button49"
-        Me.Button49.ShowImage = True
         '
         'Button1
         '
@@ -556,6 +475,14 @@
         Me.Button17.Name = "Button17"
         Me.Button17.ShowImage = True
         '
+        'Button23
+        '
+        Me.Button23.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge
+        Me.Button23.Image = CType(resources.GetObject("Button23.Image"), System.Drawing.Image)
+        Me.Button23.Label = "导入图片"
+        Me.Button23.Name = "Button23"
+        Me.Button23.ShowImage = True
+        '
         'ToggleButton3
         '
         Me.ToggleButton3.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge
@@ -649,10 +576,86 @@
         Me.Button12.Name = "Button12"
         Me.Button12.ShowImage = True
         '
-        'Button23
+        'SplitButton2
         '
-        Me.Button23.Label = "Button23"
-        Me.Button23.Name = "Button23"
+        Me.SplitButton2.Items.Add(Me.CheckBox2)
+        Me.SplitButton2.Label = "快速设置"
+        Me.SplitButton2.Name = "SplitButton2"
+        '
+        'CheckBox2
+        '
+        Me.CheckBox2.Checked = True
+        Me.CheckBox2.Label = "启用任务窗格"
+        Me.CheckBox2.Name = "CheckBox2"
+        '
+        'Button10
+        '
+        Me.Button10.Label = "实验控件"
+        Me.Button10.Name = "Button10"
+        Me.Button10.ShowImage = True
+        '
+        'Button47
+        '
+        Me.Button47.Label = "随机抽取"
+        Me.Button47.Name = "Button47"
+        '
+        'Button6
+        '
+        Me.Button6.Label = "显示当前选区"
+        Me.Button6.Name = "Button6"
+        '
+        'Button38
+        '
+        Me.Button38.Label = "Button38"
+        Me.Button38.Name = "Button38"
+        '
+        'Button24
+        '
+        Me.Button24.Label = "Button24"
+        Me.Button24.Name = "Button24"
+        '
+        'Button34
+        '
+        Me.Button34.Label = "Button34"
+        Me.Button34.Name = "Button34"
+        '
+        'SplitButton1
+        '
+        Me.SplitButton1.Items.Add(Me.Button30)
+        Me.SplitButton1.Label = "SplitButton1"
+        Me.SplitButton1.Name = "SplitButton1"
+        '
+        'Button30
+        '
+        Me.Button30.Label = "任务窗格"
+        Me.Button30.Name = "Button30"
+        Me.Button30.ShowImage = True
+        '
+        'Button48
+        '
+        Me.Button48.Label = "Button48"
+        Me.Button48.Name = "Button48"
+        '
+        'Button31
+        '
+        Me.Button31.Label = "Button31"
+        Me.Button31.Name = "Button31"
+        '
+        'ToggleButton1
+        '
+        Me.ToggleButton1.Label = "编辑选区"
+        Me.ToggleButton1.Name = "ToggleButton1"
+        '
+        'Button36
+        '
+        Me.Button36.Label = "拖拽填充实验"
+        Me.Button36.Name = "Button36"
+        '
+        'Button49
+        '
+        Me.Button49.Label = "获取版本号"
+        Me.Button49.Name = "Button49"
+        Me.Button49.ShowImage = True
         '
         'Ribbon1
         '
