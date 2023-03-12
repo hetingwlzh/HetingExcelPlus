@@ -28,8 +28,8 @@ Public Class 导入图片控件
             'Dim pic As stdole.Picture
             sheet.Cells(i, 1).value = Path.GetFileName(fileNames(i))
             Dim picture As Excel.Shape = sheet.Shapes.AddPicture(fileNames(i), False, True,
-                                                                 sheet.Cells(i, 2).Left,
-                                                                 sheet.Cells(i, 2).Top,
+                                                                 sheet.Cells(i, 2).Left + 1,
+                                                                 sheet.Cells(i, 2).Top + 1,
                                                                  sheet.Cells(i, 2).Width + 1,
                                                                  sheet.Cells(i, 2).Height + 1)
             'pic = wks.Pictures.Insert(fileNames(i))
