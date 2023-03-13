@@ -241,4 +241,18 @@ Public Class 导入图片控件
         picture.Placement = Microsoft.Office.Interop.Excel.XlPlacement.xlMoveAndSize
         设置外边框(mbSheet.Cells(1, 1).resize(3, 3), 2, 4, RGB(255, 0, 0))
     End Sub
+
+
+    Public Function 获取单元格(总列数 As Integer, 单元序号 As Integer, 单元中行数 As Integer, 单元中列数 As Integer) As Excel.Range
+        Dim 单元行, 单元列, Row, Column As Integer
+        单元行 = Int(单元序号 / 总列数) + 1
+        单元列 = 单元序号 Mod 总列数
+        If 单元列 = 0 Then 单元列 = 总列数
+
+        Row = (单元行 - 1) * 3 + 单元中行数
+        Column = (单元列 - 1) * 3 + 单元中列数
+    End Function
+
+
+
 End Class
