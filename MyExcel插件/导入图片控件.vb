@@ -40,24 +40,24 @@ Public Class 导入图片控件
         End If
     End Function
 
-    Function GetAllImages(ByVal folderPath As String) As Object
-        Dim fileNames As Object
+    Function GetAllImages(ByVal folderPath As String) As System.Collections.ArrayList
+        Dim fileNames As New System.Collections.ArrayList
         Dim i As Long
         Dim count As Long
         With CreateObject("Scripting.FileSystemObject")
             If Not .FolderExists(folderPath) Then Exit Function
             Dim folder As Object
             folder = .GetFolder(folderPath)
-            ReDim fileNames(folder.Files.count)
+
             For Each file In folder.Files
                 Dim ss As String = LCase(Path.GetExtension(file.Name))
                 If ss = ".jpg" Or ss = ".png" Then
                     count = count + 1
-                    fileNames(count) = file.Path
+                    fileNames.Add(file.Path)
                 End If
             Next
         End With
-        If count > 0 Then ReDim Preserve fileNames(count)
+
         Return fileNames
     End Function
 
@@ -65,21 +65,8 @@ Public Class 导入图片控件
 
         folderPath = BrowseForFolder("请选择文件夹")
         TextBox1.Text = folderPath
-        Dim fileNames As Object
-        fileNames = GetAllImages(folderPath)
-        If fileNames Is Nothing Then
-            MsgBox("未找到任何图片文件，请重新选择文件夹。", vbExclamation, "提示")
-            Exit Sub
-        End If
 
-        '3.插入图片到单元格
-
-
-        Dim i As Long
-        For i = 1 To UBound(fileNames)
-            ListBox1.Items.Add(Path.GetFileName(fileNames(i)))
-        Next
-
+        加载所有图片(folderPath)
 
     End Sub
 
@@ -91,10 +78,37 @@ Public Class 导入图片控件
         更新当前图片()
     End Sub
     Public Sub 更新当前图片()
-        PictureBox1.ImageLocation = folderPath & "\" & ListBox1.SelectedItem.ToString
-        Label2.Text = 获取图片信息(PictureBox1.ImageLocation)
-    End Sub
+        If ListBox1.SelectedItem IsNot Nothing Then
+            PictureBox1.ImageLocation = folderPath & "\" & ListBox1.SelectedItem.ToString
+            Label2.Text = 获取图片信息(PictureBox1.ImageLocation)
+        End If
 
+    End Sub
+    Public Function 加载所有图片(picturePath As String) As Integer
+
+        Dim fileNames As New System.Collections.ArrayList
+        fileNames = GetAllImages(picturePath)
+        If fileNames Is Nothing Then
+            MsgBox("未找到任何图片文件，请重新选择文件夹。", vbExclamation, "提示")
+            PictureBox1.ImageLocation = Nothing
+            ListBox1.Items.Clear()
+            Exit Function
+        End If
+        If fileNames.Count = 0 Then
+            MsgBox("未找到任何图片文件，请重新选择文件夹。", vbExclamation, "提示")
+            PictureBox1.ImageLocation = Nothing
+            ListBox1.Items.Clear()
+            Exit Function
+        End If
+        '3.插入图片到单元格
+
+        ListBox1.Items.Clear()
+        Dim i As Long
+        For Each file As String In fileNames
+            ListBox1.Items.Add(Path.GetFileName(file))
+        Next
+        ListBox1.SelectedIndex = 0
+    End Function
     Public Function 获取图片信息(filePath As String) As String
 
 
@@ -145,4 +159,8 @@ Public Class 导入图片控件
 
 
     End Function
+
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+        加载所有图片(folderPath)
+    End Sub
 End Class

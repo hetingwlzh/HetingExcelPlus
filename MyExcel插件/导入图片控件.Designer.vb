@@ -29,18 +29,19 @@ Partial Class 导入图片控件
         Me.ListBox1 = New System.Windows.Forms.ListBox()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Label2 = New System.Windows.Forms.Label()
+        Me.Button3 = New System.Windows.Forms.Button()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Button1
         '
         Me.Button1.Font = New System.Drawing.Font("微软雅黑", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.Button1.Location = New System.Drawing.Point(408, 157)
+        Me.Button1.Location = New System.Drawing.Point(739, 527)
         Me.Button1.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(190, 51)
         Me.Button1.TabIndex = 0
-        Me.Button1.Text = "导入图片"
+        Me.Button1.Text = "生成"
         Me.Button1.UseVisualStyleBackColor = True
         '
         'TextBox1
@@ -57,7 +58,7 @@ Partial Class 导入图片控件
         Me.Label1.Location = New System.Drawing.Point(26, 106)
         Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(114, 32)
+        Me.Label1.Size = New System.Drawing.Size(119, 35)
         Me.Label1.TabIndex = 2
         Me.Label1.Text = "文件夹："
         '
@@ -65,7 +66,7 @@ Partial Class 导入图片控件
         '
         Me.Button2.Location = New System.Drawing.Point(664, 108)
         Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(113, 37)
+        Me.Button2.Size = New System.Drawing.Size(135, 50)
         Me.Button2.TabIndex = 3
         Me.Button2.Text = "浏览"
         Me.Button2.UseVisualStyleBackColor = True
@@ -94,14 +95,26 @@ Partial Class 导入图片控件
         Me.Label2.AutoSize = True
         Me.Label2.Location = New System.Drawing.Point(402, 290)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(114, 32)
+        Me.Label2.Size = New System.Drawing.Size(119, 35)
         Me.Label2.TabIndex = 6
         Me.Label2.Text = "图片信息"
+        '
+        'Button3
+        '
+        Me.Button3.Font = New System.Drawing.Font("微软雅黑", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.Button3.Location = New System.Drawing.Point(817, 108)
+        Me.Button3.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(190, 51)
+        Me.Button3.TabIndex = 7
+        Me.Button3.Text = "加载所有"
+        Me.Button3.UseVisualStyleBackColor = True
         '
         '导入图片控件
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(168.0!, 168.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
+        Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.ListBox1)
@@ -126,4 +139,5 @@ Partial Class 导入图片控件
     Friend WithEvents ListBox1 As Windows.Forms.ListBox
     Friend WithEvents PictureBox1 As Windows.Forms.PictureBox
     Friend WithEvents Label2 As Windows.Forms.Label
+    Friend WithEvents Button3 As Windows.Forms.Button
 End Class
