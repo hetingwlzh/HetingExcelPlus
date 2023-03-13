@@ -202,7 +202,7 @@ Partial Class 枚举控件
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)
         Me.Name = "枚举控件"
-        Me.Size = New System.Drawing.Size(433, 368)
+        Me.Size = New System.Drawing.Size(433, 369)
         CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.NumericUpDown2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)

@@ -69,7 +69,6 @@ Public Class ThisAddIn
         'taskPane = Me.CustomTaskPanes.Add(New 随机数控件, "任务窗格")
 
         'taskPane.Visible = True
-
     End Sub
 
 

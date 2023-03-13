@@ -31,6 +31,7 @@ Partial Class 校验控件
         Me.Label2 = New System.Windows.Forms.Label()
         Me.ComboBox1 = New System.Windows.Forms.ComboBox()
         Me.FlowLayoutPanel1 = New System.Windows.Forms.FlowLayoutPanel()
+        Me.区域选择控件1 = New MyExcel插件.区域选择控件()
         Me.FlowLayoutPanel3 = New System.Windows.Forms.FlowLayoutPanel()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
@@ -40,7 +41,6 @@ Partial Class 校验控件
         Me.Label5 = New System.Windows.Forms.Label()
         Me.NumericUpDown2 = New System.Windows.Forms.NumericUpDown()
         Me.TextBox3 = New System.Windows.Forms.TextBox()
-        Me.区域选择控件1 = New MyExcel插件.区域选择控件()
         CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.FlowLayoutPanel2.SuspendLayout()
@@ -101,7 +101,7 @@ Partial Class 校验控件
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 66.0!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 63.0!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle())
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(508, 648)
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(515, 648)
         Me.TableLayoutPanel1.TabIndex = 27
         '
         'FlowLayoutPanel2
@@ -111,7 +111,7 @@ Partial Class 校验控件
         Me.FlowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill
         Me.FlowLayoutPanel2.Location = New System.Drawing.Point(3, 396)
         Me.FlowLayoutPanel2.Name = "FlowLayoutPanel2"
-        Me.FlowLayoutPanel2.Size = New System.Drawing.Size(502, 54)
+        Me.FlowLayoutPanel2.Size = New System.Drawing.Size(509, 54)
         Me.FlowLayoutPanel2.TabIndex = 30
         '
         'Label2
@@ -141,8 +141,32 @@ Partial Class 校验控件
         Me.FlowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.FlowLayoutPanel1.Location = New System.Drawing.Point(3, 347)
         Me.FlowLayoutPanel1.Name = "FlowLayoutPanel1"
-        Me.FlowLayoutPanel1.Size = New System.Drawing.Size(502, 43)
+        Me.FlowLayoutPanel1.Size = New System.Drawing.Size(509, 43)
         Me.FlowLayoutPanel1.TabIndex = 28
+        '
+        '区域选择控件1
+        '
+        Me.区域选择控件1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.区域选择控件1.Font = New System.Drawing.Font("微软雅黑", 7.714286!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.区域选择控件1.heting = Nothing
+        Me.区域选择控件1.Location = New System.Drawing.Point(3, 3)
+        Me.区域选择控件1.Name = "区域选择控件1"
+        Me.区域选择控件1.Size = New System.Drawing.Size(509, 338)
+        Me.区域选择控件1.TabIndex = 0
+        Me.区域选择控件1.区域列表 = CType(resources.GetObject("区域选择控件1.区域列表"), System.Collections.ArrayList)
+        Me.区域选择控件1.区域名集合 = CType(resources.GetObject("区域选择控件1.区域名集合"), System.Collections.ArrayList)
+        Me.区域选择控件1.单列校验 = True
+        Me.区域选择控件1.单行校验 = False
+        Me.区域选择控件1.是否允许编辑区域名 = False
+        Me.区域选择控件1.是否显示删除按钮 = False
+        Me.区域选择控件1.是否显示添加按钮 = False
+        Me.区域选择控件1.是否显示锁定列 = False
+        Me.区域选择控件1.是否显示锁定用户区域 = True
+        Me.区域选择控件1.是否显示锁定行 = False
+        Me.区域选择控件1.是否显示锁定表 = False
+        Me.区域选择控件1.是否显示错误信息 = False
+        Me.区域选择控件1.空区域校验 = True
+        Me.区域选择控件1.错误信息序列 = CType(resources.GetObject("区域选择控件1.错误信息序列"), System.Collections.ArrayList)
         '
         'FlowLayoutPanel3
         '
@@ -231,37 +255,13 @@ Partial Class 校验控件
         Me.TextBox3.Size = New System.Drawing.Size(142, 40)
         Me.TextBox3.TabIndex = 32
         '
-        '区域选择控件1
-        '
-        Me.区域选择控件1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.区域选择控件1.Font = New System.Drawing.Font("微软雅黑", 7.714286!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.区域选择控件1.heting = Nothing
-        Me.区域选择控件1.Location = New System.Drawing.Point(3, 3)
-        Me.区域选择控件1.Name = "区域选择控件1"
-        Me.区域选择控件1.Size = New System.Drawing.Size(502, 338)
-        Me.区域选择控件1.TabIndex = 0
-        Me.区域选择控件1.区域列表 = CType(resources.GetObject("区域选择控件1.区域列表"), System.Collections.ArrayList)
-        Me.区域选择控件1.区域名集合 = CType(resources.GetObject("区域选择控件1.区域名集合"), System.Collections.ArrayList)
-        Me.区域选择控件1.单列校验 = True
-        Me.区域选择控件1.单行校验 = False
-        Me.区域选择控件1.是否允许编辑区域名 = False
-        Me.区域选择控件1.是否显示删除按钮 = False
-        Me.区域选择控件1.是否显示添加按钮 = False
-        Me.区域选择控件1.是否显示锁定列 = False
-        Me.区域选择控件1.是否显示锁定用户区域 = True
-        Me.区域选择控件1.是否显示锁定行 = False
-        Me.区域选择控件1.是否显示锁定表 = False
-        Me.区域选择控件1.是否显示错误信息 = False
-        Me.区域选择控件1.空区域校验 = True
-        Me.区域选择控件1.错误信息序列 = CType(resources.GetObject("区域选择控件1.错误信息序列"), System.Collections.ArrayList)
-        '
         '校验控件
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(168.0!, 168.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.Controls.Add(Me.TableLayoutPanel1)
         Me.Name = "校验控件"
-        Me.Size = New System.Drawing.Size(508, 648)
+        Me.Size = New System.Drawing.Size(515, 648)
         CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TableLayoutPanel1.ResumeLayout(False)
         Me.FlowLayoutPanel2.ResumeLayout(False)
