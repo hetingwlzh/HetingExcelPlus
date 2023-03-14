@@ -5,6 +5,7 @@ Public Class 导入图片控件
     Public 模板表名 As String = "图片模板设置表"
     Public folderPath As String
     Dim w1, w2, w3, h1, h2, h3 As Double
+    Public 总列数 As Integer = 1
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         InsertPictures()
@@ -28,22 +29,97 @@ Public Class 导入图片控件
 
 
 
-
+        Dim cell As Excel.Range
         For Each item As Object In ListBox1.Items
-            'Dim pic As stdole.Picture
-            sheet.Cells(i, 1).value = item.ToString
 
+
+
+
+            cell = 由图片序号获取单元格(sheet, NumericUpDown1.Value, i, 1, 2)
+            If cell.Column < 3 Then
+                sheet.Rows(cell.Row).RowHeight = h1
+            End If
+            If cell.Row < 3 Then
+                sheet.Columns(cell.Column).ColumnWidth = w2
+            End If
+
+
+
+
+
+
+            cell = 由图片序号获取单元格(sheet, NumericUpDown1.Value, i, 2, 1)
+            If cell.Column < 3 Then
+                sheet.Rows(cell.Row).RowHeight = h2
+            End If
+            If cell.Row < 3 Then
+                sheet.Columns(cell.Column).ColumnWidth = w1
+            End If
+
+
+
+
+
+
+
+
+            cell = 由图片序号获取单元格(sheet, NumericUpDown1.Value, i, 2, 2)
             Dim picture As Excel.Shape = sheet.Shapes.AddPicture(folderPath & "\" & item.ToString, False, True,
-                                                                 sheet.Cells(i, 2).Left + 1,
-                                                                 sheet.Cells(i, 2).Top + 1,
-                                                                 sheet.Cells(i, 2).Width + 1,
-                                                                 sheet.Cells(i, 2).Height + 1)
+                                                                 cell.Left + 1,
+                                                                 cell.Top + 1,
+                                                                 cell.Width + 1,
+                                                                 cell.Height + 1)
             picture.Placement = Microsoft.Office.Interop.Excel.XlPlacement.xlMoveAndSize
             Label2.Text = "共载入 " & ListBox1.Items.Count & " 个图片"
+            'If cell.Column < 3 Then
+            '    sheet.Rows(cell.Row).RowHeight = h2
+            'End If
+            'If cell.Row < 3 Then
+            '    sheet.Columns(cell.Column).ColumnWidth = w2
+            'End If
+
+
+            cell = 由图片序号获取单元格(sheet, NumericUpDown1.Value, i, 2, 3)
+            'If cell.Column < 3 Then
+            '    sheet.Rows(cell.Row).RowHeight = h2
+            'End If
+            If cell.Row < 3 Then
+                sheet.Columns(cell.Column).ColumnWidth = w3
+            End If
+
+
+
+            cell = 由图片序号获取单元格(sheet, NumericUpDown1.Value, i, 3, 2)
+            cell.Value = item.ToString
+            If cell.Column < 3 Then
+                sheet.Rows(cell.Row).RowHeight = h3
+            End If
+            'If cell.Row < 3 Then
+            '    sheet.Columns(cell.Column).ColumnWidth = w2
+            'End If
+
+
+
+
+
             i += 1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         Next
-        自动列宽(sheet)
-        自动行高(sheet)
+        '自动列宽(sheet)
+        '自动行高(sheet)
     End Sub
 
     Function BrowseForFolder(prompt As String) As String
@@ -231,26 +307,34 @@ Public Class 导入图片控件
     End Function
 
     Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
+        生成设置模板页()
+    End Sub
+    Public Sub 生成设置模板页()
         Dim mbSheet As Excel.Worksheet = 新建工作表(模板表名)
-
+        Dim range As Excel.Range = mbSheet.Cells(1, 1).resize(3, 3)
         Dim picture As Excel.Shape = mbSheet.Shapes.AddPicture(folderPath & "\" & ListBox1.Items(0).ToString, False, True,
                                                                  mbSheet.Cells(2, 2).Left + 1,
                                                                  mbSheet.Cells(2, 2).Top + 1,
                                                                  mbSheet.Cells(2, 2).Width + 1,
                                                                  mbSheet.Cells(2, 2).Height + 1)
         picture.Placement = Microsoft.Office.Interop.Excel.XlPlacement.xlMoveAndSize
-        设置外边框(mbSheet.Cells(1, 1).resize(3, 3), 2, 4, RGB(255, 0, 0))
+        设置外边框(range, 2, 4, RGB(255, 0, 0))
+        设置填充色(range, RGB(200, 200, 180))
     End Sub
 
-
-    Public Function 获取单元格(总列数 As Integer, 单元序号 As Integer, 单元中行数 As Integer, 单元中列数 As Integer) As Excel.Range
+    Public Function 由图片序号获取单元格(sheet As Excel.Worksheet,
+                          总列数 As Integer,
+                          图片序号 As Integer,
+                          单元中行数 As Integer,
+                          单元中列数 As Integer) As Excel.Range
         Dim 单元行, 单元列, Row, Column As Integer
-        单元行 = Int(单元序号 / 总列数) + 1
-        单元列 = 单元序号 Mod 总列数
+        单元行 = Int((图片序号 - 1) / 总列数) + 1
+        单元列 = 图片序号 Mod 总列数
         If 单元列 = 0 Then 单元列 = 总列数
 
         Row = (单元行 - 1) * 3 + 单元中行数
         Column = (单元列 - 1) * 3 + 单元中列数
+        Return sheet.Cells(Row, Column)
     End Function
 
 
