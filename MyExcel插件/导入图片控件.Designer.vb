@@ -34,15 +34,25 @@ Partial Class 导入图片控件
         Me.NumericUpDown1 = New System.Windows.Forms.NumericUpDown()
         Me.Button4 = New System.Windows.Forms.Button()
         Me.Button5 = New System.Windows.Forms.Button()
+        Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.FlowLayoutPanel1 = New System.Windows.Forms.FlowLayoutPanel()
+        Me.FlowLayoutPanel2 = New System.Windows.Forms.FlowLayoutPanel()
+        Me.FlowLayoutPanel3 = New System.Windows.Forms.FlowLayoutPanel()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.TableLayoutPanel1.SuspendLayout()
+        Me.FlowLayoutPanel1.SuspendLayout()
+        Me.FlowLayoutPanel2.SuspendLayout()
+        Me.FlowLayoutPanel3.SuspendLayout()
         Me.SuspendLayout()
         '
         'Button1
         '
+        Me.Button1.Enabled = False
         Me.Button1.Font = New System.Drawing.Font("微软雅黑", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.Button1.Location = New System.Drawing.Point(32, 636)
+        Me.Button1.Location = New System.Drawing.Point(631, 1007)
         Me.Button1.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(190, 51)
@@ -52,16 +62,17 @@ Partial Class 导入图片控件
         '
         'TextBox1
         '
-        Me.TextBox1.Location = New System.Drawing.Point(140, 10)
+        Me.TextBox1.Location = New System.Drawing.Point(131, 5)
         Me.TextBox1.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.TextBox1.Multiline = True
         Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(453, 40)
+        Me.TextBox1.Size = New System.Drawing.Size(393, 79)
         Me.TextBox1.TabIndex = 1
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(13, 10)
+        Me.Label1.Location = New System.Drawing.Point(4, 0)
         Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(119, 35)
@@ -70,9 +81,9 @@ Partial Class 导入图片控件
         '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(614, 10)
+        Me.Button2.Location = New System.Drawing.Point(531, 3)
         Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(135, 50)
+        Me.Button2.Size = New System.Drawing.Size(89, 81)
         Me.Button2.TabIndex = 3
         Me.Button2.Text = "浏览"
         Me.Button2.UseVisualStyleBackColor = True
@@ -81,17 +92,17 @@ Partial Class 导入图片控件
         '
         Me.ListBox1.FormattingEnabled = True
         Me.ListBox1.ItemHeight = 32
-        Me.ListBox1.Location = New System.Drawing.Point(32, 132)
+        Me.ListBox1.Location = New System.Drawing.Point(48, 565)
         Me.ListBox1.Name = "ListBox1"
-        Me.ListBox1.Size = New System.Drawing.Size(489, 420)
+        Me.ListBox1.Size = New System.Drawing.Size(489, 260)
         Me.ListBox1.TabIndex = 4
         '
         'PictureBox1
         '
         Me.PictureBox1.BackColor = System.Drawing.SystemColors.Info
-        Me.PictureBox1.Location = New System.Drawing.Point(527, 132)
+        Me.PictureBox1.Location = New System.Drawing.Point(3, 3)
         Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(354, 421)
+        Me.PictureBox1.Size = New System.Drawing.Size(258, 170)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.PictureBox1.TabIndex = 5
         Me.PictureBox1.TabStop = False
@@ -99,7 +110,7 @@ Partial Class 导入图片控件
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(521, 556)
+        Me.Label2.Location = New System.Drawing.Point(396, 0)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(119, 35)
         Me.Label2.TabIndex = 6
@@ -107,8 +118,9 @@ Partial Class 导入图片控件
         '
         'Button3
         '
+        Me.Button3.Enabled = False
         Me.Button3.Font = New System.Drawing.Font("微软雅黑", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.Button3.Location = New System.Drawing.Point(32, 73)
+        Me.Button3.Location = New System.Drawing.Point(4, 5)
         Me.Button3.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(190, 51)
@@ -119,7 +131,7 @@ Partial Class 导入图片控件
         'PictureBox2
         '
         Me.PictureBox2.BackColor = System.Drawing.SystemColors.Info
-        Me.PictureBox2.Location = New System.Drawing.Point(527, 59)
+        Me.PictureBox2.Location = New System.Drawing.Point(530, 92)
         Me.PictureBox2.Name = "PictureBox2"
         Me.PictureBox2.Size = New System.Drawing.Size(70, 67)
         Me.PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -128,7 +140,7 @@ Partial Class 导入图片控件
         '
         'NumericUpDown1
         '
-        Me.NumericUpDown1.Location = New System.Drawing.Point(32, 574)
+        Me.NumericUpDown1.Location = New System.Drawing.Point(104, 3)
         Me.NumericUpDown1.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
         Me.NumericUpDown1.Name = "NumericUpDown1"
         Me.NumericUpDown1.Size = New System.Drawing.Size(158, 40)
@@ -137,8 +149,9 @@ Partial Class 导入图片控件
         '
         'Button4
         '
+        Me.Button4.Enabled = False
         Me.Button4.Font = New System.Drawing.Font("微软雅黑", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.Button4.Location = New System.Drawing.Point(251, 73)
+        Me.Button4.Location = New System.Drawing.Point(202, 5)
         Me.Button4.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Button4.Name = "Button4"
         Me.Button4.Size = New System.Drawing.Size(184, 51)
@@ -148,28 +161,77 @@ Partial Class 导入图片控件
         '
         'Button5
         '
-        Me.Button5.Location = New System.Drawing.Point(273, 636)
+        Me.Button5.Enabled = False
+        Me.Button5.Location = New System.Drawing.Point(35, 840)
         Me.Button5.Name = "Button5"
-        Me.Button5.Size = New System.Drawing.Size(162, 59)
+        Me.Button5.Size = New System.Drawing.Size(139, 59)
         Me.Button5.TabIndex = 9
         Me.Button5.Text = "制作模板"
         Me.Button5.UseVisualStyleBackColor = True
+        '
+        'TableLayoutPanel1
+        '
+        Me.TableLayoutPanel1.ColumnCount = 2
+        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 56.38451!))
+        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 43.61549!))
+        Me.TableLayoutPanel1.Controls.Add(Me.Label2, 1, 0)
+        Me.TableLayoutPanel1.Controls.Add(Me.PictureBox1, 0, 0)
+        Me.TableLayoutPanel1.Location = New System.Drawing.Point(52, 284)
+        Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
+        Me.TableLayoutPanel1.RowCount = 1
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(697, 275)
+        Me.TableLayoutPanel1.TabIndex = 10
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(4, 0)
+        Me.Label3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(93, 35)
+        Me.Label3.TabIndex = 2
+        Me.Label3.Text = "列数："
+        '
+        'FlowLayoutPanel1
+        '
+        Me.FlowLayoutPanel1.Controls.Add(Me.Label3)
+        Me.FlowLayoutPanel1.Controls.Add(Me.NumericUpDown1)
+        Me.FlowLayoutPanel1.Location = New System.Drawing.Point(35, 949)
+        Me.FlowLayoutPanel1.Name = "FlowLayoutPanel1"
+        Me.FlowLayoutPanel1.Size = New System.Drawing.Size(442, 53)
+        Me.FlowLayoutPanel1.TabIndex = 11
+        '
+        'FlowLayoutPanel2
+        '
+        Me.FlowLayoutPanel2.Controls.Add(Me.Button3)
+        Me.FlowLayoutPanel2.Controls.Add(Me.Button4)
+        Me.FlowLayoutPanel2.Location = New System.Drawing.Point(3, 92)
+        Me.FlowLayoutPanel2.Name = "FlowLayoutPanel2"
+        Me.FlowLayoutPanel2.Size = New System.Drawing.Size(521, 63)
+        Me.FlowLayoutPanel2.TabIndex = 12
+        '
+        'FlowLayoutPanel3
+        '
+        Me.FlowLayoutPanel3.Controls.Add(Me.Label1)
+        Me.FlowLayoutPanel3.Controls.Add(Me.TextBox1)
+        Me.FlowLayoutPanel3.Controls.Add(Me.Button2)
+        Me.FlowLayoutPanel3.Controls.Add(Me.FlowLayoutPanel2)
+        Me.FlowLayoutPanel3.Controls.Add(Me.PictureBox2)
+        Me.FlowLayoutPanel3.Location = New System.Drawing.Point(49, 25)
+        Me.FlowLayoutPanel3.Name = "FlowLayoutPanel3"
+        Me.FlowLayoutPanel3.Size = New System.Drawing.Size(689, 244)
+        Me.FlowLayoutPanel3.TabIndex = 13
         '
         '导入图片控件
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(168.0!, 168.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
+        Me.Controls.Add(Me.FlowLayoutPanel3)
+        Me.Controls.Add(Me.FlowLayoutPanel1)
+        Me.Controls.Add(Me.TableLayoutPanel1)
         Me.Controls.Add(Me.Button5)
-        Me.Controls.Add(Me.NumericUpDown1)
-        Me.Controls.Add(Me.Button4)
-        Me.Controls.Add(Me.Button3)
-        Me.Controls.Add(Me.Label2)
-        Me.Controls.Add(Me.PictureBox2)
-        Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.ListBox1)
-        Me.Controls.Add(Me.Button2)
-        Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.Button1)
         Me.Font = New System.Drawing.Font("微软雅黑", 10.71429!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
@@ -178,8 +240,14 @@ Partial Class 导入图片控件
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.TableLayoutPanel1.ResumeLayout(False)
+        Me.TableLayoutPanel1.PerformLayout()
+        Me.FlowLayoutPanel1.ResumeLayout(False)
+        Me.FlowLayoutPanel1.PerformLayout()
+        Me.FlowLayoutPanel2.ResumeLayout(False)
+        Me.FlowLayoutPanel3.ResumeLayout(False)
+        Me.FlowLayoutPanel3.PerformLayout()
         Me.ResumeLayout(False)
-        Me.PerformLayout()
 
     End Sub
 
@@ -195,4 +263,9 @@ Partial Class 导入图片控件
     Friend WithEvents NumericUpDown1 As Windows.Forms.NumericUpDown
     Friend WithEvents Button4 As Windows.Forms.Button
     Friend WithEvents Button5 As Windows.Forms.Button
+    Friend WithEvents TableLayoutPanel1 As Windows.Forms.TableLayoutPanel
+    Friend WithEvents Label3 As Windows.Forms.Label
+    Friend WithEvents FlowLayoutPanel1 As Windows.Forms.FlowLayoutPanel
+    Friend WithEvents FlowLayoutPanel2 As Windows.Forms.FlowLayoutPanel
+    Friend WithEvents FlowLayoutPanel3 As Windows.Forms.FlowLayoutPanel
 End Class

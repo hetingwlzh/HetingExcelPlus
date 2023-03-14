@@ -158,6 +158,11 @@ Public Class 导入图片控件
         TextBox1.Text = folderPath
 
         加载所有图片(folderPath)
+        If folderPath IsNot Nothing Then
+            Button3.Enabled = True
+            Button4.Enabled = True
+            Button5.Enabled = True
+        End If
 
     End Sub
 
@@ -308,6 +313,7 @@ Public Class 导入图片控件
 
     Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
         生成设置模板页()
+        Button1.Enabled = True
     End Sub
     Public Sub 生成设置模板页()
         Dim mbSheet As Excel.Worksheet = 新建工作表(模板表名)
