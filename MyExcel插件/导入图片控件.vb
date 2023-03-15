@@ -1,5 +1,6 @@
 ﻿Imports System.Drawing
 Imports System.IO
+Imports System.Windows.Forms
 
 Public Class 导入图片控件
     Public 模板表名 As String = "图片模板设置表"
@@ -14,8 +15,10 @@ Public Class 导入图片控件
 
     Sub InsertPictures()
 
-        Dim sheet As Excel.Worksheet = app.ActiveSheet
-
+        Dim sheet As Excel.Worksheet = 新建工作表("导入图片", True, False)
+        居中(sheet.Cells)
+        设置单元格格式(sheet.Cells, "文本")
+        sheet.Cells.ShrinkToFit = True
         Dim mbSheet As Excel.Worksheet = app.Sheets(模板表名)
         w1 = mbSheet.Columns(1).ColumnWidth
         w2 = mbSheet.Columns(2).ColumnWidth
@@ -70,7 +73,7 @@ Public Class 导入图片控件
                                                                  cell.Width + 1,
                                                                  cell.Height + 1)
             picture.Placement = Microsoft.Office.Interop.Excel.XlPlacement.xlMoveAndSize
-            Label2.Text = "共载入 " & ListBox1.Items.Count & " 个图片"
+            'Label2.Text = "共载入 " & ListBox1.Items.Count & " 个图片"
             'If cell.Column < 3 Then
             '    sheet.Rows(cell.Row).RowHeight = h2
             'End If
@@ -90,7 +93,7 @@ Public Class 导入图片控件
 
 
             cell = 由图片序号获取单元格(sheet, NumericUpDown1.Value, i, 3, 2)
-            cell.Value = item.ToString
+            cell.Value = Path.GetFileNameWithoutExtension(item.ToString)
             If cell.Column < 3 Then
                 sheet.Rows(cell.Row).RowHeight = h3
             End If
@@ -291,6 +294,27 @@ Public Class 导入图片控件
 
     End Sub
 
+    Private Sub TextBox1_KeyUp(sender As Object, e As Windows.Forms.KeyEventArgs) Handles TextBox1.KeyUp
+        If e.KeyCode = Keys.Enter Then
+            TextBox1.Text = TextBox1.Text.Trim
+            If System.IO.Directory.Exists(TextBox1.Text) Then
+                folderPath = TextBox1.Text
+                加载所有图片(folderPath)
+                Button3.Enabled = True
+                Button4.Enabled = True
+                Button5.Enabled = True
+            Else
+                TextBox1.SelectAll()
+                MsgBox("目录不存在！")
+            End If
+
+        ElseIf e.KeyCode = Keys.F1 Then
+
+
+        End If
+
+    End Sub
+
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
         加载所选图片()
     End Sub
@@ -324,6 +348,15 @@ Public Class 导入图片控件
                                                                  mbSheet.Cells(2, 2).Width + 1,
                                                                  mbSheet.Cells(2, 2).Height + 1)
         picture.Placement = Microsoft.Office.Interop.Excel.XlPlacement.xlMoveAndSize
+
+        mbSheet.Rows(1).RowHeight = 8
+        mbSheet.Rows(2).RowHeight = 159
+        mbSheet.Rows(3).RowHeight = 20
+
+        mbSheet.Columns(1).ColumnWidth = 1
+        mbSheet.Columns(2).ColumnWidth = 20
+        mbSheet.Columns(3).ColumnWidth = 1
+
         设置外边框(range, 2, 4, RGB(255, 0, 0))
         设置填充色(range, RGB(200, 200, 180))
     End Sub
