@@ -1117,4 +1117,12 @@ Public Class Ribbon1
         添加或显示功能控件(导入图片, "导入图片", True)
 
     End Sub
+
+
+
+
+
+
+
+
 End Class

@@ -67,12 +67,22 @@ Public Class 导入图片控件
 
 
             cell = 由图片序号获取单元格(sheet, NumericUpDown1.Value, i, 2, 2)
+
+
+
+
+
             Dim picture As Excel.Shape = sheet.Shapes.AddPicture(folderPath & "\" & item.ToString, False, True,
                                                                  cell.Left + 1,
                                                                  cell.Top + 1,
                                                                  cell.Width + 1,
                                                                  cell.Height + 1)
-            picture.Placement = Microsoft.Office.Interop.Excel.XlPlacement.xlMoveAndSize
+
+
+
+
+
+            'picture.Placement = Microsoft.Office.Interop.Excel.XlPlacement.xlMoveAndSize
             'Label2.Text = "共载入 " & ListBox1.Items.Count & " 个图片"
             'If cell.Column < 3 Then
             '    sheet.Rows(cell.Row).RowHeight = h2
@@ -377,5 +387,27 @@ Public Class 导入图片控件
     End Function
 
 
+
+
+
+    ' 定义一个函数，接受一个Excel工作表对象、一个图片文件路径、一个图片宽度和一个图片高度作为参数
+    Public Sub InsertPicture(ByVal cell As Excel.Range, ByVal picturePath As String, ByVal pictureWidth As Single, ByVal pictureHeight As Single)
+
+        ' 获取工作表的形状集合
+        Dim sheet As Excel.Worksheet = cell.Worksheet
+        Dim xlShapes = sheet.Shapes
+
+        ' 获取B3单元格的左上角坐标
+        Dim cellLeft As Single = CType(cell, Excel.Range).Left
+        Dim cellTop As Single = CType(cell, Excel.Range).Top
+
+        ' 使用文件路径和坐标参数向工作表添加图片，并返回一个Picture对象
+        Dim xlPicture = xlShapes.AddPicture(picturePath, Microsoft.Office.Core.MsoTriState.msoFalse, Microsoft.Office.Core.MsoTriState.msoCTrue, cellLeft, cellTop, pictureWidth, pictureHeight)
+
+        ' 设置图片对象的一些属性
+        xlPicture.Name = "MyPicture"
+        xlPicture.Placement = Excel.XlPlacement.xlMoveAndSize
+
+    End Sub
 
 End Class

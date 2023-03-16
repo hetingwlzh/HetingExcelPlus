@@ -100,6 +100,7 @@
         Me.CheckBox2 = Me.Factory.CreateRibbonCheckBox
         Me.Tab2 = Me.Factory.CreateRibbonTab
         Me.Group7 = Me.Factory.CreateRibbonGroup
+        Me.Button27 = Me.Factory.CreateRibbonButton
         Me.Button10 = Me.Factory.CreateRibbonButton
         Me.Button47 = Me.Factory.CreateRibbonButton
         Me.Button6 = Me.Factory.CreateRibbonButton
@@ -567,6 +568,7 @@
         '
         'Group7
         '
+        Me.Group7.Items.Add(Me.Button27)
         Me.Group7.Items.Add(Me.Button10)
         Me.Group7.Items.Add(Me.Button47)
         Me.Group7.Items.Add(Me.Button6)
@@ -582,6 +584,11 @@
         Me.Group7.Items.Add(Me.Button49)
         Me.Group7.Label = "Group7"
         Me.Group7.Name = "Group7"
+        '
+        'Button27
+        '
+        Me.Button27.Label = "Button27"
+        Me.Button27.Name = "Button27"
         '
         'Button10
         '
@@ -760,6 +767,7 @@
     Friend WithEvents ToggleButton3 As Microsoft.Office.Tools.Ribbon.RibbonToggleButton
     Friend WithEvents Button18 As Microsoft.Office.Tools.Ribbon.RibbonButton
     Friend WithEvents Button23 As Microsoft.Office.Tools.Ribbon.RibbonButton
+    Friend WithEvents Button27 As Microsoft.Office.Tools.Ribbon.RibbonButton
 End Class
 
 Partial Class ThisRibbonCollection

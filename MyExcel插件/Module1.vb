@@ -1,6 +1,7 @@
 ﻿
 Imports System.Net.Http
 Imports System.Text.Json
+Imports Microsoft.Office.Core
 Imports Newtonsoft.Json
 
 Module Module1
@@ -5062,6 +5063,67 @@ Module Module1
     End Function
 
 
+
+
+    Public Sub CreateRectangle(ByVal xlWorksheet As Excel.Worksheet, ByVal xlRange As Excel.Range)
+
+        ' 获取工作表的形状集合
+        Dim xlShapes = xlWorksheet.Shapes
+
+        ' 获取范围的左上角坐标和宽度和高度
+        Dim cellLeft As Single = xlWorksheet.Cells(1, xlRange.Column).Left
+        Dim cellTop As Single = xlWorksheet.Cells(1, xlRange.Column).Top
+        Dim cellWidth As Single = xlRange.Width
+        Dim cellHeight As Single = xlRange.Height
+
+
+
+
+
+        ' 使用坐标参数向工作表添加一个长方形，并返回一个Shape对象
+        Dim xlRectangle = CType(xlShapes.AddShape(Microsoft.Office.Core.MsoAutoShapeType.msoShapeRectangle, cellLeft, cellTop, cellWidth, cellHeight), Excel.Shape)
+
+        ' 设置长方形对象的一些属性，如名称、填充颜色、透明度、边框颜色等
+        xlRectangle.Name = "MyRectangle"
+        xlRectangle.Fill.ForeColor.RGB = RGB(255, 0, 0) ' 醒目色为红色，你也可以改成其他颜色
+        xlRectangle.Fill.Transparency = 0.5F ' 透明度为50%
+        xlRectangle.Line.ForeColor.RGB = RGB(0, 0, 0) ' 边框颜色为黑色
+
+    End Sub
+
+
+
+    Public Sub HighlightRowAndColumn(ByVal xlWorksheet As Excel.Worksheet, ByVal xlRange As Excel.Range)
+
+        ' 获取工作表的形状集合
+        Dim xlShapes = xlWorksheet.Shapes
+
+        ' 获取范围的左上角坐标和宽度和高度
+        Dim cellLeft As Single = xlRange.Left
+        Dim cellTop As Single = xlRange.Top
+        Dim cellWidth As Single = xlRange.Width
+        Dim cellHeight As Single = xlRange.Height
+
+        ' 使用坐标参数向工作表添加两个长方形，并返回两个Shape对象
+        ' 第一个长方形覆盖整个行，第二个长方形覆盖整个列
+        Dim xlRowRectangle = CType(xlShapes.AddShape(MsoAutoShapeType.msoShapeRectangle, 0, cellTop, Globals.ThisAddIn.Application.ActiveWindow.VisibleRange.Width, cellHeight), Excel.Shape)
+        Dim xlColumnRectangle = CType(xlShapes.AddShape(MsoAutoShapeType.msoShapeRectangle, cellLeft, 0, cellWidth, Globals.ThisAddIn.Application.ActiveWindow.VisibleRange.Height), Excel.Shape)
+
+        ' 设置两个长方形对象的一些属性，如名称、填充颜色、透明度、边框颜色等
+        ' 这里使用GDI模式，即将RGB值转换为十进制数值，例如RGB(255,0,0)转换为-16776961（255 + 256 * (255 + 256 * 255)）
+        ' 参考链接：https://docs.microsoft.com/en-us/office/vba/api/excel.colorformat.forecolor.rgb
+        xlRowRectangle.Name = "MyRowRectangle"
+        xlRowRectangle.Fill.ForeColor.RGB = -16776961 ' 醒目色为红色，你也可以改成其他颜色
+        xlRowRectangle.Fill.Transparency = 0.9F ' 透明度为50%
+        'xlRowRectangle.Line.ForeColor.RGB = -16777216 ' 边框颜色为黑色
+        xlRowRectangle.Line.Visible = False
+
+        xlColumnRectangle.Name = "MyColumnRectangle"
+        xlColumnRectangle.Fill.ForeColor.RGB = -16776961 ' 醒目色为红色，你也可以改成其他颜色
+        xlColumnRectangle.Fill.Transparency = 0.9F ' 透明度为50%
+        'xlColumnRectangle.Line.ForeColor.RGB = -16777216 ' 边框颜色为黑色
+        xlColumnRectangle.Line.Visible = False
+    End Sub
 
 
 

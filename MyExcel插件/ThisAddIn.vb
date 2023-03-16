@@ -37,6 +37,55 @@ Public Class ThisAddIn
         End If
 
 
+
+
+
+        '' 获取当前活动的工作表对象
+        'Dim activeSheet As Excel.Worksheet = CType(Application.ActiveSheet, Excel.Worksheet)
+
+        '' 尝试获取名为"MyRectangle"的长方形对象，如果存在则删除它
+
+
+        'Try
+        '    Dim oldRectangle As Excel.Shape = activeSheet.Shapes.Item("MyRectangle")
+        '    oldRectangle.Delete()
+        '    Runtime.InteropServices.Marshal.ReleaseComObject(oldRectangle)
+        '    oldRectangle = Nothing
+        'Catch ex As Exception
+
+        'End Try
+
+        '' 调用CreateRectangle函数，在所选单元格位置上创建一个新的长方形对象，并显示所选单元格的行和列信息在状态栏上
+        'CreateRectangle(activeSheet, Target)
+
+
+
+
+        '' 获取当前活动的工作表对象
+        'Dim activeSheet As Excel.Worksheet = CType(Application.ActiveSheet, Excel.Worksheet)
+
+        '' 尝试获取名为"MyRowRectangle"和"MyColumnRectangle"的长方形对象，如果存在则删除它们
+        'Try
+        '    Dim oldRowRectange As Excel.Shape = activeSheet.Shapes.Item("MyRowRectangle")
+        '    oldRowRectange.Delete()
+        '    Runtime.InteropServices.Marshal.ReleaseComObject(oldRowRectange)
+        '    oldRowRectange = Nothing
+
+        '    Dim oldColumnRectange As Excel.Shape = activeSheet.Shapes.Item("MyColumnRectangle")
+        '    oldColumnRectange.Delete()
+        '    Runtime.InteropServices.Marshal.ReleaseComObject(oldColumnRectange)
+        '    oldColumnRectange = Nothing
+
+        'Catch ex As Exception
+
+        'End Try
+
+        '' 调用HighlightRowAndColum函数，在所选单元格所在的行和列位置上创建两个新的长方形对象，并显示所选单元格的行和列信息在状态栏上 
+        'HighlightRowAndColumn(activeSheet, Target)
+
+
+
+
     End Sub
 
 
