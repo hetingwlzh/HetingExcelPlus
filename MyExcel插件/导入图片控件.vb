@@ -1,6 +1,7 @@
 ﻿Imports System.Drawing
 Imports System.IO
 Imports System.Windows.Forms
+Imports Microsoft.Office.Core
 
 Public Class 导入图片控件
     Public 模板表名 As String = "图片模板设置表"
@@ -79,8 +80,8 @@ Public Class 导入图片控件
                                                                  cell.Height + 1)
 
 
-
-
+            picture.Placement = Microsoft.Office.Interop.Excel.XlPlacement.xlMoveAndSize
+            picture.LockAspectRatio = MsoTriState.msoTrue
 
             'picture.Placement = Microsoft.Office.Interop.Excel.XlPlacement.xlMoveAndSize
             'Label2.Text = "共载入 " & ListBox1.Items.Count & " 个图片"
@@ -161,7 +162,6 @@ Public Class 导入图片控件
                 End If
             Next
         End With
-
         Return fileNames
     End Function
 
@@ -176,7 +176,7 @@ Public Class 导入图片控件
             Button4.Enabled = True
             Button5.Enabled = True
         End If
-
+        ComboBox1.SelectedIndex = 0
     End Sub
 
     Private Sub ListBox1_Click(sender As Object, e As EventArgs) Handles ListBox1.Click
@@ -357,15 +357,43 @@ Public Class 导入图片控件
                                                                  mbSheet.Cells(2, 2).Top + 1,
                                                                  mbSheet.Cells(2, 2).Width + 1,
                                                                  mbSheet.Cells(2, 2).Height + 1)
+
         picture.Placement = Microsoft.Office.Interop.Excel.XlPlacement.xlMoveAndSize
+        picture.LockAspectRatio = MsoTriState.msoTrue
 
-        mbSheet.Rows(1).RowHeight = 8
-        mbSheet.Rows(2).RowHeight = 159
-        mbSheet.Rows(3).RowHeight = 20
+        Dim 左边距, 右边距, 上边距, 下边距 As Single
+        左边距 = 1
+        右边距 = 1
+        上边距 = 8
+        下边距 = 20
 
-        mbSheet.Columns(1).ColumnWidth = 1
-        mbSheet.Columns(2).ColumnWidth = 20
-        mbSheet.Columns(3).ColumnWidth = 1
+        If ComboBox1.SelectedItem.ToString = "一寸照片" Then
+
+
+            mbSheet.Rows(1).RowHeight = 上边距
+            mbSheet.Rows(2).RowHeight = 98.2
+            mbSheet.Rows(3).RowHeight = 下边距
+
+            mbSheet.Columns(1).ColumnWidth = 左边距
+            mbSheet.Columns(2).ColumnWidth = 11
+            mbSheet.Columns(3).ColumnWidth = 右边距
+
+        ElseIf ComboBox1.SelectedItem.ToString = "二寸照片" Then
+
+
+            mbSheet.Rows(1).RowHeight = 上边距
+            mbSheet.Rows(2).RowHeight = 126.5
+            mbSheet.Rows(3).RowHeight = 下边距
+
+            mbSheet.Columns(1).ColumnWidth = 左边距
+            mbSheet.Columns(2).ColumnWidth = 15.71
+            mbSheet.Columns(3).ColumnWidth = 右边距
+
+        Else
+            MsgBox("请选择合适的尺寸选项!")
+
+        End If
+
 
         设置外边框(range, 2, 4, RGB(255, 0, 0))
         设置填充色(range, RGB(200, 200, 180))

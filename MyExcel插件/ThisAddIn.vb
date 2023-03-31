@@ -1,4 +1,6 @@
-﻿Imports Microsoft.Office.Interop.Excel
+﻿Imports System.Drawing
+Imports System.Linq.Expressions
+Imports Microsoft.Office.Interop.Excel
 
 Public Class ThisAddIn
 
@@ -35,6 +37,18 @@ Public Class ThisAddIn
             Dim temp As 信息统计控件 = 信息显示控件
             temp.设置信息(统计信息())
         End If
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -125,6 +139,25 @@ Public Class ThisAddIn
     Private Sub Application_WindowActivate(Wb As Workbook, Wn As Window) Handles Application.WindowActivate
         当前表记录 = app.ActiveSheet
     End Sub
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 End Class

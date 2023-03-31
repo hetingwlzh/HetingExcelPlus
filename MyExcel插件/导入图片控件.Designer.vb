@@ -40,6 +40,10 @@ Partial Class 导入图片控件
         Me.FlowLayoutPanel2 = New System.Windows.Forms.FlowLayoutPanel()
         Me.FlowLayoutPanel3 = New System.Windows.Forms.FlowLayoutPanel()
         Me.TableLayoutPanel2 = New System.Windows.Forms.TableLayoutPanel()
+        Me.FlowLayoutPanel4 = New System.Windows.Forms.FlowLayoutPanel()
+        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.FlowLayoutPanel5 = New System.Windows.Forms.FlowLayoutPanel()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -48,6 +52,8 @@ Partial Class 导入图片控件
         Me.FlowLayoutPanel2.SuspendLayout()
         Me.FlowLayoutPanel3.SuspendLayout()
         Me.TableLayoutPanel2.SuspendLayout()
+        Me.FlowLayoutPanel4.SuspendLayout()
+        Me.FlowLayoutPanel5.SuspendLayout()
         Me.SuspendLayout()
         '
         'Button1
@@ -95,9 +101,9 @@ Partial Class 导入图片控件
         Me.ListBox1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.ListBox1.FormattingEnabled = True
         Me.ListBox1.ItemHeight = 32
-        Me.ListBox1.Location = New System.Drawing.Point(3, 574)
+        Me.ListBox1.Location = New System.Drawing.Point(3, 437)
         Me.ListBox1.Name = "ListBox1"
-        Me.ListBox1.Size = New System.Drawing.Size(579, 456)
+        Me.ListBox1.Size = New System.Drawing.Size(579, 544)
         Me.ListBox1.TabIndex = 4
         '
         'PictureBox1
@@ -106,7 +112,7 @@ Partial Class 导入图片控件
         Me.PictureBox1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.PictureBox1.Location = New System.Drawing.Point(3, 3)
         Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(352, 388)
+        Me.PictureBox1.Size = New System.Drawing.Size(272, 251)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.PictureBox1.TabIndex = 5
         Me.PictureBox1.TabStop = False
@@ -116,7 +122,7 @@ Partial Class 导入图片控件
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.Label2.ForeColor = System.Drawing.Color.Green
-        Me.Label2.Location = New System.Drawing.Point(361, 0)
+        Me.Label2.Location = New System.Drawing.Point(79, 0)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(96, 28)
         Me.Label2.TabIndex = 6
@@ -137,7 +143,7 @@ Partial Class 导入图片控件
         'PictureBox2
         '
         Me.PictureBox2.BackColor = System.Drawing.SystemColors.Info
-        Me.PictureBox2.Location = New System.Drawing.Point(421, 92)
+        Me.PictureBox2.Location = New System.Drawing.Point(3, 3)
         Me.PictureBox2.Name = "PictureBox2"
         Me.PictureBox2.Size = New System.Drawing.Size(70, 67)
         Me.PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -179,16 +185,16 @@ Partial Class 导入图片控件
         'TableLayoutPanel1
         '
         Me.TableLayoutPanel1.ColumnCount = 2
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 61.83074!))
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 38.16926!))
-        Me.TableLayoutPanel1.Controls.Add(Me.Label2, 1, 0)
+        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 48.01382!))
+        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 51.98618!))
         Me.TableLayoutPanel1.Controls.Add(Me.PictureBox1, 0, 0)
+        Me.TableLayoutPanel1.Controls.Add(Me.FlowLayoutPanel5, 1, 0)
         Me.TableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TableLayoutPanel1.Location = New System.Drawing.Point(3, 174)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
         Me.TableLayoutPanel1.RowCount = 1
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(579, 394)
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(579, 257)
         Me.TableLayoutPanel1.TabIndex = 10
         '
         'Label3
@@ -207,9 +213,9 @@ Partial Class 导入图片控件
         Me.FlowLayoutPanel1.Controls.Add(Me.NumericUpDown1)
         Me.FlowLayoutPanel1.Controls.Add(Me.Button5)
         Me.FlowLayoutPanel1.Controls.Add(Me.Button1)
-        Me.FlowLayoutPanel1.Location = New System.Drawing.Point(3, 1036)
+        Me.FlowLayoutPanel1.Location = New System.Drawing.Point(3, 1044)
         Me.FlowLayoutPanel1.Name = "FlowLayoutPanel1"
-        Me.FlowLayoutPanel1.Size = New System.Drawing.Size(579, 66)
+        Me.FlowLayoutPanel1.Size = New System.Drawing.Size(579, 61)
         Me.FlowLayoutPanel1.TabIndex = 11
         '
         'FlowLayoutPanel2
@@ -227,7 +233,6 @@ Partial Class 导入图片控件
         Me.FlowLayoutPanel3.Controls.Add(Me.Label1)
         Me.FlowLayoutPanel3.Controls.Add(Me.TextBox1)
         Me.FlowLayoutPanel3.Controls.Add(Me.FlowLayoutPanel2)
-        Me.FlowLayoutPanel3.Controls.Add(Me.PictureBox2)
         Me.FlowLayoutPanel3.Location = New System.Drawing.Point(3, 3)
         Me.FlowLayoutPanel3.Name = "FlowLayoutPanel3"
         Me.FlowLayoutPanel3.Size = New System.Drawing.Size(524, 165)
@@ -238,19 +243,60 @@ Partial Class 导入图片控件
         Me.TableLayoutPanel2.ColumnCount = 1
         Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
         Me.TableLayoutPanel2.Controls.Add(Me.FlowLayoutPanel3, 0, 0)
-        Me.TableLayoutPanel2.Controls.Add(Me.FlowLayoutPanel1, 0, 3)
         Me.TableLayoutPanel2.Controls.Add(Me.TableLayoutPanel1, 0, 1)
         Me.TableLayoutPanel2.Controls.Add(Me.ListBox1, 0, 2)
+        Me.TableLayoutPanel2.Controls.Add(Me.FlowLayoutPanel1, 0, 4)
+        Me.TableLayoutPanel2.Controls.Add(Me.FlowLayoutPanel4, 0, 3)
         Me.TableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TableLayoutPanel2.Location = New System.Drawing.Point(0, 0)
         Me.TableLayoutPanel2.Name = "TableLayoutPanel2"
-        Me.TableLayoutPanel2.RowCount = 4
+        Me.TableLayoutPanel2.RowCount = 5
         Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 171.0!))
-        Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 46.40371!))
-        Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 53.59629!))
-        Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 74.0!))
+        Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 32.36659!))
+        Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 67.63341!))
+        Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 57.0!))
+        Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 66.0!))
         Me.TableLayoutPanel2.Size = New System.Drawing.Size(585, 1108)
         Me.TableLayoutPanel2.TabIndex = 14
+        '
+        'FlowLayoutPanel4
+        '
+        Me.FlowLayoutPanel4.Controls.Add(Me.Label4)
+        Me.FlowLayoutPanel4.Controls.Add(Me.ComboBox1)
+        Me.FlowLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.FlowLayoutPanel4.Location = New System.Drawing.Point(3, 987)
+        Me.FlowLayoutPanel4.Name = "FlowLayoutPanel4"
+        Me.FlowLayoutPanel4.Size = New System.Drawing.Size(579, 51)
+        Me.FlowLayoutPanel4.TabIndex = 14
+        '
+        'ComboBox1
+        '
+        Me.ComboBox1.FormattingEnabled = True
+        Me.ComboBox1.Items.AddRange(New Object() {"一寸照片", "二寸照片"})
+        Me.ComboBox1.Location = New System.Drawing.Point(104, 3)
+        Me.ComboBox1.Name = "ComboBox1"
+        Me.ComboBox1.Size = New System.Drawing.Size(222, 40)
+        Me.ComboBox1.TabIndex = 1
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(4, 0)
+        Me.Label4.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(93, 35)
+        Me.Label4.TabIndex = 3
+        Me.Label4.Text = "尺寸："
+        '
+        'FlowLayoutPanel5
+        '
+        Me.FlowLayoutPanel5.Controls.Add(Me.PictureBox2)
+        Me.FlowLayoutPanel5.Controls.Add(Me.Label2)
+        Me.FlowLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.FlowLayoutPanel5.Location = New System.Drawing.Point(281, 3)
+        Me.FlowLayoutPanel5.Name = "FlowLayoutPanel5"
+        Me.FlowLayoutPanel5.Size = New System.Drawing.Size(295, 251)
+        Me.FlowLayoutPanel5.TabIndex = 4
         '
         '导入图片控件
         '
@@ -265,13 +311,16 @@ Partial Class 导入图片控件
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TableLayoutPanel1.ResumeLayout(False)
-        Me.TableLayoutPanel1.PerformLayout()
         Me.FlowLayoutPanel1.ResumeLayout(False)
         Me.FlowLayoutPanel1.PerformLayout()
         Me.FlowLayoutPanel2.ResumeLayout(False)
         Me.FlowLayoutPanel3.ResumeLayout(False)
         Me.FlowLayoutPanel3.PerformLayout()
         Me.TableLayoutPanel2.ResumeLayout(False)
+        Me.FlowLayoutPanel4.ResumeLayout(False)
+        Me.FlowLayoutPanel4.PerformLayout()
+        Me.FlowLayoutPanel5.ResumeLayout(False)
+        Me.FlowLayoutPanel5.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -294,4 +343,8 @@ Partial Class 导入图片控件
     Friend WithEvents FlowLayoutPanel2 As Windows.Forms.FlowLayoutPanel
     Friend WithEvents FlowLayoutPanel3 As Windows.Forms.FlowLayoutPanel
     Friend WithEvents TableLayoutPanel2 As Windows.Forms.TableLayoutPanel
+    Friend WithEvents FlowLayoutPanel4 As Windows.Forms.FlowLayoutPanel
+    Friend WithEvents ComboBox1 As Windows.Forms.ComboBox
+    Friend WithEvents Label4 As Windows.Forms.Label
+    Friend WithEvents FlowLayoutPanel5 As Windows.Forms.FlowLayoutPanel
 End Class
