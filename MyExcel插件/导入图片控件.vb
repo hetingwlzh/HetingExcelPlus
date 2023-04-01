@@ -1,5 +1,6 @@
 ﻿Imports System.Drawing
 Imports System.IO
+Imports System.Runtime.InteropServices
 Imports System.Windows.Forms
 Imports Microsoft.Office.Core
 
@@ -8,6 +9,7 @@ Public Class 导入图片控件
     Public folderPath As String
     Dim w1, w2, w3, h1, h2, h3 As Double
     Public 总列数 As Integer = 1
+    Dim imageList As New Collections.ArrayList
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         InsertPictures()
@@ -34,7 +36,7 @@ Public Class 导入图片控件
 
 
         Dim cell As Excel.Range
-        For Each item As Object In ListBox1.Items
+        For Each item As Object In imageList
 
 
 
@@ -179,17 +181,18 @@ Public Class 导入图片控件
         ComboBox1.SelectedIndex = 0
     End Sub
 
-    Private Sub ListBox1_Click(sender As Object, e As EventArgs) Handles ListBox1.Click
+    Private Sub ListBox1_Click(sender As Object, e As EventArgs)
         更新当前图片()
     End Sub
 
-    Private Sub ListBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListBox1.SelectedIndexChanged
+    Private Sub ListBox1_SelectedIndexChanged(sender As Object, e As EventArgs)
         更新当前图片()
     End Sub
     Public Sub 更新当前图片()
         Try
-            If ListBox1.SelectedItem IsNot Nothing Then
-                PictureBox1.ImageLocation = folderPath & "\" & ListBox1.SelectedItem.ToString
+            If MyDataGridView1.当前单元格 IsNot Nothing Then
+
+                PictureBox1.ImageLocation = folderPath & "\" & MyDataGridView1.当前单元格.Value
                 ShowFileIcon(PictureBox1.ImageLocation)
                 Label2.Text = 获取图片信息(PictureBox1.ImageLocation)
             End If
@@ -203,38 +206,49 @@ Public Class 导入图片控件
 
         Dim fileNames As New System.Collections.ArrayList
         fileNames = GetAllImages(picturePath)
+
         If fileNames Is Nothing Then
             MsgBox("未找到任何图片文件，请重新选择文件夹。", vbExclamation, "提示")
             PictureBox1.ImageLocation = Nothing
-            ListBox1.Items.Clear()
+            imageList.Clear()
             Exit Function
         End If
         If fileNames.Count = 0 Then
             MsgBox("未找到任何图片文件，请重新选择文件夹。", vbExclamation, "提示")
             PictureBox1.ImageLocation = Nothing
-            ListBox1.Items.Clear()
+
+            imageList.Clear()
             Exit Function
         End If
         '3.插入图片到单元格
 
-        ListBox1.Items.Clear()
-        Dim i As Long
+        imageList.Clear()
+
         For Each file As String In fileNames
-            ListBox1.Items.Add(Path.GetFileName(file))
+
+            imageList.Add(Path.GetFileName(file))
+
+
         Next
-        ListBox1.SelectedIndex = 0
+        MyDataGridView1.Clear()
+        MyDataGridView1.插入序列数据(imageList, 1, 1, "文件名")
+        MyDataGridView1.当前单元格 = MyDataGridView1.单元格(1, 1)
+        更新当前图片()
     End Function
 
     Public Sub 加载所选图片()
         Dim sheet As Excel.Worksheet = app.ActiveSheet
         Dim range As Excel.Range = app.Intersect(app.Selection, sheet.UsedRange)
-        ListBox1.Items.Clear()
+        imageList.Clear()
         For Each cell As Excel.Range In range
             If cell.Value IsNot Nothing Then
-
-                ListBox1.Items.Add(补全扩展名(cell.Value.ToString))
+                imageList.Add(补全扩展名(cell.Value.ToString))
             End If
         Next
+        MyDataGridView1.Clear()
+        MyDataGridView1.插入序列数据(imageList, 1, 1, "文件名")
+        MyDataGridView1.当前单元格 = MyDataGridView1.单元格(1, 1)
+        更新当前图片()
     End Sub
     Public Function 获取图片信息(filePath As String) As String
 
@@ -272,7 +286,7 @@ Public Class 导入图片控件
                 formatName = "UNKNOWN"
         End Select
         '将获取的图片信息转换成字符串
-        Dim infoString As String = "数量：" & ListBox1.Items.Count & " 个图片" & "当前 " & ListBox1.SelectedIndex + 1 & "/" & ListBox1.Items.Count & vbCrLf &
+        Dim infoString As String = "数量：" & imageList.Count & " 个图片" & "当前 " & MyDataGridView1.当前单元格.RowIndex + 1 & "/" & imageList.Count & vbCrLf &
                                     "文件名：" & fileName & vbCrLf &
                                     "分辨率：" & 分辨率 & vbCrLf &
                                     "文件大小：" & Math.Round(fileSize, 2) & 单位 & vbCrLf &
@@ -328,6 +342,11 @@ Public Class 导入图片控件
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
         加载所选图片()
     End Sub
+
+    Private Sub MyDataGridView1_更改当前单元格(sender As Object, e As EventArgs) Handles MyDataGridView1.更改当前单元格
+        更新当前图片()
+    End Sub
+
     Public Function 补全扩展名(fileName As String) As String
         If fileName.Contains(".") Then
             Return fileName
@@ -352,7 +371,8 @@ Public Class 导入图片控件
     Public Sub 生成设置模板页()
         Dim mbSheet As Excel.Worksheet = 新建工作表(模板表名)
         Dim range As Excel.Range = mbSheet.Cells(1, 1).resize(3, 3)
-        Dim picture As Excel.Shape = mbSheet.Shapes.AddPicture(folderPath & "\" & ListBox1.Items(0).ToString, False, True,
+        Dim path1 As String = folderPath & "\" & MyDataGridView1.单元格(1, 1).Value
+        Dim picture As Excel.Shape = mbSheet.Shapes.AddPicture(path1, False, True,
                                                                  mbSheet.Cells(2, 2).Left + 1,
                                                                  mbSheet.Cells(2, 2).Top + 1,
                                                                  mbSheet.Cells(2, 2).Width + 1,

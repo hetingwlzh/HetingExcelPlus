@@ -22,11 +22,13 @@ Partial Class 导入图片控件
     '不要使用代码编辑器修改它。
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Button2 = New System.Windows.Forms.Button()
-        Me.ListBox1 = New System.Windows.Forms.ListBox()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Button3 = New System.Windows.Forms.Button()
@@ -35,25 +37,26 @@ Partial Class 导入图片控件
         Me.Button4 = New System.Windows.Forms.Button()
         Me.Button5 = New System.Windows.Forms.Button()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
+        Me.FlowLayoutPanel5 = New System.Windows.Forms.FlowLayoutPanel()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.FlowLayoutPanel1 = New System.Windows.Forms.FlowLayoutPanel()
         Me.FlowLayoutPanel2 = New System.Windows.Forms.FlowLayoutPanel()
         Me.FlowLayoutPanel3 = New System.Windows.Forms.FlowLayoutPanel()
         Me.TableLayoutPanel2 = New System.Windows.Forms.TableLayoutPanel()
         Me.FlowLayoutPanel4 = New System.Windows.Forms.FlowLayoutPanel()
-        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.FlowLayoutPanel5 = New System.Windows.Forms.FlowLayoutPanel()
+        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
+        Me.MyDataGridView1 = New HetingControl.MyDataGridView()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TableLayoutPanel1.SuspendLayout()
+        Me.FlowLayoutPanel5.SuspendLayout()
         Me.FlowLayoutPanel1.SuspendLayout()
         Me.FlowLayoutPanel2.SuspendLayout()
         Me.FlowLayoutPanel3.SuspendLayout()
         Me.TableLayoutPanel2.SuspendLayout()
         Me.FlowLayoutPanel4.SuspendLayout()
-        Me.FlowLayoutPanel5.SuspendLayout()
         Me.SuspendLayout()
         '
         'Button1
@@ -95,16 +98,6 @@ Partial Class 导入图片控件
         Me.Button2.TabIndex = 3
         Me.Button2.Text = "浏览"
         Me.Button2.UseVisualStyleBackColor = True
-        '
-        'ListBox1
-        '
-        Me.ListBox1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.ListBox1.FormattingEnabled = True
-        Me.ListBox1.ItemHeight = 32
-        Me.ListBox1.Location = New System.Drawing.Point(3, 437)
-        Me.ListBox1.Name = "ListBox1"
-        Me.ListBox1.Size = New System.Drawing.Size(579, 544)
-        Me.ListBox1.TabIndex = 4
         '
         'PictureBox1
         '
@@ -157,7 +150,7 @@ Partial Class 导入图片控件
         Me.NumericUpDown1.Name = "NumericUpDown1"
         Me.NumericUpDown1.Size = New System.Drawing.Size(158, 40)
         Me.NumericUpDown1.TabIndex = 8
-        Me.NumericUpDown1.Value = New Decimal(New Integer() {1, 0, 0, 0})
+        Me.NumericUpDown1.Value = New Decimal(New Integer() {4, 0, 0, 0})
         '
         'Button4
         '
@@ -196,6 +189,16 @@ Partial Class 导入图片控件
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
         Me.TableLayoutPanel1.Size = New System.Drawing.Size(579, 257)
         Me.TableLayoutPanel1.TabIndex = 10
+        '
+        'FlowLayoutPanel5
+        '
+        Me.FlowLayoutPanel5.Controls.Add(Me.PictureBox2)
+        Me.FlowLayoutPanel5.Controls.Add(Me.Label2)
+        Me.FlowLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.FlowLayoutPanel5.Location = New System.Drawing.Point(281, 3)
+        Me.FlowLayoutPanel5.Name = "FlowLayoutPanel5"
+        Me.FlowLayoutPanel5.Size = New System.Drawing.Size(295, 251)
+        Me.FlowLayoutPanel5.TabIndex = 4
         '
         'Label3
         '
@@ -244,7 +247,7 @@ Partial Class 导入图片控件
         Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
         Me.TableLayoutPanel2.Controls.Add(Me.FlowLayoutPanel3, 0, 0)
         Me.TableLayoutPanel2.Controls.Add(Me.TableLayoutPanel1, 0, 1)
-        Me.TableLayoutPanel2.Controls.Add(Me.ListBox1, 0, 2)
+        Me.TableLayoutPanel2.Controls.Add(Me.MyDataGridView1, 0, 2)
         Me.TableLayoutPanel2.Controls.Add(Me.FlowLayoutPanel1, 0, 4)
         Me.TableLayoutPanel2.Controls.Add(Me.FlowLayoutPanel4, 0, 3)
         Me.TableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill
@@ -269,15 +272,6 @@ Partial Class 导入图片控件
         Me.FlowLayoutPanel4.Size = New System.Drawing.Size(579, 51)
         Me.FlowLayoutPanel4.TabIndex = 14
         '
-        'ComboBox1
-        '
-        Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Items.AddRange(New Object() {"一寸照片", "二寸照片"})
-        Me.ComboBox1.Location = New System.Drawing.Point(104, 3)
-        Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(222, 40)
-        Me.ComboBox1.TabIndex = 1
-        '
         'Label4
         '
         Me.Label4.AutoSize = True
@@ -288,15 +282,60 @@ Partial Class 导入图片控件
         Me.Label4.TabIndex = 3
         Me.Label4.Text = "尺寸："
         '
-        'FlowLayoutPanel5
+        'ComboBox1
         '
-        Me.FlowLayoutPanel5.Controls.Add(Me.PictureBox2)
-        Me.FlowLayoutPanel5.Controls.Add(Me.Label2)
-        Me.FlowLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.FlowLayoutPanel5.Location = New System.Drawing.Point(281, 3)
-        Me.FlowLayoutPanel5.Name = "FlowLayoutPanel5"
-        Me.FlowLayoutPanel5.Size = New System.Drawing.Size(295, 251)
-        Me.FlowLayoutPanel5.TabIndex = 4
+        Me.ComboBox1.FormattingEnabled = True
+        Me.ComboBox1.Items.AddRange(New Object() {"一寸照片", "二寸照片"})
+        Me.ComboBox1.Location = New System.Drawing.Point(104, 3)
+        Me.ComboBox1.Name = "ComboBox1"
+        Me.ComboBox1.Size = New System.Drawing.Size(222, 40)
+        Me.ComboBox1.TabIndex = 1
+        '
+        'MyDataGridView1
+        '
+        Me.MyDataGridView1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.MyDataGridView1.Location = New System.Drawing.Point(4, 439)
+        Me.MyDataGridView1.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.MyDataGridView1.Name = "MyDataGridView1"
+        Me.MyDataGridView1.Size = New System.Drawing.Size(577, 540)
+        Me.MyDataGridView1.TabIndex = 5
+        Me.MyDataGridView1.列宽模式 = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
+        Me.MyDataGridView1.列排序模式 = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("微软雅黑", 10.71429!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.MyDataGridView1.列标题单元格样式 = DataGridViewCellStyle1
+        Me.MyDataGridView1.字体 = New System.Drawing.Font("微软雅黑", 10.71429!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        Me.MyDataGridView1.当前单元格 = Nothing
+        Me.MyDataGridView1.是否显示行标题列 = True
+        Me.MyDataGridView1.背景色 = System.Drawing.SystemColors.AppWorkspace
+        Me.MyDataGridView1.行标题列宽度 = 72
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("微软雅黑", 10.71429!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.MyDataGridView1.行标题单元格样式 = DataGridViewCellStyle2
+        Me.MyDataGridView1.行高模式 = System.Windows.Forms.DataGridViewAutoSizeRowsMode.None
+        Me.MyDataGridView1.边框颜色 = System.Drawing.SystemColors.ControlDark
+        Me.MyDataGridView1.选定单元格前景色 = System.Drawing.SystemColors.HighlightText
+        Me.MyDataGridView1.选定单元格背景色 = System.Drawing.SystemColors.Highlight
+        Me.MyDataGridView1.默认单元格前景色 = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("微软雅黑", 10.71429!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
+        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.MyDataGridView1.默认单元格样式 = DataGridViewCellStyle3
+        Me.MyDataGridView1.默认单元格背景色 = System.Drawing.SystemColors.Window
         '
         '导入图片控件
         '
@@ -311,6 +350,8 @@ Partial Class 导入图片控件
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TableLayoutPanel1.ResumeLayout(False)
+        Me.FlowLayoutPanel5.ResumeLayout(False)
+        Me.FlowLayoutPanel5.PerformLayout()
         Me.FlowLayoutPanel1.ResumeLayout(False)
         Me.FlowLayoutPanel1.PerformLayout()
         Me.FlowLayoutPanel2.ResumeLayout(False)
@@ -319,8 +360,6 @@ Partial Class 导入图片控件
         Me.TableLayoutPanel2.ResumeLayout(False)
         Me.FlowLayoutPanel4.ResumeLayout(False)
         Me.FlowLayoutPanel4.PerformLayout()
-        Me.FlowLayoutPanel5.ResumeLayout(False)
-        Me.FlowLayoutPanel5.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -329,7 +368,6 @@ Partial Class 导入图片控件
     Friend WithEvents TextBox1 As Windows.Forms.TextBox
     Friend WithEvents Label1 As Windows.Forms.Label
     Friend WithEvents Button2 As Windows.Forms.Button
-    Friend WithEvents ListBox1 As Windows.Forms.ListBox
     Friend WithEvents PictureBox1 As Windows.Forms.PictureBox
     Friend WithEvents Label2 As Windows.Forms.Label
     Friend WithEvents Button3 As Windows.Forms.Button
@@ -347,4 +385,5 @@ Partial Class 导入图片控件
     Friend WithEvents ComboBox1 As Windows.Forms.ComboBox
     Friend WithEvents Label4 As Windows.Forms.Label
     Friend WithEvents FlowLayoutPanel5 As Windows.Forms.FlowLayoutPanel
+    Friend WithEvents MyDataGridView1 As HetingControl.MyDataGridView
 End Class
