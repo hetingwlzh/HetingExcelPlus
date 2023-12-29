@@ -23,7 +23,7 @@ Partial Class 编号控件
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim TreeNode2 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("编号方案序列")
+        Dim TreeNode1 As System.Windows.Forms.TreeNode = New System.Windows.Forms.TreeNode("编号方案序列")
         Me.Button4 = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.CheckedListBox2 = New System.Windows.Forms.CheckedListBox()
@@ -51,6 +51,7 @@ Partial Class 编号控件
         Me.上移ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.下移ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
+        Me.刷新ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.删除规则ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
         Me.添加编号方案ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -74,7 +75,6 @@ Partial Class 编号控件
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Button9 = New System.Windows.Forms.Button()
         Me.Button8 = New System.Windows.Forms.Button()
-        Me.刷新ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ContextMenuStrip2.SuspendLayout()
         CType(Me.DataGridView3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -317,9 +317,9 @@ Partial Class 编号控件
         Me.TreeView1.HotTracking = True
         Me.TreeView1.Location = New System.Drawing.Point(3, 3)
         Me.TreeView1.Name = "TreeView1"
-        TreeNode2.Name = "编号方案序列"
-        TreeNode2.Text = "编号方案序列"
-        Me.TreeView1.Nodes.AddRange(New System.Windows.Forms.TreeNode() {TreeNode2})
+        TreeNode1.Name = "编号方案序列"
+        TreeNode1.Text = "编号方案序列"
+        Me.TreeView1.Nodes.AddRange(New System.Windows.Forms.TreeNode() {TreeNode1})
         Me.TreeView1.Size = New System.Drawing.Size(271, 902)
         Me.TreeView1.TabIndex = 27
         '
@@ -335,7 +335,7 @@ Partial Class 编号控件
         Me.上移ToolStripMenuItem.Font = New System.Drawing.Font("Microsoft YaHei UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.上移ToolStripMenuItem.ForeColor = System.Drawing.SystemColors.MenuHighlight
         Me.上移ToolStripMenuItem.Name = "上移ToolStripMenuItem"
-        Me.上移ToolStripMenuItem.Size = New System.Drawing.Size(270, 34)
+        Me.上移ToolStripMenuItem.Size = New System.Drawing.Size(210, 34)
         Me.上移ToolStripMenuItem.Text = "上移"
         '
         '下移ToolStripMenuItem
@@ -343,43 +343,49 @@ Partial Class 编号控件
         Me.下移ToolStripMenuItem.Font = New System.Drawing.Font("Microsoft YaHei UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.下移ToolStripMenuItem.ForeColor = System.Drawing.SystemColors.MenuHighlight
         Me.下移ToolStripMenuItem.Name = "下移ToolStripMenuItem"
-        Me.下移ToolStripMenuItem.Size = New System.Drawing.Size(270, 34)
+        Me.下移ToolStripMenuItem.Size = New System.Drawing.Size(210, 34)
         Me.下移ToolStripMenuItem.Text = "下移"
         '
         'ToolStripSeparator3
         '
         Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
-        Me.ToolStripSeparator3.Size = New System.Drawing.Size(267, 6)
+        Me.ToolStripSeparator3.Size = New System.Drawing.Size(207, 6)
+        '
+        '刷新ToolStripMenuItem1
+        '
+        Me.刷新ToolStripMenuItem1.Name = "刷新ToolStripMenuItem1"
+        Me.刷新ToolStripMenuItem1.Size = New System.Drawing.Size(210, 34)
+        Me.刷新ToolStripMenuItem1.Text = "刷新"
         '
         '删除规则ToolStripMenuItem
         '
         Me.删除规则ToolStripMenuItem.BackColor = System.Drawing.Color.AntiqueWhite
         Me.删除规则ToolStripMenuItem.Name = "删除规则ToolStripMenuItem"
-        Me.删除规则ToolStripMenuItem.Size = New System.Drawing.Size(270, 34)
+        Me.删除规则ToolStripMenuItem.Size = New System.Drawing.Size(210, 34)
         Me.删除规则ToolStripMenuItem.Text = "删除规则"
         '
         'ToolStripSeparator1
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(267, 6)
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(207, 6)
         '
         '添加编号方案ToolStripMenuItem
         '
         Me.添加编号方案ToolStripMenuItem.Name = "添加编号方案ToolStripMenuItem"
-        Me.添加编号方案ToolStripMenuItem.Size = New System.Drawing.Size(270, 34)
+        Me.添加编号方案ToolStripMenuItem.Size = New System.Drawing.Size(210, 34)
         Me.添加编号方案ToolStripMenuItem.Text = "添加编号方案"
         '
         '删除编号方案ToolStripMenuItem
         '
         Me.删除编号方案ToolStripMenuItem.BackColor = System.Drawing.Color.AntiqueWhite
         Me.删除编号方案ToolStripMenuItem.Name = "删除编号方案ToolStripMenuItem"
-        Me.删除编号方案ToolStripMenuItem.Size = New System.Drawing.Size(270, 34)
+        Me.删除编号方案ToolStripMenuItem.Size = New System.Drawing.Size(210, 34)
         Me.删除编号方案ToolStripMenuItem.Text = "删除编号方案"
         '
         'ToolStripSeparator2
         '
         Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
-        Me.ToolStripSeparator2.Size = New System.Drawing.Size(267, 6)
+        Me.ToolStripSeparator2.Size = New System.Drawing.Size(207, 6)
         '
         'TabControl1
         '
@@ -468,7 +474,7 @@ Partial Class 编号控件
         '
         'Panel1
         '
-        Me.Panel1.BackColor = System.Drawing.SystemColors.Info
+        Me.Panel1.BackColor = System.Drawing.SystemColors.Control
         Me.Panel1.Controls.Add(Me.Button5)
         Me.Panel1.Controls.Add(Me.Button7)
         Me.Panel1.Controls.Add(Me.Button3)
@@ -603,12 +609,6 @@ Partial Class 编号控件
         Me.Button8.TabIndex = 20
         Me.Button8.Text = "保存方案"
         Me.Button8.UseVisualStyleBackColor = True
-        '
-        '刷新ToolStripMenuItem1
-        '
-        Me.刷新ToolStripMenuItem1.Name = "刷新ToolStripMenuItem1"
-        Me.刷新ToolStripMenuItem1.Size = New System.Drawing.Size(270, 34)
-        Me.刷新ToolStripMenuItem1.Text = "刷新"
         '
         '编号控件
         '

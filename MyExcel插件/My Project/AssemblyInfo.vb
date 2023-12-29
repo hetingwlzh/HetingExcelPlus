@@ -10,8 +10,8 @@ Imports System.Security
 '查看程序集特性的值
 
 <Assembly: AssemblyTitle("MyExcel插件")> 
-<Assembly: AssemblyDescription("")> 
-<Assembly: AssemblyCompany("")> 
+<Assembly: AssemblyDescription("")>
+<Assembly: AssemblyCompany("heting")>
 <Assembly: AssemblyProduct("MyExcel插件")> 
 <Assembly: AssemblyCopyright("Copyright ©  2022")> 
 <Assembly: AssemblyTrademark("")> 
@@ -35,7 +35,7 @@ Imports System.Security
 ' 方法是按如下所示使用“*”: :
 ' <Assembly: AssemblyVersion("1.0.*")> 
 
-<Assembly: AssemblyVersion("1.0.0.2")>
+<Assembly: AssemblyVersion("1.0.0.3")>
 <Assembly: AssemblyFileVersion("1.0.0.0")> 
 
 Friend Module DesignTimeConstants
