@@ -29,12 +29,12 @@
     <DefineConstants>VSTO40</DefineConstants>
     <StartupObject>
     </StartupObject>
-    <IsWebBootstrapper>True</IsWebBootstrapper>
+    <IsWebBootstrapper>False</IsWebBootstrapper>
     <BootstrapperEnabled>true</BootstrapperEnabled>
     <PublishUrl>E:\我的编程\MyExcel插件\MyExcel插件\Setup\</PublishUrl>
-    <InstallUrl>https://github.com/hetingwlzh/HetingExcelPlus/blob/master/Setup/</InstallUrl>
+    <InstallUrl />
     <TargetCulture>zh-chs</TargetCulture>
-    <ApplicationVersion>1.2.0.178</ApplicationVersion>
+    <ApplicationVersion>1.2.0.180</ApplicationVersion>
     <AutoIncrementApplicationRevision>true</AutoIncrementApplicationRevision>
     <UpdateEnabled>true</UpdateEnabled>
     <UpdateInterval>0</UpdateInterval>
