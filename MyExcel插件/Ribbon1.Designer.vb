@@ -65,8 +65,8 @@
         Me.Group6 = Me.Factory.CreateRibbonGroup
         Me.Button52 = Me.Factory.CreateRibbonButton
         Me.Button14 = Me.Factory.CreateRibbonButton
-        Me.Button33 = Me.Factory.CreateRibbonButton
         Me.Button54 = Me.Factory.CreateRibbonButton
+        Me.Button33 = Me.Factory.CreateRibbonButton
         Me.Button51 = Me.Factory.CreateRibbonButton
         Me.Button53 = Me.Factory.CreateRibbonButton
         Me.Button32 = Me.Factory.CreateRibbonButton
@@ -320,14 +320,6 @@
         Me.Button14.Name = "Button14"
         Me.Button14.ShowImage = True
         '
-        'Button33
-        '
-        Me.Button33.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge
-        Me.Button33.Image = CType(resources.GetObject("Button33.Image"), System.Drawing.Image)
-        Me.Button33.Label = "列汇总"
-        Me.Button33.Name = "Button33"
-        Me.Button33.ShowImage = True
-        '
         'Button54
         '
         Me.Button54.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge
@@ -335,6 +327,14 @@
         Me.Button54.Label = "列合并"
         Me.Button54.Name = "Button54"
         Me.Button54.ShowImage = True
+        '
+        'Button33
+        '
+        Me.Button33.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge
+        Me.Button33.Image = CType(resources.GetObject("Button33.Image"), System.Drawing.Image)
+        Me.Button33.Label = "列汇总"
+        Me.Button33.Name = "Button33"
+        Me.Button33.ShowImage = True
         '
         'Button51
         '
