@@ -4435,7 +4435,7 @@ Module Module1
             ''''''这里是 创建设置页面内容的代码
             ''''''这里是 创建设置页面内容的代码
             ''''''这里是 创建设置页面内容的代码
-            '''
+
             Dim tempRange As Excel.Range
             tempRange = MyRange(SetSheet, 2, 2, 2, 5)
             tempRange.Merge()
@@ -4976,7 +4976,7 @@ Module Module1
 
     Public Function 删除关注重复值条件格式(sheet As Excel.Worksheet, Optional 是否删除后台数据表 As Boolean = True) As Boolean
         '''''''''删除条件格式
-        '''
+
         'Dim sheet As Excel.Worksheet = app.ActiveSheet
         Try
             Dim range As Excel.Range = sheet.Cells
