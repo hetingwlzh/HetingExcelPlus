@@ -22,7 +22,7 @@ Imports System.Security
 <Assembly: ComVisible(False)>
 
 '如果此项目向 COM 公开，则下列 GUID 用于类型库的 ID
-<Assembly: Guid("e6540f73-24d5-4f1b-8b49-fda2085cad53")> 
+<Assembly: Guid("e6540f73-24d5-4f1b-8b49-fda2085cad53")>
 
 ' 程序集的版本信息由下列四个值组成:
 '
@@ -35,7 +35,7 @@ Imports System.Security
 ' 方法是按如下所示使用“*”: :
 ' <Assembly: AssemblyVersion("1.0.*")> 
 
-<Assembly: AssemblyVersion("1.0.0.0")> 
+<Assembly: AssemblyVersion("1.0.0.2")>
 <Assembly: AssemblyFileVersion("1.0.0.0")> 
 
 Friend Module DesignTimeConstants

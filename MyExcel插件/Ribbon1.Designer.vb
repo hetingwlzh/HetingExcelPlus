@@ -45,16 +45,24 @@
         Me.Tab1 = Me.Factory.CreateRibbonTab
         Me.Group2 = Me.Factory.CreateRibbonGroup
         Me.Box1 = Me.Factory.CreateRibbonBox
+        Me.CheckBox1 = Me.Factory.CreateRibbonCheckBox
+        Me.Box2 = Me.Factory.CreateRibbonBox
+        Me.Box3 = Me.Factory.CreateRibbonBox
+        Me.Group6 = Me.Factory.CreateRibbonGroup
+        Me.Group8 = Me.Factory.CreateRibbonGroup
+        Me.Group4 = Me.Factory.CreateRibbonGroup
+        Me.CheckBox3 = Me.Factory.CreateRibbonCheckBox
+        Me.Group5 = Me.Factory.CreateRibbonGroup
+        Me.Tab2 = Me.Factory.CreateRibbonTab
+        Me.Group7 = Me.Factory.CreateRibbonGroup
+        Me.Label2 = Me.Factory.CreateRibbonLabel
         Me.Button1 = Me.Factory.CreateRibbonButton
         Me.Button2 = Me.Factory.CreateRibbonButton
         Me.Button3 = Me.Factory.CreateRibbonButton
-        Me.CheckBox1 = Me.Factory.CreateRibbonCheckBox
-        Me.Box2 = Me.Factory.CreateRibbonBox
         Me.Button41 = Me.Factory.CreateRibbonButton
         Me.Button42 = Me.Factory.CreateRibbonButton
         Me.Button40 = Me.Factory.CreateRibbonButton
         Me.Button39 = Me.Factory.CreateRibbonButton
-        Me.Box3 = Me.Factory.CreateRibbonBox
         Me.Button46 = Me.Factory.CreateRibbonButton
         Me.Button44 = Me.Factory.CreateRibbonButton
         Me.Button45 = Me.Factory.CreateRibbonButton
@@ -62,7 +70,6 @@
         Me.Button4 = Me.Factory.CreateRibbonButton
         Me.Button5 = Me.Factory.CreateRibbonButton
         Me.Button13 = Me.Factory.CreateRibbonButton
-        Me.Group6 = Me.Factory.CreateRibbonGroup
         Me.Button52 = Me.Factory.CreateRibbonButton
         Me.Button14 = Me.Factory.CreateRibbonButton
         Me.Button54 = Me.Factory.CreateRibbonButton
@@ -79,12 +86,10 @@
         Me.Gallery1 = Me.Factory.CreateRibbonGallery
         Me.我的设置 = Me.Factory.CreateRibbonButton
         Me.颜色 = Me.Factory.CreateRibbonButton
-        Me.Group8 = Me.Factory.CreateRibbonGroup
         Me.Button25 = Me.Factory.CreateRibbonButton
         Me.Button35 = Me.Factory.CreateRibbonButton
         Me.Button11 = Me.Factory.CreateRibbonButton
         Me.Button17 = Me.Factory.CreateRibbonButton
-        Me.Group4 = Me.Factory.CreateRibbonGroup
         Me.Button23 = Me.Factory.CreateRibbonButton
         Me.ToggleButton3 = Me.Factory.CreateRibbonToggleButton
         Me.Button19 = Me.Factory.CreateRibbonButton
@@ -96,14 +101,10 @@
         Me.Button9 = Me.Factory.CreateRibbonButton
         Me.Button18 = Me.Factory.CreateRibbonButton
         Me.ToggleButton2 = Me.Factory.CreateRibbonToggleButton
-        Me.CheckBox3 = Me.Factory.CreateRibbonCheckBox
-        Me.Group5 = Me.Factory.CreateRibbonGroup
         Me.Button26 = Me.Factory.CreateRibbonButton
         Me.Button12 = Me.Factory.CreateRibbonButton
         Me.SplitButton2 = Me.Factory.CreateRibbonSplitButton
         Me.CheckBox2 = Me.Factory.CreateRibbonCheckBox
-        Me.Tab2 = Me.Factory.CreateRibbonTab
-        Me.Group7 = Me.Factory.CreateRibbonGroup
         Me.Button27 = Me.Factory.CreateRibbonButton
         Me.Button10 = Me.Factory.CreateRibbonButton
         Me.Button47 = Me.Factory.CreateRibbonButton
@@ -117,9 +118,9 @@
         Me.Button31 = Me.Factory.CreateRibbonButton
         Me.ToggleButton1 = Me.Factory.CreateRibbonToggleButton
         Me.Button36 = Me.Factory.CreateRibbonButton
-        Me.Label2 = Me.Factory.CreateRibbonLabel
         Me.Button49 = Me.Factory.CreateRibbonButton
         Me.Button28 = Me.Factory.CreateRibbonButton
+        Me.Button55 = Me.Factory.CreateRibbonButton
         Me.Tab1.SuspendLayout()
         Me.Group2.SuspendLayout()
         Me.Box1.SuspendLayout()
@@ -163,6 +164,113 @@
         Me.Box1.Items.Add(Me.CheckBox1)
         Me.Box1.Name = "Box1"
         '
+        'CheckBox1
+        '
+        Me.CheckBox1.Label = "空"
+        Me.CheckBox1.Name = "CheckBox1"
+        '
+        'Box2
+        '
+        Me.Box2.Items.Add(Me.Button41)
+        Me.Box2.Items.Add(Me.Button42)
+        Me.Box2.Items.Add(Me.Button40)
+        Me.Box2.Items.Add(Me.Button39)
+        Me.Box2.Name = "Box2"
+        '
+        'Box3
+        '
+        Me.Box3.Items.Add(Me.Button46)
+        Me.Box3.Items.Add(Me.Button44)
+        Me.Box3.Items.Add(Me.Button45)
+        Me.Box3.Items.Add(Me.Button43)
+        Me.Box3.Name = "Box3"
+        '
+        'Group6
+        '
+        Me.Group6.Items.Add(Me.Button52)
+        Me.Group6.Items.Add(Me.Button14)
+        Me.Group6.Items.Add(Me.Button54)
+        Me.Group6.Items.Add(Me.Button33)
+        Me.Group6.Items.Add(Me.Button51)
+        Me.Group6.Items.Add(Me.Button53)
+        Me.Group6.Items.Add(Me.Button32)
+        Me.Group6.Items.Add(Me.Button15)
+        Me.Group6.Items.Add(Me.Button22)
+        Me.Group6.Items.Add(Me.Button50)
+        Me.Group6.Items.Add(Me.Button20)
+        Me.Group6.Items.Add(Me.Button21)
+        Me.Group6.Items.Add(Me.Button16)
+        Me.Group6.Items.Add(Me.Gallery1)
+        Me.Group6.Label = "综合操作"
+        Me.Group6.Name = "Group6"
+        '
+        'Group8
+        '
+        Me.Group8.Items.Add(Me.Button25)
+        Me.Group8.Items.Add(Me.Button35)
+        Me.Group8.Items.Add(Me.Button11)
+        Me.Group8.Items.Add(Me.Button17)
+        Me.Group8.Label = "统计"
+        Me.Group8.Name = "Group8"
+        '
+        'Group4
+        '
+        Me.Group4.Items.Add(Me.Button23)
+        Me.Group4.Items.Add(Me.ToggleButton3)
+        Me.Group4.Items.Add(Me.Button19)
+        Me.Group4.Items.Add(Me.Button29)
+        Me.Group4.Items.Add(Me.Button37)
+        Me.Group4.Items.Add(Me.Gallery2)
+        Me.Group4.Items.Add(Me.ToggleButton2)
+        Me.Group4.Items.Add(Me.CheckBox3)
+        Me.Group4.Label = "校验 生成"
+        Me.Group4.Name = "Group4"
+        '
+        'CheckBox3
+        '
+        Me.CheckBox3.Label = "相同值"
+        Me.CheckBox3.Name = "CheckBox3"
+        '
+        'Group5
+        '
+        Me.Group5.Items.Add(Me.Button26)
+        Me.Group5.Items.Add(Me.Button12)
+        Me.Group5.Items.Add(Me.SplitButton2)
+        Me.Group5.Items.Add(Me.Button55)
+        Me.Group5.Label = "设置"
+        Me.Group5.Name = "Group5"
+        '
+        'Tab2
+        '
+        Me.Tab2.Groups.Add(Me.Group7)
+        Me.Tab2.Label = "TEST"
+        Me.Tab2.Name = "Tab2"
+        '
+        'Group7
+        '
+        Me.Group7.Items.Add(Me.Button27)
+        Me.Group7.Items.Add(Me.Button10)
+        Me.Group7.Items.Add(Me.Button47)
+        Me.Group7.Items.Add(Me.Button6)
+        Me.Group7.Items.Add(Me.Button38)
+        Me.Group7.Items.Add(Me.Button24)
+        Me.Group7.Items.Add(Me.Button34)
+        Me.Group7.Items.Add(Me.SplitButton1)
+        Me.Group7.Items.Add(Me.Button48)
+        Me.Group7.Items.Add(Me.Button31)
+        Me.Group7.Items.Add(Me.ToggleButton1)
+        Me.Group7.Items.Add(Me.Button36)
+        Me.Group7.Items.Add(Me.Label2)
+        Me.Group7.Items.Add(Me.Button49)
+        Me.Group7.Items.Add(Me.Button28)
+        Me.Group7.Label = "Group7"
+        Me.Group7.Name = "Group7"
+        '
+        'Label2
+        '
+        Me.Label2.Label = "Label2"
+        Me.Label2.Name = "Label2"
+        '
         'Button1
         '
         Me.Button1.Image = CType(resources.GetObject("Button1.Image"), System.Drawing.Image)
@@ -185,19 +293,6 @@
         Me.Button3.Name = "Button3"
         Me.Button3.ShowImage = True
         Me.Button3.SuperTip = "右下"
-        '
-        'CheckBox1
-        '
-        Me.CheckBox1.Label = "空"
-        Me.CheckBox1.Name = "CheckBox1"
-        '
-        'Box2
-        '
-        Me.Box2.Items.Add(Me.Button41)
-        Me.Box2.Items.Add(Me.Button42)
-        Me.Box2.Items.Add(Me.Button40)
-        Me.Box2.Items.Add(Me.Button39)
-        Me.Box2.Name = "Box2"
         '
         'Button41
         '
@@ -227,14 +322,6 @@
         Me.Button39.Name = "Button39"
         Me.Button39.ShowImage = True
         Me.Button39.Tag = ""
-        '
-        'Box3
-        '
-        Me.Box3.Items.Add(Me.Button46)
-        Me.Box3.Items.Add(Me.Button44)
-        Me.Box3.Items.Add(Me.Button45)
-        Me.Box3.Items.Add(Me.Button43)
-        Me.Box3.Name = "Box3"
         '
         'Button46
         '
@@ -284,25 +371,6 @@
         Me.Button13.Label = "文本"
         Me.Button13.Name = "Button13"
         Me.Button13.ShowImage = True
-        '
-        'Group6
-        '
-        Me.Group6.Items.Add(Me.Button52)
-        Me.Group6.Items.Add(Me.Button14)
-        Me.Group6.Items.Add(Me.Button54)
-        Me.Group6.Items.Add(Me.Button33)
-        Me.Group6.Items.Add(Me.Button51)
-        Me.Group6.Items.Add(Me.Button53)
-        Me.Group6.Items.Add(Me.Button32)
-        Me.Group6.Items.Add(Me.Button15)
-        Me.Group6.Items.Add(Me.Button22)
-        Me.Group6.Items.Add(Me.Button50)
-        Me.Group6.Items.Add(Me.Button20)
-        Me.Group6.Items.Add(Me.Button21)
-        Me.Group6.Items.Add(Me.Button16)
-        Me.Group6.Items.Add(Me.Gallery1)
-        Me.Group6.Label = "综合操作"
-        Me.Group6.Name = "Group6"
         '
         'Button52
         '
@@ -425,15 +493,6 @@
         Me.颜色.Label = "颜色代码"
         Me.颜色.Name = "颜色"
         '
-        'Group8
-        '
-        Me.Group8.Items.Add(Me.Button25)
-        Me.Group8.Items.Add(Me.Button35)
-        Me.Group8.Items.Add(Me.Button11)
-        Me.Group8.Items.Add(Me.Button17)
-        Me.Group8.Label = "统计"
-        Me.Group8.Name = "Group8"
-        '
         'Button25
         '
         Me.Button25.Image = CType(resources.GetObject("Button25.Image"), System.Drawing.Image)
@@ -463,19 +522,6 @@
         Me.Button17.Label = "排名"
         Me.Button17.Name = "Button17"
         Me.Button17.ShowImage = True
-        '
-        'Group4
-        '
-        Me.Group4.Items.Add(Me.Button23)
-        Me.Group4.Items.Add(Me.ToggleButton3)
-        Me.Group4.Items.Add(Me.Button19)
-        Me.Group4.Items.Add(Me.Button29)
-        Me.Group4.Items.Add(Me.Button37)
-        Me.Group4.Items.Add(Me.Gallery2)
-        Me.Group4.Items.Add(Me.ToggleButton2)
-        Me.Group4.Items.Add(Me.CheckBox3)
-        Me.Group4.Label = "校验 生成"
-        Me.Group4.Name = "Group4"
         '
         'Button23
         '
@@ -564,19 +610,6 @@
         Me.ToggleButton2.Name = "ToggleButton2"
         Me.ToggleButton2.ShowImage = True
         '
-        'CheckBox3
-        '
-        Me.CheckBox3.Label = "相同值"
-        Me.CheckBox3.Name = "CheckBox3"
-        '
-        'Group5
-        '
-        Me.Group5.Items.Add(Me.Button26)
-        Me.Group5.Items.Add(Me.Button12)
-        Me.Group5.Items.Add(Me.SplitButton2)
-        Me.Group5.Label = "设置"
-        Me.Group5.Name = "Group5"
-        '
         'Button26
         '
         Me.Button26.Image = CType(resources.GetObject("Button26.Image"), System.Drawing.Image)
@@ -602,32 +635,6 @@
         Me.CheckBox2.Checked = True
         Me.CheckBox2.Label = "启用任务窗格"
         Me.CheckBox2.Name = "CheckBox2"
-        '
-        'Tab2
-        '
-        Me.Tab2.Groups.Add(Me.Group7)
-        Me.Tab2.Label = "TEST"
-        Me.Tab2.Name = "Tab2"
-        '
-        'Group7
-        '
-        Me.Group7.Items.Add(Me.Button27)
-        Me.Group7.Items.Add(Me.Button10)
-        Me.Group7.Items.Add(Me.Button47)
-        Me.Group7.Items.Add(Me.Button6)
-        Me.Group7.Items.Add(Me.Button38)
-        Me.Group7.Items.Add(Me.Button24)
-        Me.Group7.Items.Add(Me.Button34)
-        Me.Group7.Items.Add(Me.SplitButton1)
-        Me.Group7.Items.Add(Me.Button48)
-        Me.Group7.Items.Add(Me.Button31)
-        Me.Group7.Items.Add(Me.ToggleButton1)
-        Me.Group7.Items.Add(Me.Button36)
-        Me.Group7.Items.Add(Me.Label2)
-        Me.Group7.Items.Add(Me.Button49)
-        Me.Group7.Items.Add(Me.Button28)
-        Me.Group7.Label = "Group7"
-        Me.Group7.Name = "Group7"
         '
         'Button27
         '
@@ -697,11 +704,6 @@
         Me.Button36.Label = "拖拽填充实验"
         Me.Button36.Name = "Button36"
         '
-        'Label2
-        '
-        Me.Label2.Label = "Label2"
-        Me.Label2.Name = "Label2"
-        '
         'Button49
         '
         Me.Button49.Label = "获取版本号"
@@ -712,6 +714,11 @@
         '
         Me.Button28.Label = "文本型数字检查"
         Me.Button28.Name = "Button28"
+        '
+        'Button55
+        '
+        Me.Button55.Label = "版本号"
+        Me.Button55.Name = "Button55"
         '
         'Ribbon1
         '
@@ -822,6 +829,7 @@
     Friend WithEvents Button52 As Microsoft.Office.Tools.Ribbon.RibbonButton
     Friend WithEvents Button53 As Microsoft.Office.Tools.Ribbon.RibbonButton
     Friend WithEvents Button54 As Microsoft.Office.Tools.Ribbon.RibbonButton
+    Friend WithEvents Button55 As Microsoft.Office.Tools.Ribbon.RibbonButton
 End Class
 
 Partial Class ThisRibbonCollection

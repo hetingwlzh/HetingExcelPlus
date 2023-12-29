@@ -5,6 +5,7 @@ Imports Microsoft.Office.Tools.Excel.Extensions
 
 
 Imports System.Deployment.Application
+Imports System.Windows.Forms
 
 ''' <summary>
 ''' '''
@@ -1169,5 +1170,13 @@ Public Class Ribbon1
     Private Sub Button54_Click(sender As Object, e As RibbonControlEventArgs) Handles Button54.Click
         Dim 合并列 As New 合并列控件
         添加或显示功能控件(合并列, "合并列")
+    End Sub
+
+    Private Sub Button55_Click(sender As Object, e As RibbonControlEventArgs) Handles Button55.Click
+        Dim currentAssembly As System.Reflection.Assembly = System.Reflection.Assembly.GetExecutingAssembly()
+        Dim versionNumber As Version = currentAssembly.GetName().Version
+
+        ' 显示版本号
+        MessageBox.Show("当前插件版本: " & versionNumber.ToString())
     End Sub
 End Class
