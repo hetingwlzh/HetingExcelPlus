@@ -34,7 +34,7 @@
     <PublishUrl>E:\我的编程\MyExcel插件\MyExcel插件\Setup\</PublishUrl>
     <InstallUrl>https://github.com/hetingwlzh/HetingExcelPlus/blob/master/Setup/</InstallUrl>
     <TargetCulture>zh-chs</TargetCulture>
-    <ApplicationVersion>1.0.0.174</ApplicationVersion>
+    <ApplicationVersion>1.0.0.175</ApplicationVersion>
     <AutoIncrementApplicationRevision>true</AutoIncrementApplicationRevision>
     <UpdateEnabled>true</UpdateEnabled>
     <UpdateInterval>0</UpdateInterval>
