@@ -803,7 +803,7 @@ Public Class Ribbon1
 
 
 
-        If My.Settings.是否以非空数据为边 = True Then
+        If My.Settings.是否以非空数据为边 = False Then
             Dim 最大尾行号 As Integer = Sheet.UsedRange.Row
             Dim 当前尾行号 As Integer = 最大尾行号
             For Each column As Excel.Range In selectRange.Columns
@@ -874,7 +874,7 @@ Public Class Ribbon1
         Dim selectRange As Excel.Range = app.Selection
         Dim 左上单元格 As Excel.Range = selectRange.Cells(1, 1)
 
-        If My.Settings.是否以非空数据为边 = True Then
+        If My.Settings.是否以非空数据为边 = False Then
             Dim 最大尾列号 As Integer = Sheet.UsedRange.Row
             Dim 当前尾列号 As Integer = 最大尾列号
             For Each row As Excel.Range In selectRange.Rows
@@ -903,7 +903,7 @@ Public Class Ribbon1
 
 
 
-        If My.Settings.是否以非空数据为边 = True Then
+        If My.Settings.是否以非空数据为边 = False Then
 
             Dim 最小首行号 As Integer = 获取结束单元格(Sheet).Row
             Dim 当前首行号 As Integer = 最小首行号
@@ -930,7 +930,7 @@ Public Class Ribbon1
 
         Dim 右上角单元格 As Excel.Range = selectRange.Cells(1, selectRange.Columns.Count)
 
-        If My.Settings.是否以非空数据为边 = True Then
+        If My.Settings.是否以非空数据为边 = False Then
 
             Dim 最小首列号 As Integer = 获取结束单元格(Sheet).Column
             Dim 当前首列号 As Integer = 最小首列号
@@ -1118,11 +1118,56 @@ Public Class Ribbon1
 
     End Sub
 
+    Private Sub Button28_Click(sender As Object, e As RibbonControlEventArgs) Handles Button28.Click
+        'Dim cell As Excel.Range = Globals.ThisAddIn.Application.ActiveCell
+        'If cell.NumberFormat = "@" Then
+        '    ' 单元格格式为文本
+
+        '    MsgBox("单元格格式为 文本")
+        'Else
+        '    ' 单元格格式为数字
+        '    MsgBox("单元格格式为 数字")
+        'End If
 
 
 
+        Dim cell As Excel.Range = Globals.ThisAddIn.Application.ActiveCell
+        If IsNumeric(cell.Value) Then
+            ' 单元格值为数字
+            MsgBox("单元格格式为 数字")
+        Else
+            ' 单元格值为文本字符
+            MsgBox("单元格格式为 文本")
+        End If
 
 
+        'Dim cell As Excel.Range = Globals.ThisAddIn.Application.Selection
+        'If Then
+        '    ' 单元格值为数字
+        '    MsgBox("相同")
+        'Else
+        '    ' 单元格值为文本字符
+        '    MsgBox("不同")
+        'End If
+    End Sub
 
+    Private Sub Button51_Click(sender As Object, e As RibbonControlEventArgs) Handles Button51.Click
+        Dim 数据拆分 As New 数据拆分控件
+        添加或显示功能控件(数据拆分, "数据拆分")
+    End Sub
 
+    Private Sub Button52_Click(sender As Object, e As RibbonControlEventArgs) Handles Button52.Click
+        Dim 合并文件 As New 合并文件控件
+        添加或显示功能控件(合并文件, "合并文件")
+    End Sub
+
+    Private Sub Button53_Click(sender As Object, e As RibbonControlEventArgs) Handles Button53.Click
+        Dim 行筛选 As New 行筛选控件
+        添加或显示功能控件(行筛选, "行筛选")
+    End Sub
+
+    Private Sub Button54_Click(sender As Object, e As RibbonControlEventArgs) Handles Button54.Click
+        Dim 合并列 As New 合并列控件
+        添加或显示功能控件(合并列, "合并列")
+    End Sub
 End Class

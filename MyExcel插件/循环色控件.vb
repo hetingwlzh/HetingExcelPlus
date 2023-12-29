@@ -1,5 +1,9 @@
-﻿Public Class 循环色控件
+﻿Imports System.Drawing
 
+Public Class 循环色控件
+    Public PictureList As List(Of Windows.Forms.PictureBox)
+    Public LabelList As List(Of Windows.Forms.Label)
+    Public 上次的渐变色尾号 As Integer = 0
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         '设置循环色(分类区域1, 分类区域2, 分类区域3, 分类区域4, 涂色区域, NumericUpDown1.Value)
@@ -31,8 +35,115 @@
     Private Sub 循环色控件_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         区域选择控件1.预设空区域({"分类区域1", "分类区域2", "分类区域3", "分类区域4", "涂色区域"})
         区域选择控件1.是否允许编辑区域名 = False
+        '设置填充色(RGB()
 
+        For i = 1 To 10
+            预设循环色(i, My.Settings.循环色序列(i - 1))
+        Next
+
+        'PictureBox1.BackColor = Color.FromArgb(My.Settings.循环色序列(0))
+        'PictureBox2.BackColor = Color.FromArgb(My.Settings.循环色序列(1))
+        'PictureBox3.BackColor = Color.FromArgb(My.Settings.循环色序列(2))
+        'PictureBox4.BackColor = Color.FromArgb(My.Settings.循环色序列(3))
+        'PictureBox5.BackColor = Color.FromArgb(My.Settings.循环色序列(4))
+        'PictureBox6.BackColor = Color.FromArgb(My.Settings.循环色序列(5))
+        'PictureBox7.BackColor = Color.FromArgb(My.Settings.循环色序列(6))
+        'PictureBox8.BackColor = Color.FromArgb(My.Settings.循环色序列(7))
+        'PictureBox9.BackColor = Color.FromArgb(My.Settings.循环色序列(8))
+        'PictureBox10.BackColor = Color.FromArgb(My.Settings.循环色序列(9))
+
+
+        'PictureBox1.BackColor = Color.FromArgb(255, PictureBox1.BackColor.R, PictureBox1.BackColor.G, PictureBox1.BackColor.B)
+        'PictureBox2.BackColor = Color.FromArgb(255, PictureBox2.BackColor.R, PictureBox2.BackColor.G, PictureBox2.BackColor.B)
+        'PictureBox3.BackColor = Color.FromArgb(255, PictureBox3.BackColor.R, PictureBox3.BackColor.G, PictureBox3.BackColor.B)
+        'PictureBox4.BackColor = Color.FromArgb(255, PictureBox4.BackColor.R, PictureBox4.BackColor.G, PictureBox4.BackColor.B)
+        'PictureBox5.BackColor = Color.FromArgb(255, PictureBox5.BackColor.R, PictureBox5.BackColor.G, PictureBox5.BackColor.B)
+        'PictureBox6.BackColor = Color.FromArgb(255, PictureBox6.BackColor.R, PictureBox6.BackColor.G, PictureBox6.BackColor.B)
+        'PictureBox7.BackColor = Color.FromArgb(255, PictureBox7.BackColor.R, PictureBox7.BackColor.G, PictureBox7.BackColor.B)
+        'PictureBox8.BackColor = Color.FromArgb(255, PictureBox8.BackColor.R, PictureBox8.BackColor.G, PictureBox8.BackColor.B)
+        'PictureBox9.BackColor = Color.FromArgb(255, PictureBox9.BackColor.R, PictureBox9.BackColor.G, PictureBox9.BackColor.B)
+        'PictureBox10.BackColor = Color.FromArgb(255, PictureBox10.BackColor.R, PictureBox10.BackColor.G, PictureBox10.BackColor.B)
+
+
+        PictureList = New List(Of Windows.Forms.PictureBox) From {
+        PictureBox1, PictureBox2,
+        PictureBox3, PictureBox4,
+        PictureBox5, PictureBox6,
+        PictureBox7, PictureBox8,
+        PictureBox9, PictureBox10
+    }
+        LabelList = New List(Of Windows.Forms.Label) From {
+        Label1, Label2,
+        Label3, Label4,
+        Label5, Label6,
+        Label7, Label8,
+        Label9, Label10
+    }
+        刷新颜色组件()
     End Sub
+
+    Public Function 预设循环色(颜色序号 As Integer, 颜色 As Integer)
+        Dim PBX As Windows.Forms.PictureBox
+        Dim R, G, B As Integer
+        Dim SetColor As Color
+        Select Case 颜色序号
+            Case 1
+                PBX = PictureBox1
+            Case 2
+                PBX = PictureBox2
+            Case 3
+                PBX = PictureBox3
+            Case 4
+                PBX = PictureBox4
+            Case 5
+                PBX = PictureBox5
+            Case 6
+                PBX = PictureBox6
+            Case 7
+                PBX = PictureBox7
+            Case 8
+                PBX = PictureBox8
+            Case 9
+                PBX = PictureBox9
+            Case 10
+                PBX = PictureBox10
+        End Select
+        SetColor = Color.FromArgb(颜色)
+        R = SetColor.R
+        G = SetColor.G
+        B = SetColor.B
+        PBX.BackColor = Color.FromArgb(255, B, G, R)
+    End Function
+
+    Public Function 预设循环色(颜色序号 As Integer, 颜色 As Color)
+        Dim PBX As Windows.Forms.PictureBox
+        Select Case 颜色序号
+            Case 1
+                PBX = PictureBox1
+            Case 2
+                PBX = PictureBox2
+            Case 3
+                PBX = PictureBox3
+            Case 4
+                PBX = PictureBox4
+            Case 5
+                PBX = PictureBox5
+            Case 6
+                PBX = PictureBox6
+            Case 7
+                PBX = PictureBox7
+            Case 8
+                PBX = PictureBox8
+            Case 9
+                PBX = PictureBox9
+            Case 10
+                PBX = PictureBox10
+        End Select
+
+        PBX.BackColor = 颜色
+    End Function
+
+
 
     Public Sub 设置循环色(分类区域1 As Excel.Range,
                      Optional 分类区域2 As Excel.Range = Nothing,
@@ -87,6 +198,18 @@
         End If
 
 
+        'Dim PictureList As New List(Of Windows.Forms.PictureBox) From {
+        'PictureBox1, PictureBox2,
+        'PictureBox3, PictureBox4,
+        'PictureBox5, PictureBox6,
+        'PictureBox7, PictureBox8,
+        'PictureBox9, PictureBox10
+        '}
+        Dim ColorList As New List(Of Integer)
+        For i = 0 To 9
+            ColorList.Add(RGB(PictureList(i).BackColor.R, PictureList(i).BackColor.G, PictureList(i).BackColor.B))
+        Next
+
 
 
         '开始执行
@@ -138,7 +261,7 @@
 
                 设置区域 = app.Intersect(涂色区域, sheet.Range(sheet.Cells(涂色起始行, 1), sheet.Cells(涂色结束行, 获取结束单元格(sheet).Column)))
                 If 设置区域 IsNot Nothing Then
-                    设置填充色(设置区域, My.Settings.循环色序列(colorNum Mod 颜色数))
+                    设置填充色(设置区域, ColorList(colorNum Mod 颜色数))
 
                 End If
                 colorNum += 1
@@ -149,7 +272,7 @@
         Next
         设置区域 = app.Intersect(涂色区域, sheet.Range(sheet.Cells(涂色起始行, 1), sheet.Cells(涂色结束行, 获取结束单元格(sheet).Column)))
         If 设置区域 IsNot Nothing Then
-            设置填充色(设置区域, My.Settings.循环色序列(colorNum Mod 颜色数))
+            设置填充色(设置区域, ColorList(colorNum Mod 颜色数))
         End If
 
     End Sub
@@ -176,5 +299,124 @@
 请绕行"， MsgBoxStyle.ApplicationModal, "功能说明")
     End Sub
 
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        For i = 1 To 10
+            预设循环色(i, My.Settings.循环色序列(i - 1))
+        Next
+    End Sub
 
+
+    Public Function 刷新颜色组件()
+        Try
+            For i = 1 To 10
+                If i <= NumericUpDown1.Value Then
+                    PictureList(i - 1).Visible = True
+                    LabelList(i - 1).Visible = True
+                Else
+                    PictureList(i - 1).Visible = False
+                    LabelList(i - 1).Visible = False
+                End If
+
+            Next
+
+            If CheckBox1.Checked = True And 上次的渐变色尾号 > 1 Then
+                PictureList(NumericUpDown1.Value - 1).BackColor = PictureList(上次的渐变色尾号 - 1).BackColor
+                设置渐变(PictureBox1.BackColor, PictureList(NumericUpDown1.Value - 1).BackColor, NumericUpDown1.Value)
+            Else
+
+
+            End If
+
+            上次的渐变色尾号 = NumericUpDown1.Value
+
+            GroupBox1.Height = 80 + NumericUpDown1.Value * 32
+
+
+        Catch ex As Exception
+
+        End Try
+    End Function
+
+
+    Private Sub NumericUpDown1_ValueChanged(sender As Object, e As EventArgs) Handles NumericUpDown1.ValueChanged
+        If PictureList IsNot Nothing Then
+            刷新颜色组件()
+        End If
+
+    End Sub
+
+    Private Sub PictureBox1_Click(sender As Object, e As EventArgs) Handles PictureBox1.Click, PictureBox9.Click, PictureBox8.Click, PictureBox7.Click, PictureBox6.Click, PictureBox5.Click, PictureBox4.Click, PictureBox3.Click, PictureBox2.Click, PictureBox10.Click
+        If CheckBox1.Checked = False Or sender Is PictureBox1 Or sender Is PictureList(NumericUpDown1.Value - 1) Then
+            Dim ColorList(9) As Integer
+            For i = 0 To 9
+                ColorList(i) = (RGB(PictureList(i).BackColor.R, PictureList(i).BackColor.G, PictureList(i).BackColor.B))
+            Next
+
+            ColorDialog1.CustomColors = ColorList
+
+            If ColorDialog1.ShowDialog() = Windows.Forms.DialogResult.OK Then
+                sender.BackColor = ColorDialog1.Color
+            End If
+
+
+
+
+        End If
+            If CheckBox1.Checked = True Then
+            设置渐变(PictureBox1.BackColor, PictureList(NumericUpDown1.Value - 1).BackColor, NumericUpDown1.Value)
+        End If
+    End Sub
+
+
+    ''' <summary>
+    ''' 让pictureBox控件实现渐变色
+    ''' </summary>
+    ''' <param name="color1">开始的颜色</param>
+    ''' <param name="color2">结束的颜色</param>
+    ''' <param name="num">结束颜色的序号，开始的为1</param>
+    Public Sub 设置渐变(color1 As Color, color2 As Color, num As Integer)
+        If NumericUpDown1.Value >= 3 Then
+
+            Dim PB1, PB2 As Windows.Forms.PictureBox
+            PB1 = PictureBox1
+            PB2 = PictureList(num - 1)
+
+            PB1.BackColor = color1
+            PB2.BackColor = color2
+
+            Dim R1, G1, B1, R2, G2, B2, dR, dG, dB As Integer
+            R1 = PB1.BackColor.R
+            G1 = PB1.BackColor.G
+            B1 = PB1.BackColor.B
+
+            R2 = PB2.BackColor.R
+            G2 = PB2.BackColor.G
+            B2 = PB2.BackColor.B
+            dR = (R2 - R1) / (NumericUpDown1.Value - 1)
+            Dim a, b, c As Integer
+            a = G2 - G1
+            b = NumericUpDown1.Value - 1
+            dG = (G2 - G1) / (NumericUpDown1.Value - 1)
+            dB = (B2 - B1) / (NumericUpDown1.Value - 1)
+
+            Dim currentColor As Color = color1
+            For i = 2 To num - 1
+                currentColor = Color.FromArgb(currentColor.R + dR, currentColor.G + dG, currentColor.B + dB)
+                PictureList(i - 1).BackColor = currentColor
+            Next
+
+
+        End If
+
+    End Sub
+
+    Private Sub CheckBox1_Click(sender As Object, e As EventArgs) Handles CheckBox1.Click
+        If CheckBox1.Checked = True Then
+            设置渐变(PictureBox1.BackColor, PictureList(NumericUpDown1.Value - 1).BackColor, NumericUpDown1.Value)
+        End If
+    End Sub
+
+    Private Sub 区域选择控件1_Load(sender As Object, e As EventArgs) Handles 区域选择控件1.Load
+
+    End Sub
 End Class

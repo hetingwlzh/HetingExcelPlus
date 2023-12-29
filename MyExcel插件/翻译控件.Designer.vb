@@ -24,8 +24,8 @@ Partial Class 翻译控件
     Private Sub InitializeComponent()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
-        Me.FlowLayoutPanel1 = New System.Windows.Forms.FlowLayoutPanel()
         Me.Translate1 = New HetingControl.translate()
+        Me.FlowLayoutPanel1 = New System.Windows.Forms.FlowLayoutPanel()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.FlowLayoutPanel1.SuspendLayout()
         Me.SuspendLayout()
@@ -37,7 +37,7 @@ Partial Class 翻译控件
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(213, 48)
         Me.Button1.TabIndex = 1
-        Me.Button1.Text = "翻译当前单元格"
+        Me.Button1.Text = "翻译所选单元格"
         Me.Button1.UseVisualStyleBackColor = True
         '
         'TableLayoutPanel1
@@ -55,15 +55,6 @@ Partial Class 翻译控件
         Me.TableLayoutPanel1.Size = New System.Drawing.Size(384, 434)
         Me.TableLayoutPanel1.TabIndex = 2
         '
-        'FlowLayoutPanel1
-        '
-        Me.FlowLayoutPanel1.Controls.Add(Me.Button1)
-        Me.FlowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.FlowLayoutPanel1.Location = New System.Drawing.Point(3, 380)
-        Me.FlowLayoutPanel1.Name = "FlowLayoutPanel1"
-        Me.FlowLayoutPanel1.Size = New System.Drawing.Size(378, 51)
-        Me.FlowLayoutPanel1.TabIndex = 4
-        '
         'Translate1
         '
         Me.Translate1.AutoSize = True
@@ -77,6 +68,15 @@ Partial Class 翻译控件
         Me.Translate1.字体 = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.Translate1.拆分方向 = 0
         Me.Translate1.颜色 = System.Drawing.SystemColors.WindowText
+        '
+        'FlowLayoutPanel1
+        '
+        Me.FlowLayoutPanel1.Controls.Add(Me.Button1)
+        Me.FlowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.FlowLayoutPanel1.Location = New System.Drawing.Point(3, 380)
+        Me.FlowLayoutPanel1.Name = "FlowLayoutPanel1"
+        Me.FlowLayoutPanel1.Size = New System.Drawing.Size(378, 51)
+        Me.FlowLayoutPanel1.TabIndex = 4
         '
         '翻译控件
         '

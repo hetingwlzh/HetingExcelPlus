@@ -34,7 +34,7 @@
     <PublishUrl>C:\Users\heting\Desktop\我的Excel插件\</PublishUrl>
     <InstallUrl />
     <TargetCulture>zh-chs</TargetCulture>
-    <ApplicationVersion>1.0.0.141</ApplicationVersion>
+    <ApplicationVersion>1.0.0.170</ApplicationVersion>
     <AutoIncrementApplicationRevision>true</AutoIncrementApplicationRevision>
     <UpdateEnabled>false</UpdateEnabled>
     <UpdateInterval>0</UpdateInterval>
@@ -325,10 +325,22 @@
     <Compile Include="区域选择控件.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="合并列控件.Designer.vb">
+      <DependentUpon>合并列控件.vb</DependentUpon>
+    </Compile>
+    <Compile Include="合并列控件.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="合并工作表控件.Designer.vb">
       <DependentUpon>合并工作表控件.vb</DependentUpon>
     </Compile>
     <Compile Include="合并工作表控件.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="合并文件控件.Designer.vb">
+      <DependentUpon>合并文件控件.vb</DependentUpon>
+    </Compile>
+    <Compile Include="合并文件控件.vb">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="实验控件.Designer.vb">
@@ -361,6 +373,12 @@
     <Compile Include="插件设置控件.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="数据拆分控件.Designer.vb">
+      <DependentUpon>数据拆分控件.vb</DependentUpon>
+    </Compile>
+    <Compile Include="数据拆分控件.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="枚举控件.Designer.vb">
       <DependentUpon>枚举控件.vb</DependentUpon>
     </Compile>
@@ -389,6 +407,12 @@
       <DependentUpon>行匹配控件.vb</DependentUpon>
     </Compile>
     <Compile Include="行匹配控件.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="行筛选控件.Designer.vb">
+      <DependentUpon>行筛选控件.vb</DependentUpon>
+    </Compile>
+    <Compile Include="行筛选控件.vb">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="随机抽取控件.Designer.vb">
@@ -447,9 +471,15 @@
       <DependentUpon>区域选择控件.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="合并列控件.resx">
+      <DependentUpon>合并列控件.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="合并工作表控件.resx">
       <DependentUpon>合并工作表控件.vb</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="合并文件控件.resx">
+      <DependentUpon>合并文件控件.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="实验控件.resx">
       <DependentUpon>实验控件.vb</DependentUpon>
@@ -467,6 +497,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="插件设置控件.resx">
       <DependentUpon>插件设置控件.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="数据拆分控件.resx">
+      <DependentUpon>数据拆分控件.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="枚举控件.resx">
       <DependentUpon>枚举控件.vb</DependentUpon>
@@ -486,6 +519,9 @@
     <EmbeddedResource Include="行匹配控件.resx">
       <DependentUpon>行匹配控件.vb</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="行筛选控件.resx">
+      <DependentUpon>行筛选控件.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="随机抽取控件.resx">
       <DependentUpon>随机抽取控件.vb</DependentUpon>
@@ -527,6 +563,9 @@
   <ItemGroup>
     <Service Include="{94E38DFF-614B-4CBD-B67C-F211BB35CE8B}" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\列合并.png" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
@@ -547,7 +586,13 @@
     <ManifestKeyFile>MyExcel插件_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>84297A00EDFD56ED805ED2CC6049A8AED94B2FA6</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>5190459752A235749E59FAC878D4C82C4556FAA6</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <DelaySign>false</DelaySign>
   </PropertyGroup>
   <!-- Include the build rules for a Visual Basic project. -->
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />

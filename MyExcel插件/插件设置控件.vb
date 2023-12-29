@@ -21,15 +21,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
         My.Settings.Save()
 
         MsgBox("设置已保存！", MsgBoxStyle.ApplicationModal, "保存设置")

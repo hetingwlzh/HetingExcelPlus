@@ -58,7 +58,7 @@
 
 
 
-        区域选择控件1.设置锁定用户区(False)
+        区域选择控件1.设置锁定用户区(True)
         区域选择控件1.设置锁定行(False)
         区域选择控件1.设置锁定列(False)
         区域选择控件1.设置锁定表(False)
@@ -322,7 +322,5 @@
 
     End Sub
 
-    Private Sub TableLayoutPanel1_Paint(sender As Object, e As Windows.Forms.PaintEventArgs) Handles TableLayoutPanel1.Paint
 
-    End Sub
 End Class

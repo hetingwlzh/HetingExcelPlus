@@ -1,4 +1,8 @@
 ﻿
+Imports System.Drawing
+Imports System.Windows.Forms
+Imports MyExcel插件.编号控件
+
 Public Class 编号控件
 
     Public 当前编号方案 As 编号方案
@@ -10,8 +14,7 @@ Public Class 编号控件
     Public 新整体编号规则 As 整体编号规则
 
     Public 当前表 As Excel.Worksheet
-
-
+    Public 编号方案保存表名 As String = "编号方案存储表_heting"
 
 
     'Public Class 错误管理
@@ -42,25 +45,54 @@ Public Class 编号控件
     '    End Sub
     'End Class
 
-    Public Class 值号
+    Public Class 元组
+        Public 健 As String
         Public 值 As String
-        Public 号 As String
-        Public Sub New(标志位值 As String, 编号 As String)
-            Dim xy As New List(Of String)
-            值 = 标志位值
-            号 = 编号
+        Public Sub New(key As String, value As String)
+
+            健 = key
+            值 = value
         End Sub
+        Public Sub New()
+
+            健 = ""
+            值 = ""
+        End Sub
+
+        Public Overrides Function ToString() As String
+            Return "(" & 健 & "≡" & 值 & ")"
+        End Function
+        Public Function CreateFromString(str As String)
+            If str IsNot Nothing Then
+                str = str.Trim("(").Trim(")")
+                Dim result() As String = str.Split("≡")
+                If result.Length > 1 Then
+                    Return New 元组(result(0), result(1))
+                Else
+                    Return Nothing
+                End If
+            Else
+                Return Nothing
+            End If
+
+
+        End Function
     End Class
     Public Class 编号方案
-        Public 编号方案名称 As String
-        Public 编号规则序列 As System.Collections.ArrayList
-        Public 整体序号 As Integer = 0
-        Public 工作表 As Excel.Worksheet
-        Public 工作表的列标题所在行号 As Integer
+        Public 编号方案名称 As String '方案编号的名字
+        Public 整体序号 As Integer = 0 '方案整体编号时的当前整体编号值
+        Public 工作表 As Excel.Worksheet '编号方案要实施的表对象
+        Public 工作表的列标题所在行号 As Integer '工作表的列标题所在行号
         'Public 错误管理者 As New 错误管理
-        Public 行对象筛选序列 As New System.Collections.ArrayList
-        Public 编号所在的列索引 As Integer = 1
+        Public 行对象筛选序列 As New System.Collections.ArrayList '用来存放筛需要编号的行的筛选条件数据。
+        Public 编号所在的列索引 As Integer = 1 '生成的编号要显示在的列号
+        Public 编号规则序列 As System.Collections.ArrayList '编号方案的各个编号规则序列
 
+
+        Public Sub New()
+            编号方案名称 = "未命名"
+            编号规则序列 = New System.Collections.ArrayList
+        End Sub
         Public Sub New(编号方案名称_ As String)
             编号方案名称 = 编号方案名称_
             编号规则序列 = New System.Collections.ArrayList
@@ -88,6 +120,12 @@ Public Class 编号控件
             编号规则序列.Add(_整体编号规则)
             Return 编号规则序列.Count - 1
         End Function
+
+        ''' <summary>
+        ''' 根据指定的数据行,按照编号规则生成唯一编号
+        ''' </summary>
+        ''' <param name="数据行">需要生成编号的Excel数据行</param>
+        ''' <returns>生成的唯一编号字符串</returns>
         Public Function 申请编号(数据行 As Excel.Range) As String
             Try
 
@@ -147,12 +185,94 @@ Public Class 编号控件
             End Try
 
         End Function
+
+        Public Overrides Function ToString() As String
+            Dim result As String = ""
+            result &= "<编号方案名称>" & 编号方案名称 & "</编号方案名称>"
+            result &= "<整体序号>" & 0 & "</整体序号>"
+            result &= "<工作表>" & 工作表.Name & "</工作表>"
+            result &= "<工作表的列标题所在行号>" & 工作表的列标题所在行号 & "</工作表的列标题所在行号>"
+            result &= "<行对象筛选序列>" & ListToString(行对象筛选序列, 一级列表元素分隔符) & "</行对象筛选序列>"
+            result &= "<编号所在的列索引>" & 编号所在的列索引 & "</编号所在的列索引>"
+
+            result &= "<编号规则序列>" & ListToString(编号规则序列， 二级列表元素分隔符) & "</编号规则序列>"
+
+
+
+
+
+
+            Return result
+        End Function
+        Public Function CreatFromString(str As String) As 编号方案
+            Dim resulr As New 编号方案
+
+            resulr.编号方案名称 = GetValueFromString(str, "编号方案名称")
+            resulr.整体序号 = GetValueFromString(str, "整体序号")
+            resulr.工作表 = app.Worksheets(GetValueFromString(str, "工作表"))
+            resulr.工作表的列标题所在行号 = GetValueFromString(str, "工作表的列标题所在行号")
+
+
+
+
+
+            resulr.行对象筛选序列.Clear()
+            For Each text As String In StringToList(GetValueFromString(str, "行对象筛选序列")， 一级列表元素分隔符)
+                resulr.行对象筛选序列.Add(New 元组().CreateFromString(text))
+            Next
+
+            resulr.编号所在的列索引 = GetValueFromString(str, "编号所在的列索引")
+
+
+
+
+            resulr.编号规则序列.Clear()
+            Dim 规则字符序列 As String() = StringToList(GetValueFromString(str, "编号规则序列"), 二级列表元素分隔符)
+            For Each text As String In 规则字符序列
+                Select Case GetValueFromString(text, "规则类型")
+                    Case "标志位规则"
+                        resulr.编号规则序列.Add(New 标志位规则().CreatFromString(text))
+                    Case "常量规则"
+                        resulr.编号规则序列.Add(New 常量规则().CreatFromString(text))
+                    Case "引用规则"
+                        resulr.编号规则序列.Add(New 引用规则().CreatFromString(text))
+                    Case "分类编号规则"
+                        resulr.编号规则序列.Add(New 分类编号规则().CreatFromString(text))
+                    Case "整体编号规则"
+                        resulr.编号规则序列.Add(New 整体编号规则().CreatFromString(text))
+                    Case Else
+                        流水信息.记录信息("导入代码格式可能有误，没能成功加载！")
+                        Return Nothing
+                End Select
+            Next
+            If resulr.编号方案名称 Is Nothing Or
+                   (Not IsNumeric(resulr.整体序号)) Or
+                   resulr.工作表 Is Nothing Or
+                   resulr.工作表的列标题所在行号 = Nothing Or
+                   resulr.编号规则序列.Count = 0 Then
+                流水信息.记录信息("导入代码格式可能有误，没能成功加载！")
+                Return Nothing
+            End If
+
+            Return resulr
+        End Function
+
+
+
+
+
     End Class
     Public Class 标志位规则
 
         Public 标志位所在列号 As Integer
         Public 标志位标题 As String
         Public 标志位编号序列 As New System.Collections.ArrayList
+
+        Public Sub New()
+            标志位所在列号 = 1
+            标志位标题 = ""
+            标志位编号序列.Clear()
+        End Sub
         Public Sub New(标志位所在列号_ As Integer, 标志位标题_ As String)
             标志位所在列号 = 标志位所在列号_
             标志位标题 = 标志位标题_
@@ -198,23 +318,13 @@ Public Class 编号控件
         End Sub
 
         Public Sub add(标志位值 As String, 编号 As String)
-            Dim xy As New 值号(标志位值, 编号)
+            Dim xy As New 元组(标志位值, 编号)
             标志位编号序列.Add(xy)
 
         End Sub
         Public Function 获取编号(标志位值 As String) As String
-            For Each t As 值号 In 标志位编号序列
-                If t.值 = 标志位值 Then
-                    Return t.号
-                End If
-            Next
-            Return Nothing
-
-        End Function
-
-        Public Function 获取标志位值(编号 As String) As String
-            For Each t As 值号 In 标志位编号序列
-                If t.号 = 编号 Then
+            For Each t As 元组 In 标志位编号序列
+                If t.健 = 标志位值 Then
                     Return t.值
                 End If
             Next
@@ -222,6 +332,39 @@ Public Class 编号控件
 
         End Function
 
+        Public Function 获取标志位值(编号 As String) As String
+            For Each t As 元组 In 标志位编号序列
+                If t.值 = 编号 Then
+                    Return t.健
+                End If
+            Next
+            Return Nothing
+
+        End Function
+        Public Overrides Function ToString() As String
+            Dim result As String = ""
+            result &= "<规则>"
+            result &= "<规则类型>" & "标志位规则" & "</规则类型>"
+            result &= "<标志位所在列号>" & 标志位所在列号 & "</标志位所在列号>"
+            result &= "<标志位标题>" & 标志位标题 & "</标志位标题>"
+            result &= "<标志位编号序列>"
+            result &= ListToString(标志位编号序列, 一级列表元素分隔符)
+            result &= "</标志位编号序列>"
+            result &= "</规则>"
+            Return result
+        End Function
+        Public Function CreatFromString(str As String) As 标志位规则
+            Dim resulr As New 标志位规则
+
+            resulr.标志位所在列号 = GetValueFromString(str, "标志位所在列号")
+            resulr.标志位标题 = GetValueFromString(str, "标志位标题")
+            resulr.标志位编号序列.Clear()
+            For Each text As String In StringToList(GetValueFromString(str, "标志位编号序列"), 一级列表元素分隔符)
+                resulr.标志位编号序列.Add(New 元组().CreateFromString(text))
+            Next
+            Return resulr
+
+        End Function
 
 
 
@@ -230,6 +373,9 @@ Public Class 编号控件
 
     Public Class 常量规则
         Public 常量值 As String
+        Public Sub New()
+            常量值 = ""
+        End Sub
         Public Sub New(常量的值 As String)
             常量值 = 常量的值
         End Sub
@@ -239,6 +385,23 @@ Public Class 编号控件
         Public Function 获取编号()
             Return 常量值
         End Function
+
+
+        Public Overrides Function ToString() As String
+            Dim result As String = ""
+            result &= "<规则>"
+            result &= "<规则类型>" & "常量规则" & "</规则类型>"
+            result &= "<常量值>" & 常量值 & "</常量值>"
+            result &= "</规则>"
+            Return result
+        End Function
+        Public Function CreatFromString(str As String) As 常量规则
+            Dim resulr As New 常量规则
+            resulr.常量值 = GetValueFromString(str, "常量值")
+            Return resulr
+        End Function
+
+
     End Class
 
     Public Class 引用规则
@@ -246,6 +409,8 @@ Public Class 编号控件
         Public 引用列标题 As String
         Public 引用列限制位数 As Integer
         Public 补位字符 As String
+        Public Sub New()
+        End Sub
         Public Sub New(_引用列所在列号 As Integer, _引用列标题 As String, _引用列限制位数 As Integer, _补位字符 As String)
             引用列所在列号 = _引用列所在列号
             引用列标题 = _引用列标题
@@ -255,6 +420,26 @@ Public Class 编号控件
         Public Function 获取编号（值 As String)
             Return 值.PadLeft(引用列限制位数, 补位字符)
         End Function
+        Public Overrides Function ToString() As String
+            Dim result As String = ""
+            result &= "<规则>"
+            result &= "<规则类型>" & "引用规则" & "</规则类型>"
+            result &= "<引用列所在列号>" & 引用列所在列号 & "</引用列所在列号>"
+            result &= "<引用列标题>" & 引用列标题 & "</引用列标题>"
+            result &= "<引用列限制位数>" & 引用列限制位数 & "</引用列限制位数>"
+            result &= "<补位字符>" & 补位字符 & "</补位字符>"
+            result &= "</规则>"
+            Return result
+        End Function
+        Public Function CreatFromString(str As String) As 引用规则
+            Dim resulr As New 引用规则
+            resulr.引用列所在列号 = GetValueFromString(str, "引用列所在列号")
+            resulr.引用列标题 = GetValueFromString(str, "引用列标题")
+            resulr.引用列限制位数 = GetValueFromString(str, "引用列限制位数")
+            resulr.补位字符 = GetValueFromString(str, "补位字符")
+            Return resulr
+        End Function
+
     End Class
 
 
@@ -314,6 +499,35 @@ Public Class 编号控件
             分类序号记录表.Add(temp)
             Return 起始编号.ToString.PadLeft(限制位数, 补位字符)
         End Function
+
+
+        Public Overrides Function ToString() As String
+            Dim result As String = ""
+            result &= "<规则>"
+            result &= "<规则类型>" & "分类编号规则" & "</规则类型>"
+            result &= "<分类列号序列>" & ListToString(分类列号序列, 一级列表元素分隔符) & "</分类列号序列>"
+            result &= "<限制位数>" & 限制位数 & "</限制位数>"
+            result &= "<补位字符>" & 补位字符 & "</补位字符>"
+            result &= "<起始编号>" & 起始编号 & "</起始编号>"
+            result &= "</规则>"
+            Return result
+        End Function
+        Public Function CreatFromString(str As String) As 分类编号规则
+            Dim resulr As New 分类编号规则
+            For Each num As String In StringToList(GetValueFromString(str, "分类列号序列"), 一级列表元素分隔符)
+                resulr.分类列号序列.Add(Int(num))
+            Next
+            resulr.限制位数 = GetValueFromString(str, "限制位数")
+            resulr.补位字符 = GetValueFromString(str, "补位字符")
+            resulr.起始编号 = GetValueFromString(str, "起始编号")
+            resulr.分类序号记录表.Clear()
+            Return resulr
+        End Function
+
+
+
+
+
     End Class
     Public Class 整体编号规则
         Public 限制位数 As Integer
@@ -337,6 +551,23 @@ Public Class 编号控件
             Return 序号.PadLeft(限制位数, 补位字符)
         End Function
 
+        Public Overrides Function ToString() As String
+            Dim result As String = ""
+            result &= "<规则>"
+            result &= "<规则类型>" & "整体编号规则" & "</规则类型>"
+            result &= "<限制位数>" & 限制位数 & "</限制位数>"
+            result &= "<补位字符>" & 补位字符 & "</补位字符>"
+            result &= "<起始编号>" & 起始编号 & "</起始编号>"
+            result &= "</规则>"
+            Return result
+        End Function
+        Public Function CreatFromString(str As String) As 整体编号规则
+            Dim resulr As New 整体编号规则
+            resulr.限制位数 = GetValueFromString(str, "限制位数")
+            resulr.补位字符 = GetValueFromString(str, "补位字符")
+            resulr.起始编号 = GetValueFromString(str, "起始编号")
+            Return resulr
+        End Function
     End Class
 
     Private Sub ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox1.SelectedIndexChanged
@@ -347,8 +578,8 @@ Public Class 编号控件
                 If 方案.编号方案名称 = ComboBox1.Text Then
                     当前编号方案 = 方案
                     选中指定命令(ComboBox2, 当前编号方案.工作表.Name)
-                    For Each temp As 值号 In 当前编号方案.行对象筛选序列
-                        DataGridView1.Rows(temp.值).Cells(1).Value = temp.号
+                    For Each temp As 元组 In 当前编号方案.行对象筛选序列
+                        DataGridView1.Rows(temp.健).Cells(1).Value = temp.值
                     Next
 
 
@@ -397,10 +628,10 @@ Public Class 编号控件
 
             新编号方案.工作表 = app.Sheets(ComboBox2.Text)
             新编号方案.工作表的列标题所在行号 = NumericUpDown1.Value
-            Dim temp As 值号
+            Dim temp As 元组
             For i As Integer = 0 To DataGridView1.Rows.Count - 1
                 If DataGridView1.Rows(i).Cells(1).Value <> "" Then
-                    temp = New 值号(i, DataGridView1.Rows(i).Cells(1).Value)
+                    temp = New 元组(i, DataGridView1.Rows(i).Cells(1).Value)
                     新编号方案.行对象筛选序列.Add(temp)
                 End If
 
@@ -443,9 +674,10 @@ Public Class 编号控件
         ComboBox1.Items.Clear()
         清理方案树()
         For Each 方案 As 编号方案 In 编号方案列表
-            ComboBox1.Items.Add(方案.编号方案名称)
-            添加方案节点(方案)
-
+            If 方案 IsNot Nothing Then
+                ComboBox1.Items.Add(方案.编号方案名称)
+                添加方案节点(方案)
+            End If
         Next
 
         If 要选中的项目索引 >= 0 Then
@@ -503,7 +735,7 @@ Public Class 编号控件
 
     Public Function 添加规则节点(节点 As Windows.Forms.TreeNode， 规则 As 分类编号规则) As Windows.Forms.TreeNode
         Dim node = New Windows.Forms.TreeNode
-        node.Text = "[类号]" & "1".PadLeft(规则.限制位数, 规则.补位字符)
+        node.Text = "[类号]" & 规则.起始编号.ToString.PadLeft(规则.限制位数, 规则.补位字符)
         节点.Nodes.Add(node)
         节点.Expand()
         Return node
@@ -511,22 +743,13 @@ Public Class 编号控件
 
     Public Function 添加规则节点(节点 As Windows.Forms.TreeNode， 规则 As 整体编号规则) As Windows.Forms.TreeNode
         Dim node = New Windows.Forms.TreeNode
-        node.Text = "[序号]" & "1".PadLeft(规则.限制位数, 规则.补位字符)
+        node.Text = "[序号]" & 规则.起始编号.ToString.PadLeft(规则.限制位数, 规则.补位字符)
         节点.Nodes.Add(node)
         节点.Expand()
         Return node
     End Function
 
-    Public Function 加载表(ComboBox As Windows.Forms.ComboBox) As Integer
-        ComboBox.Items.Clear()
 
-        For Each sheet As Excel.Worksheet In app.Worksheets
-
-            ComboBox.Items.Add(sheet.Name)
-
-        Next
-        Return app.Worksheets.Count
-    End Function
 
     Private Sub 编号控件_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         加载表(ComboBox2)
@@ -535,8 +758,23 @@ Public Class 编号控件
         If ComboBox1.Items.Count > 0 Then
             ComboBox1.SelectedIndex = 0
         End If
-    End Sub
+        检测是否有可导入的编号规则()
 
+
+    End Sub
+    Public Function 检测是否有可导入的编号规则() As Boolean
+        If 是否存在工作表(编号方案保存表名) Then
+            Label5.ForeColor = Color.Red
+            Label5.Text = "当前文件储存有编号规则，可尝试导入！"
+            Button9.ForeColor = Color.Red
+            Button9.Text = "可导入"
+        Else
+            Label5.ForeColor = Color.DarkGreen
+            Button9.ForeColor = Color.Black
+            Button9.Text = "导入规则"
+        End If
+
+    End Function
 
     Public Sub 加载列标题(sheet As Excel.Worksheet, 标题行行号 As Integer, MyDataGridView As Windows.Forms.DataGridView)
 
@@ -653,7 +891,7 @@ Public Class 编号控件
             '保存当前规则设置(当前编号方案.编号规则序列(新添加的规则索引))
             '刷新规则序列()
             刷新方案树(新添加的规则索引)
-
+            TreeView1.SelectedNode = Nothing
         Else
 
             MsgBox("请选择要添加的规则类型，并设置后正在添加。")
@@ -793,7 +1031,10 @@ Public Class 编号控件
 
         End If
     End Sub
-
+    ''' <summary>
+    ''' 根据当前选择条件,创建默认的新编号规则对象
+    ''' </summary>
+    ''' <returns>新的编号规则对象</returns>
     Public Function 创建默认新规则() As Object
         If CheckedListBox2.SelectedItem.ToString = "标志位规则" Then
             If CheckedListBox1.SelectedIndex = -1 Then
@@ -862,6 +1103,11 @@ Public Class 编号控件
     End Function
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+        删除当前编号方案()
+
+    End Sub
+
+    Public Sub 删除当前编号方案()
         删除方案(当前编号方案)
         'ComboBox1.Items.RemoveAt(选中指定命令(ComboBox1, 当前编号方案.编号方案名称))
         If ComboBox1.Items.Count > 0 Then
@@ -869,7 +1115,6 @@ Public Class 编号控件
         Else
             ComboBox1.Text = ""
         End If
-
     End Sub
     Public Function 删除方案(方案 As 编号方案)
         For Each 方案0 As 编号方案 In 编号方案列表
@@ -896,38 +1141,52 @@ Public Class 编号控件
         TabControl1.SelectedIndex = 0
     End Sub
 
-    Private Sub TreeView1_AfterSelect(sender As Object, e As Windows.Forms.TreeViewEventArgs) Handles TreeView1.AfterSelect
+
+    Public Sub ClickTreeView()
         CheckedListBox2.SelectedItem = Nothing
-
-        If TreeView1.SelectedNode.Level = 0 Then '根节点
-
-
-            DataGridView3.Rows.Clear()
-            For Each 方案 As 编号方案 In 编号方案列表
-                Dim n As Integer = DataGridView3.Rows.Add()
-                DataGridView3.Rows(n).Cells(1).Value = "方案 " & n
-                DataGridView3.Rows(n).Cells(2).Value = 方案.编号方案名称
-            Next
-            同步选择信息()
-        ElseIf TreeView1.SelectedNode.Level = 1 Then '方案节点
+        If TreeView1.SelectedNode IsNot Nothing Then
+            If TreeView1.SelectedNode.Level = 0 Then '根节点
 
 
-            当前编号方案 = 获取方案(TreeView1.SelectedNode.Text)
-            DataGridView3.Rows.Clear()
-            For Each 规则 As Object In 当前编号方案.编号规则序列
-                Dim n As Integer = DataGridView3.Rows.Add()
-                写入行(n,, 规则.GetType.Name)
-            Next
-            同步选择信息()
-        ElseIf TreeView1.SelectedNode.Level = 2 Then '规则节点
-            当前编号方案 = 获取方案(TreeView1.SelectedNode.Parent.Text)
-            同步选择信息()
-            显示当前规则设置(当前编号方案.编号规则序列(TreeView1.SelectedNode.Index))
+                DataGridView3.Rows.Clear()
+                For Each 方案 As 编号方案 In 编号方案列表
+                    Dim n As Integer = DataGridView3.Rows.Add()
+                    DataGridView3.Rows(n).Cells(1).Value = "方案 " & n
+                    DataGridView3.Rows(n).Cells(2).Value = 方案.编号方案名称
+                Next
+                同步选择信息()
+            ElseIf TreeView1.SelectedNode.Level = 1 Then '方案节点
 
+
+                当前编号方案 = 获取方案(TreeView1.SelectedNode.Text)
+                DataGridView3.Rows.Clear()
+                For Each 规则 As Object In 当前编号方案.编号规则序列
+                    Dim n As Integer = DataGridView3.Rows.Add()
+                    写入行(n,, 规则.GetType.Name)
+                Next
+                同步选择信息()
+            ElseIf TreeView1.SelectedNode.Level = 2 Then '规则节点
+                当前编号方案 = 获取方案(TreeView1.SelectedNode.Parent.Text)
+                同步选择信息()
+                显示当前规则设置(当前编号方案.编号规则序列(TreeView1.SelectedNode.Index))
+
+            End If
         End If
 
 
+
     End Sub
+    Private Sub TreeView1_AfterSelect(sender As Object, e As Windows.Forms.TreeViewEventArgs) Handles TreeView1.AfterSelect
+        ClickTreeView()
+    End Sub
+    ''' <summary>
+    ''' 向DataGridView控件指定行写入数据
+    ''' </summary>
+    ''' <param name="行索引">要写入的行索引</param>
+    ''' <param name="单元格1">第一列单元格的值</param>
+    ''' <param name="单元格2">第二列单元格的值</param>  
+    ''' <param name="单元格3">第三列单元格的值</param>
+    ''' <param name="单元格4">第四列单元格的值</param>
     Public Sub 写入行(行索引 As Integer,
                        Optional 单元格1 As String = Nothing,
                        Optional 单元格2 As String = Nothing,
@@ -982,7 +1241,9 @@ Public Class 编号控件
         End If
 
     End Sub
-
+    ''' <summary>
+    ''' 根据树视图控件的选择,同步和显示相关的编号方案信息
+    ''' </summary>
     Public Sub 同步选择信息()
 
         Dim 方案名 As String = ""
@@ -1013,8 +1274,8 @@ Public Class 编号控件
                 加载列标题(当前编号方案.工作表, NumericUpDown1.Value, DataGridView1)
                 NumericUpDown1.Value = 当前编号方案.工作表的列标题所在行号
 
-                For Each temp As 值号 In 当前编号方案.行对象筛选序列
-                    DataGridView1.Rows(temp.值).Cells(1).Value = temp.号
+                For Each temp As 元组 In 当前编号方案.行对象筛选序列
+                    DataGridView1.Rows(temp.健).Cells(1).Value = temp.值
                 Next
                 Exit Sub
             End If
@@ -1032,6 +1293,11 @@ Public Class 编号控件
         Next
         Return Nothing
     End Function
+
+    ''' <summary>
+    ''' 显示指定编号规则的设置信息
+    ''' </summary>
+    ''' <param name="规则">编号规则对象</param>
     Public Function 显示当前规则设置(规则 As Object)
         DataGridView3.Rows.Clear()
         DataGridView3.Columns.Clear()
@@ -1082,9 +1348,9 @@ Public Class 编号控件
 
 
 
-            For Each record As 值号 In temp.标志位编号序列
+            For Each record As 元组 In temp.标志位编号序列
                 Dim n As Integer = DataGridView3.Rows.Add()
-                写入行(n,, record.值, record.号)
+                写入行(n,, record.健, record.值)
             Next
 
         ElseIf 规则.GetType.Name = "常量规则" Then
@@ -1225,7 +1491,6 @@ Public Class 编号控件
 
         Dim 总行数 As Integer = DataGridView3.RowCount
 
-
         If 规则.GetType.Name = "标志位规则" Then
 
             Dim temp As 标志位规则 = CType(规则, 标志位规则)
@@ -1282,7 +1547,7 @@ Public Class 编号控件
         ElseIf 规则.GetType.Name = "整体编号规则" Then
             Dim temp As 整体编号规则 = CType(规则, 整体编号规则)
             temp.限制位数 = DataGridView3.Rows(0).Cells(2).Value
-
+            temp.起始编号 = DataGridView3.Rows(1).Cells(2).Value
 
         End If
 
@@ -1298,23 +1563,31 @@ Public Class 编号控件
 
 
     Private Sub TreeView1_BeforeSelect(sender As Object, e As Windows.Forms.TreeViewCancelEventArgs) Handles TreeView1.BeforeSelect
-        If TreeView1.SelectedNode IsNot Nothing Then
-            If TreeView1.SelectedNode.Level = 2 Then
-                保存当前规则设置(当前编号方案.编号规则序列(TreeView1.SelectedNode.Index))
-            End If
+        'If TreeView1.SelectedNode IsNot Nothing Then
+        '    If TreeView1.SelectedNode.Level = 2 Then
+        '          MsgBox(DataGridView3.Rows(0).Cells(2).Value)
+        '        保存当前规则设置(当前编号方案.编号规则序列(TreeView1.SelectedNode.Index))
+        '    End If
 
-        End If
+        'End If
 
 
     End Sub
 
 
 
-    Private Sub ContextMenuStrip1_Opening(sender As Object, e As ComponentModel.CancelEventArgs) Handles ContextMenuStrip1.Opening
+    'Private Sub ContextMenuStrip1_Opening(sender As Object, e As ComponentModel.CancelEventArgs) Handles ContextMenuStrip1.Opening
 
-    End Sub
+    'End Sub
 
     Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
+
+        For Each 方案 As 编号方案 In 编号方案列表
+            If 冗余行列检查(方案.工作表, True) = True Then
+                Exit Sub
+            End If
+        Next
+
         Dim n As Integer = 0
         设置为手动计算()
         流水信息.清除信息()
@@ -1326,13 +1599,10 @@ Public Class 编号控件
         流水信息.显示信息("各编号方案错误信息统计")
 
         设置为自动计算()
+
     End Sub
 
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
 
-        刷新方案树()
-        加载列标题(当前编号方案.工作表, NumericUpDown1.Value, DataGridView1)
-    End Sub
 
     Public Function 开始编号(方案 As 编号方案) As Integer
         Dim n As Integer = 0
@@ -1361,12 +1631,12 @@ Public Class 编号控件
         Else
             Dim 特征字符串 As String = ""
             Dim 行特征字符串 As String = ""
-            For Each temp As 值号 In 方案.行对象筛选序列
-                特征字符串 &= temp.号
+            For Each temp As 元组 In 方案.行对象筛选序列
+                特征字符串 &= temp.值
             Next
             For Each 行 As Excel.Range In 数据区.Rows
-                For Each temp As 值号 In 方案.行对象筛选序列
-                    行特征字符串 &= 行.Cells(1, temp.值 + 1).value
+                For Each temp As 元组 In 方案.行对象筛选序列
+                    行特征字符串 &= 行.Cells(1, temp.健 + 1).value
                 Next
                 If 行特征字符串 = 特征字符串 Then
                     列.Cells(行.Row, 1).value = 方案.申请编号(行)
@@ -1383,9 +1653,16 @@ Public Class 编号控件
         '''''''''''号段统计   号段统计
 
         流水信息.记录信息("方案:" & 方案.编号方案名称 & "  中，共统计 " & 号段统计(方案) & "个号码。" & vbCrLf)
+
+        方案.整体序号 = 0
+
         Return n
     End Function
-
+    ''' <summary>
+    ''' 号段统计
+    ''' </summary>
+    ''' <param name="方案">编号方案对象</param>
+    ''' <returns>统计得到的总数</returns>
 
     Public Function 号段统计(方案 As 编号方案) As Integer
         Dim 规则号 As Integer = 1
@@ -1460,6 +1737,10 @@ Public Class 编号控件
     End Function
 
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
+        删除规则()
+    End Sub
+
+    Public Sub 删除规则()
         If TreeView1.SelectedNode IsNot Nothing Then
             If TreeView1.SelectedNode.Level = 2 Then
                 Dim 方案名 As String = TreeView1.SelectedNode.Parent.Text
@@ -1470,7 +1751,6 @@ Public Class 编号控件
                 MsgBox("请选择要删除的规则节点！")
             End If
         End If
-
 
     End Sub
 
@@ -1500,8 +1780,8 @@ Public Class 编号控件
             If 方案.编号方案名称 = ComboBox1.Text Then
                 当前编号方案 = 方案
                 选中指定命令(ComboBox2, 当前编号方案.工作表.Name)
-                For Each temp As 值号 In 当前编号方案.行对象筛选序列
-                    DataGridView1.Rows(temp.值).Cells(1).Value = temp.号
+                For Each temp As 元组 In 当前编号方案.行对象筛选序列
+                    DataGridView1.Rows(temp.健).Cells(1).Value = temp.值
                 Next
 
 
@@ -1547,14 +1827,133 @@ Public Class 编号控件
     End Sub
 
     Private Sub Button7_Click(sender As Object, e As EventArgs) Handles Button7.Click
-        Dim temp As 值号
+        Dim temp As 元组
         当前编号方案.行对象筛选序列.Clear()
         For i As Integer = 0 To DataGridView1.Rows.Count - 1
             If DataGridView1.Rows(i).Cells(1).Value <> "" Then
-                temp = New 值号(i, DataGridView1.Rows(i).Cells(1).Value)
+                temp = New 元组(i, DataGridView1.Rows(i).Cells(1).Value)
                 当前编号方案.行对象筛选序列.Add(temp)
             End If
 
         Next
     End Sub
+
+    Private Sub TreeView1_Click(sender As Object, e As EventArgs) Handles TreeView1.Click
+        ClickTreeView()
+    End Sub
+
+    Private Sub Button8_Click(sender As Object, e As EventArgs) Handles Button8.Click
+        保存方案()
+    End Sub
+    Public Function 保存方案()
+        Dim 编号方案存储表 As Excel.Worksheet = 新建工作表(编号方案保存表名, False, False)
+        Dim n As Integer = 1
+        For Each 方案 As 编号方案 In 编号方案列表
+            编号方案存储表.Cells(n, 1) = 方案.ToString
+            n += 1
+        Next
+
+        编号方案存储表.Columns(1).ColumnWidth = 100
+
+        ' 设置行高自动调整
+        编号方案存储表.Rows.AutoFit()
+
+        ' 设置单元格为自动换行
+        编号方案存储表.Cells.WrapText = True
+
+
+        MsgBox("共成功保存了 " & n - 1 & "个 编号方案规则！")
+
+    End Function
+    Public Function 导入方案()
+        Dim sheet As Excel.Worksheet
+        Dim n As Integer = 0
+        Dim m As Integer = 0
+        If 是否存在工作表(编号方案保存表名) = True Then
+            sheet = app.Worksheets(编号方案保存表名)
+            For Each cell As Excel.Range In sheet.UsedRange
+                Try
+                    编号方案列表.Add(New 编号方案().CreatFromString(cell.Value))
+                    n += 1
+                Catch ex As Exception
+                    m += 1
+                End Try
+            Next
+        Else
+            If MsgBox("未发现储存编号规则的工作表" & vbCrLf & "是否尝试从当前单元格中导入储存的编号规则？", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
+
+                Dim cell As Excel.Range = app.ActiveCell
+                Try
+                    编号方案列表.Add(New 编号方案().CreatFromString(cell.Value))
+                    n += 1
+                Catch ex As Exception
+                    m += 1
+                End Try
+            End If
+        End If
+            刷新方案树()
+        流水信息.记录信息("成功导入 " & n & "个 编号方案规则，" & "失败 " & m & "个")
+        流水信息.显示信息()
+
+
+    End Function
+    Private Sub Button9_Click(sender As Object, e As EventArgs) Handles Button9.Click
+
+        导入方案()
+    End Sub
+
+    Private Sub 删除编号方案ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 删除编号方案ToolStripMenuItem.Click
+        删除当前编号方案()
+    End Sub
+
+    Private Sub 删除规则ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 删除规则ToolStripMenuItem.Click
+        删除规则()
+    End Sub
+
+    Private Sub Button9_MouseEnter(sender As Object, e As EventArgs) Handles Button9.MouseEnter
+        检测是否有可导入的编号规则()
+    End Sub
+
+    Private Sub Button9_MouseLeave(sender As Object, e As EventArgs) Handles Button9.MouseLeave
+        Button9.ForeColor = Color.Black
+        Button9.Text = "导入规则"
+    End Sub
+
+    Private Sub DataGridView3_CellEndEdit(sender As Object, e As Windows.Forms.DataGridViewCellEventArgs) Handles DataGridView3.CellEndEdit
+
+        If TreeView1.SelectedNode IsNot Nothing Then
+            If TreeView1.SelectedNode.Level = 2 Then
+
+                保存当前规则设置(当前编号方案.编号规则序列(TreeView1.SelectedNode.Index))
+                刷新方案树()
+
+                ' 获取当前编辑结束的单元格
+                Dim currentCell As DataGridViewCell = DataGridView3(e.ColumnIndex, e.RowIndex)
+
+                '' 获取修改后的单元格值
+                'Dim newValue As Object = currentCell.Value.ToString()
+
+                '' 现在你可以使用newValue变量进行后续的操作，例如更新数据源或者其他计算
+                'Debug.WriteLine("Modified cell value: " & newValue.ToString())
+
+                MsgBox("已修改设置为：" & currentCell.Value.ToString())
+            End If
+
+        End If
+    End Sub
+
+    Private Sub 刷新ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 刷新ToolStripMenuItem.Click, 刷新ToolStripMenuItem1.Click
+        刷新方案树()
+        If 当前编号方案 IsNot Nothing Then
+            加载列标题(当前编号方案.工作表, NumericUpDown1.Value, DataGridView1)
+        End If
+
+    End Sub
+
+    Private Sub 多列显示ToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles 多列显示ToolStripMenuItem.Click
+        CheckedListBox2.MultiColumn = Not CheckedListBox2.MultiColumn
+        CheckedListBox1.MultiColumn = Not CheckedListBox1.MultiColumn
+    End Sub
+
+
 End Class

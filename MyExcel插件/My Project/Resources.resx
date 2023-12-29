@@ -163,11 +163,11 @@
   <data name="上边" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\..\图标\上边.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="条件编号" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\图标\条件编号.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="numer" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\..\图标\numer.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="匹配" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\..\图标\匹配.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="下边" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\..\图标\下边.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -178,8 +178,8 @@
   <data name="自动列宽" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\..\图标\自动列宽.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="匹配" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\图标\匹配.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="条件编号" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\..\图标\条件编号.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="数据" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\..\图标\数据.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -189,6 +189,9 @@
   </data>
   <data name="循环色" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\..\图标\循环色.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="最左" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\..\图标\最左.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="数据分类" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\..\图标\数据分类.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -217,7 +220,7 @@
   <data name="分类计数" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\..\图标\分类计数.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="最左" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\..\图标\最左.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="列合并" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\列合并.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

@@ -193,6 +193,16 @@ Namespace My.Resources
         '''<summary>
         '''  查找 System.Drawing.Bitmap 类型的本地化资源。
         '''</summary>
+        Friend ReadOnly Property 列合并() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("列合并", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  查找 System.Drawing.Bitmap 类型的本地化资源。
+        '''</summary>
         Friend ReadOnly Property 列汇总() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("列汇总", resourceCulture)

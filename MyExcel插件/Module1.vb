@@ -1,7 +1,12 @@
 ﻿
+Imports System.ComponentModel.Design
+Imports System.Data.SqlTypes
 Imports System.Net.Http
 Imports System.Text.Json
+Imports System.Text.RegularExpressions
+Imports System.Windows.Forms
 Imports Microsoft.Office.Core
+Imports MyExcel插件.编号控件
 Imports Newtonsoft.Json
 
 Module Module1
@@ -55,6 +60,11 @@ Module Module1
 
 
     Public 新建工作表标志 As Boolean = False
+
+
+
+    Public 二级列表元素分隔符 As String = "█"
+    Public 一级列表元素分隔符 As String = "▍"
     Public Class 信息处理
         Public 信息序列 As System.Collections.ArrayList
         Public Sub New()
@@ -63,20 +73,26 @@ Module Module1
         Public Sub 记录信息(信息 As String)
             信息序列.Add(信息)
         End Sub
-        Public Sub 显示信息(Optional 标题 As String = "错误信息", Optional 是否清除已显示的信息 As Boolean = True)
+        Public Sub 显示信息(Optional 标题 As String = "heting提醒", Optional 是否清除已显示的信息 As Boolean = True)
+
+
             MyErrorForm.Text = 标题
+            MyErrorForm.Width = 1000
+            MyErrorForm.Height = 530
             If 信息序列.Count > 0 Then
                 Dim n As Integer = 1
                 Dim 总文本 As String = ""
                 For Each str As String In 信息序列
-                    总文本 &= n & "、" & vbTab & str & vbCrLf
+                    总文本 &= n & "、" & " " & str & vbCrLf
                     n += 1
                 Next
-                MyErrorForm.Label1.Text = 总文本
+                MyErrorForm.RichTextBox1.Text = 总文本
             Else
-                MyErrorForm.Label1.Text = "没有错误！！"
+                MyErrorForm.RichTextBox1.Text = "成功完成！！"
             End If
+
             MyErrorForm.Show()
+            MyErrorForm.WindowState = FormWindowState.Normal
             If 是否清除已显示的信息 = True Then
                 清除信息()
             End If
@@ -1540,16 +1556,26 @@ Module Module1
 
     End Sub
     Public Function 插入公式(公式文本 As String, Optional Cell As Excel.Range = Nothing, Optional 是否为数组公式 As Boolean = False)
-        If Cell Is Nothing Then
-            Cell = app.ActiveCell
-        End If
-        If 是否为数组公式 = False Then
-            Cell.Formula = 公式文本
-        Else
-            Cell.FormulaArray = 公式文本
-        End If
+        Try
+            If Cell Is Nothing Then
+                Cell = app.ActiveCell
+            End If
+            If 是否为数组公式 = False Then
+                Cell.Formula = 公式文本
+            Else
+                Cell.FormulaArray = 公式文本
 
-        Cell.NumberFormatLocal = "G/通用格式" '设置F1单元格为常规格式
+            End If
+
+            Cell.NumberFormatLocal = "G/通用格式" '设置F1单元格为常规格式
+
+        Catch ex As Exception
+            Clipboard.SetText(公式文本)
+            MsgBox("插入公式出错了,可能原因是公式太长了（有点搞笑,不过网上查阅确实这样）但是却可以手动键入公式，且能正常运行，公式如下：" &
+                   vbCrLf & 公式文本 & vbCrLf & vbCrLf & "公式已复制到剪切板！")
+        End Try
+
+
     End Function
 
     Public Function 拖拽填充(填充区域 As Excel.Range, Optional 源区域 As Excel.Range = Nothing) As Integer
@@ -1656,11 +1682,15 @@ Module Module1
     ''' </summary>
     ''' <param name="name">表的名字,可以省略</param>
     ''' <returns>返回新建的工作表</returns>
-    Function 新建工作表(name As String, Optional 是否自动重命名 As Boolean = False, Optional 是否隐藏 As Boolean = False) As Excel.Worksheet
+    Function 新建工作表(name As String,
+                   Optional 是否自动重命名 As Boolean = False,
+                   Optional 是否隐藏 As Boolean = False,
+                   Optional After As Object = Nothing,
+                   Optional Before As Object = Nothing) As Excel.Worksheet
         Dim Num As Integer = 0
         Dim NewName As String = name
         Dim sheet As Excel.Worksheet
-        name = name.Trim
+        name = 格式化工作表名(name)
         If name = "" Then
             name = "未命名"
         End If
@@ -1670,7 +1700,16 @@ Module Module1
                     Num += 1
                     NewName = name & "(" & Num & ")"
                 Loop Until 是否存在工作表(NewName) = False
-                sheet = app.Sheets.Add()
+
+
+                If After IsNot Nothing Then
+                    sheet = app.Sheets.Add(After:=After)
+                ElseIf Before IsNot Nothing Then
+                    sheet = app.Sheets.Add(Before:=Before)
+                Else
+                    sheet = app.Sheets.Add()
+                End If
+
                 sheet.Name = NewName
                 Return sheet
             Else
@@ -1684,7 +1723,13 @@ Module Module1
 
         Else
             新建工作表标志 = True
-            sheet = app.Sheets.Add()
+            If After IsNot Nothing Then
+                sheet = app.Sheets.Add(After:=After)
+            ElseIf Before IsNot Nothing Then
+                sheet = app.Sheets.Add(Before:=Before)
+            Else
+                sheet = app.Sheets.Add()
+            End If
             sheet.Name = name
 
             If 是否隐藏 = True Then
@@ -3848,7 +3893,16 @@ Module Module1
         区域 = app.Intersect(区域, sheet.UsedRange)
 
         Dim 要匹配的字符串 As String = InputBox("请输入要匹配的字符串", "输入")
-        Dim 第n次匹配 As Integer = InputBox("请输入要查找第几次匹配", "输入次数")
+        Dim input_str As String = InputBox("请输入要查找第几次匹配", "输入次数")
+        Dim 第n次匹配 As Integer
+        If IsNumeric(input_str) Then
+            第n次匹配 = CInt(input_str)
+        Else
+            MsgBox("输入的不是数字，请重设置！")
+            Exit Function
+        End If
+
+
         Dim range, 填充区域 As Excel.Range
         Dim 源字符串地址 As String
 
@@ -4313,8 +4367,10 @@ Module Module1
 
             taskPane = Globals.ThisAddIn.CustomTaskPanes.Add(Control1, 标题)
             AddHandler taskPane.VisibleChanged, AddressOf CustomPaneVisibleChanged
-            taskPane.Visible = True
+
             taskPane.Width = width
+
+            taskPane.Visible = True
             Return taskPane
             'If index < 0 Then
 
@@ -4992,23 +5048,36 @@ Module Module1
         range.FormatConditions(range.FormatConditions.Count).SetFirstPriority
 
 
+        'With range.FormatConditions(1).Font
+        '    .Color = -16383844
+        '    .TintAndShade = 0
+        'End With
         With range.FormatConditions(1).Interior
-            .Pattern = Excel.XlPattern.xlPatternRectangularGradient  'xlPatternRectangularGradient
-            .Gradient.RectangleLeft = 0
-            .Gradient.RectangleLeft = 0.5
-            .Gradient.RectangleRight = 0.5
-            .Gradient.RectangleTop = 0.5
-            .Gradient.RectangleBottom = 0.5
-            .Gradient.ColorStops.Clear
-        End With
-        With range.FormatConditions(1).Interior.Gradient.ColorStops.Add(0)
-            .ThemeColor = Excel.XlThemeColor.xlThemeColorDark1
+            .PatternColorIndex = Excel.Constants.xlAutomatic
+            .Color = 13551615
             .TintAndShade = 0
         End With
-        With range.FormatConditions(1).Interior.Gradient.ColorStops.Add(1)
-            .Color = 14452223 '3932159
-            .TintAndShade = 0
-        End With
+        range.FormatConditions(1).StopIfTrue = False
+
+
+
+        'With range.FormatConditions(1).Interior
+        '    .Pattern = Excel.XlPattern.xlPatternRectangularGradient  'xlPatternRectangularGradient
+        '    .Gradient.RectangleLeft = 0
+        '    .Gradient.RectangleLeft = 0.5
+        '    .Gradient.RectangleRight = 0.5
+        '    .Gradient.RectangleTop = 0.5
+        '    .Gradient.RectangleBottom = 0.5
+        '    .Gradient.ColorStops.Clear
+        'End With
+        'With range.FormatConditions(1).Interior.Gradient.ColorStops.Add(0)
+        '    .ThemeColor = Excel.XlThemeColor.xlThemeColorDark1
+        '    .TintAndShade = 0
+        'End With
+        'With range.FormatConditions(1).Interior.Gradient.ColorStops.Add(1)
+        '    .Color = 14452223 '3932159
+        '    .TintAndShade = 0
+        'End With
 
 
         'With range.FormatConditions(1).Interior
@@ -5016,7 +5085,7 @@ Module Module1
         '    .Color = 16753663
         '    .TintAndShade = 0
         'End With
-        range.FormatConditions(1).StopIfTrue = False
+        'range.FormatConditions(1).StopIfTrue = False
 
     End Function
 
@@ -5125,6 +5194,203 @@ Module Module1
         xlColumnRectangle.Line.Visible = False
     End Sub
 
+    Public Function 加载表(ComboBox As Windows.Forms.ComboBox) As Integer
+        ComboBox.Items.Clear()
 
+        For Each sheet As Excel.Worksheet In app.Worksheets
+
+            ComboBox.Items.Add(sheet.Name)
+
+        Next
+        Return app.Worksheets.Count
+    End Function
+    ''' <summary>
+    ''' 结果返回待检查的工作表中是否存在冗余数据
+    ''' </summary>
+    ''' <returns></returns>
+    Public Function 冗余行列检查(sheer As Excel.Worksheet,
+                           Optional 是否弹出提示框 As Boolean = True,
+                           Optional MaxRowNum As Integer = 10000,
+                           Optional MaxColumnNum As Integer = 1000) As Boolean
+        Try
+            Dim r As Integer = 获取结束单元格(sheer).Row
+            Dim c As Integer = 获取结束单元格(sheer).Column
+            If r > MaxRowNum Or c > MaxColumnNum Then
+                If 是否弹出提示框 = True Then
+                    If MsgBox("工作表  """ & sheer.Name & """ 有 " & r & "行  " & c & "列" & " 数据" & vbCrLf &
+                                 "可能有大量 空行、空列！建议删除冗余数据。" & vbCrLf &
+                                 "若继续操作，可能要耗费很长时间，也可能程序崩溃！" & vbCrLf &
+                                 "你确认要继续操作吗？", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
+                        Return False
+                    Else
+                        Return True
+                    End If
+                Else
+                    Return True
+                End If
+            Else
+                Return False
+
+            End If
+        Catch ex As Exception
+            Return True
+        End Try
+
+
+
+    End Function
+    ''' <summary>
+    ''' 结果返回待检查的工作表中是否存在冗余数据
+    ''' </summary>
+    ''' <returns></returns>
+    Public Function 冗余行列检查(sheerList As List(Of Excel.Worksheet),
+                           Optional 是否弹出提示框 As Boolean = True,
+                           Optional MaxRowNum As Integer = 10000,
+                           Optional MaxColumnNum As Integer = 1000) As Boolean
+        For Each sheet As Excel.Worksheet In sheerList
+            If 冗余行列检查(sheet, 是否弹出提示框, MaxRowNum, MaxColumnNum) = True Then
+                Return True
+            End If
+        Next
+        Return False
+    End Function
+
+
+
+    Function 格式化工作表名(SheetName As String) As String
+        If SheetName = Nothing Then
+            Return Nothing
+        End If
+
+        Dim pattern As String = "[\:\/\\?\*\\[\\]\r\n\t]|[：：]"
+
+        ' 使用正则表达式替换特殊字符
+        SheetName = Regex.Replace(SheetName, pattern, "")
+
+        ' 使用 Trim() 删除开头和结尾的空白字符
+        SheetName = SheetName.Trim()
+
+        ' 删除重复的空白字符 
+        SheetName = Regex.Replace(SheetName, "\s+", " ")
+
+        If SheetName.Length > 31 Then
+            SheetName = SheetName.Substring(0, 31)
+        End If
+
+        Return SheetName
+
+    End Function
+
+    Public Function GetValueFromString(str As String, key As String) As String
+        If str IsNot Nothing And key IsNot Nothing Then
+            If Not key.StartsWith("<") Then
+                key = "<" & key
+            End If
+            If Not key.EndsWith(">") Then
+                key = key & ">"
+            End If
+            Dim startIndex, overIndex As Integer
+            startIndex = str.IndexOf(key)
+            If startIndex < 0 Then
+                流水信息.记录信息("警告！  获取 " & key & " 失败")
+                Return Nothing
+            End If
+            startIndex += key.Length
+
+            key = key.Trim("<").Trim(">")
+            key = "</" & key & ">"
+            overIndex = str.IndexOf(key)
+            If overIndex < 0 Then
+                流水信息.记录信息("警告！  获取 " & key & " 失败")
+                Return Nothing
+            End If
+            overIndex -= 1
+            Return str.Substring(startIndex, overIndex - startIndex + 1)
+        Else
+            流水信息.记录信息("警告！  获取 " & key & " 失败")
+            Return Nothing
+        End If
+
+    End Function
+    Public Function ListToString(序列 As List(Of Object), 分隔符 As String) As String
+        Dim result As String = ""
+
+        For Each element As Object In 序列
+            result &= element.ToString() & 分隔符
+        Next
+        If result.EndsWith(分隔符) Then
+            result.Trim(分隔符)
+        End If
+        Return result
+    End Function
+    Public Function ListToString(序列 As Collections.ArrayList, 分隔符 As String) As String
+        Dim result As String = ""
+
+        For Each element As Object In 序列
+            result &= element.ToString() & 分隔符
+        Next
+        If result.EndsWith(分隔符) Then
+            result.Trim(分隔符)
+        End If
+        Return result
+    End Function
+
+    Public Function StringToList(str As String, 分隔符 As String) As String()
+        Try
+            If str Is Nothing Then
+                Return Nothing
+            End If
+            Dim result() As String = str.Split(分隔符)
+            Dim n As Integer = 0
+
+
+
+            Dim newList As New List(Of String)()
+
+            ' 遍历原始数组，将非空字符串添加到新列表中
+            For Each s As String In result
+                If Not String.IsNullOrEmpty(s) Then
+                    newList.Add(s)
+                End If
+            Next
+
+            ' 将新列表转换为数组
+            Dim newArr() As String = newList.ToArray()
+
+            ' 输出结果
+
+
+            Return newArr
+        Catch ex As Exception
+            Return Nothing
+        End Try
+
+    End Function
+
+    Public Sub 加载列标题到数据表(sheet As Excel.Worksheet,
+                         标题行行号 As Integer,
+                         MyDataGridView As Windows.Forms.DataGridView,
+                         Optional 是否只读 As Boolean = True)
+
+
+        If sheet IsNot Nothing Then
+            MyDataGridView.Columns.Clear()
+            MyDataGridView.Columns.Add(sheet.Name, sheet.Name)
+            'MyDataGridView.Columns.Add("匹配值", "匹配值")
+            MyDataGridView.Columns(0).ReadOnly = 是否只读
+            Dim str As String = ""
+
+            If 标题行行号 > sheet.UsedRange.Rows.Count Then
+                MsgBox("标题行行号超出使用区范围，请重新设置标题行所在区域的行号。")
+                Exit Sub
+            End If
+            Dim n As Integer = 0
+            For Each cell As Excel.Range In sheet.UsedRange.Rows.Item(标题行行号).Cells
+                n = MyDataGridView.Rows.Add()
+                MyDataGridView.Rows(n).Cells(0).Value = ToStr(cell)
+                'MyDataGridView.Rows(n).Cells(1).Value = ""
+            Next
+        End If
+    End Sub
 
 End Module

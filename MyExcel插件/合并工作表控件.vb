@@ -1,4 +1,6 @@
-﻿Public Class 合并工作表控件
+﻿Imports MyExcel插件.编号控件
+
+Public Class 合并工作表控件
     Private Sub 合并工作表控件_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         加载表()
     End Sub
@@ -11,11 +13,23 @@
         Return app.Worksheets.Count
     End Function
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-
-
         Dim range, tempRange As Excel.Range
         Dim NewSheet, sheet As Excel.Worksheet
+
+
+
+        For Each temp In CheckedListBox1.CheckedItems
+            sheet = app.Sheets(temp.ToString)
+            If 冗余行列检查(sheet, True) = True Then
+                Exit Sub
+            End If
+        Next
+
+
+
         NewSheet = 新建工作表("合并结果", True)
+
+
 
 
         Dim row As Integer

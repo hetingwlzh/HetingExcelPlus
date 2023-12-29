@@ -113,24 +113,24 @@ Partial Class 排名控件
         'RadioButton3
         '
         Me.RadioButton3.AutoSize = True
+        Me.RadioButton3.Checked = True
         Me.RadioButton3.Font = New System.Drawing.Font("微软雅黑", 10.71429!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.RadioButton3.Location = New System.Drawing.Point(37, 39)
         Me.RadioButton3.Name = "RadioButton3"
         Me.RadioButton3.Size = New System.Drawing.Size(144, 38)
         Me.RadioButton3.TabIndex = 0
+        Me.RadioButton3.TabStop = True
         Me.RadioButton3.Text = "最优排名"
         Me.RadioButton3.UseVisualStyleBackColor = True
         '
         'RadioButton4
         '
         Me.RadioButton4.AutoSize = True
-        Me.RadioButton4.Checked = True
         Me.RadioButton4.Font = New System.Drawing.Font("微软雅黑", 10.71429!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.RadioButton4.Location = New System.Drawing.Point(187, 39)
         Me.RadioButton4.Name = "RadioButton4"
         Me.RadioButton4.Size = New System.Drawing.Size(144, 38)
         Me.RadioButton4.TabIndex = 1
-        Me.RadioButton4.TabStop = True
         Me.RadioButton4.Text = "依次排名"
         Me.RadioButton4.UseVisualStyleBackColor = True
         '
