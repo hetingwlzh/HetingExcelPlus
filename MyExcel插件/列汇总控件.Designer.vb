@@ -125,9 +125,9 @@ Partial Class 列汇总控件
         'Button3
         '
         Me.Button3.Font = New System.Drawing.Font("微软雅黑", 10.71429!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.Button3.Location = New System.Drawing.Point(233, 3)
+        Me.Button3.Location = New System.Drawing.Point(449, 3)
         Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(150, 44)
+        Me.Button3.Size = New System.Drawing.Size(97, 44)
         Me.Button3.TabIndex = 3
         Me.Button3.Text = "说明"
         Me.Button3.UseVisualStyleBackColor = True
